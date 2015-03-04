@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B6F54911A9CD51E008F6508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54901A9CD51E008F6508 /* AppDelegate.swift */; };
+		3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54921A9CD51E008F6508 /* ViewController.swift */; };
+		3B6F54961A9CD51E008F6508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6F54941A9CD51E008F6508 /* Main.storyboard */; };
+		3B6F54981A9CD51E008F6508 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B6F54971A9CD51E008F6508 /* Images.xcassets */; };
+		3B6F549B1A9CD51E008F6508 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */; };
+		3B6F54A71A9CD51F008F6508 /* Reviewify_MVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54A61A9CD51F008F6508 /* Reviewify_MVPTests.swift */; };
+		3B6F54B11A9CD64A008F6508 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */; };
+		3B6F54B31A9CD92F008F6508 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */; };
+		3B6F54BA1A9CDDDF008F6508 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54B51A9CDDDF008F6508 /* Bolts.framework */; };
+		3B6F54BB1A9CDDDF008F6508 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54B61A9CDDDF008F6508 /* Parse.framework */; };
+		3B6F54BC1A9CDDDF008F6508 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54B71A9CDDDF008F6508 /* ParseCrashReporting.framework */; };
+		3B6F54BD1A9CDDDF008F6508 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54B81A9CDDDF008F6508 /* ParseFacebookUtils.framework */; };
+		3B6F54BE1A9CDDDF008F6508 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54B91A9CDDDF008F6508 /* ParseUI.framework */; };
+		3B6F54C41A9CDE15008F6508 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54BF1A9CDE15008F6508 /* AudioToolbox.framework */; };
+		3B6F54C51A9CDE15008F6508 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54C01A9CDE15008F6508 /* CFNetwork.framework */; };
+		3B6F54C61A9CDE15008F6508 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54C11A9CDE15008F6508 /* CoreGraphics.framework */; };
+		3B6F54C71A9CDE15008F6508 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54C21A9CDE15008F6508 /* CoreLocation.framework */; };
+		3B6F54C81A9CDE15008F6508 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54C31A9CDE15008F6508 /* MobileCoreServices.framework */; };
+		3B6F54CA1A9CDE24008F6508 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54C91A9CDE24008F6508 /* QuartzCore.framework */; };
+		3B6F54CC1A9CDE2A008F6508 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54CB1A9CDE2A008F6508 /* Security.framework */; };
+		3B6F54CE1A9CDE32008F6508 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54CD1A9CDE32008F6508 /* StoreKit.framework */; };
+		3B6F54D01A9CDE3C008F6508 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54CF1A9CDE3C008F6508 /* SystemConfiguration.framework */; };
+		3B6F54D21A9CDE45008F6508 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54D11A9CDE45008F6508 /* libz.dylib */; };
+		3B6F54D41A9CDE50008F6508 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6F54D31A9CDE50008F6508 /* libsqlite3.dylib */; };
+		3B6F54DB1A9CE4C9008F6508 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */; };
+		3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B6F54A11A9CD51F008F6508 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B6F54831A9CD51E008F6508 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B6F548A1A9CD51E008F6508;
+			remoteInfo = "Reviewify MVP";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reviewify MVP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6F548F1A9CD51E008F6508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B6F54901A9CD51E008F6508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B6F54921A9CD51E008F6508 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B6F54951A9CD51E008F6508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3B6F54971A9CD51E008F6508 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3B6F549A1A9CD51E008F6508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3B6F54A01A9CD51F008F6508 /* Reviewify MVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Reviewify MVPTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6F54A51A9CD51F008F6508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B6F54A61A9CD51F008F6508 /* Reviewify_MVPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviewify_MVPTests.swift; sourceTree = "<group>"; };
+		3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		3B6F54B51A9CDDDF008F6508 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		3B6F54B61A9CDDDF008F6508 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		3B6F54B71A9CDDDF008F6508 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		3B6F54B81A9CDDDF008F6508 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		3B6F54B91A9CDDDF008F6508 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		3B6F54BF1A9CDE15008F6508 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3B6F54C01A9CDE15008F6508 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3B6F54C11A9CDE15008F6508 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3B6F54C21A9CDE15008F6508 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3B6F54C31A9CDE15008F6508 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3B6F54C91A9CDE24008F6508 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3B6F54CB1A9CDE2A008F6508 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3B6F54CD1A9CDE32008F6508 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3B6F54CF1A9CDE3C008F6508 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3B6F54D11A9CDE45008F6508 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3B6F54D31A9CDE50008F6508 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		3B88D33B1AA0D27D0054388D /* ASStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStarRatingView.h; sourceTree = "<group>"; };
+		3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStarRatingView.m; sourceTree = "<group>"; };
+		3B9F32F71A9E830B005C6E8A /* Reviewify MVP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reviewify MVP-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B6F54881A9CD51E008F6508 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B6F54D41A9CDE50008F6508 /* libsqlite3.dylib in Frameworks */,
+				3B6F54D21A9CDE45008F6508 /* libz.dylib in Frameworks */,
+				3B6F54D01A9CDE3C008F6508 /* SystemConfiguration.framework in Frameworks */,
+				3B6F54CE1A9CDE32008F6508 /* StoreKit.framework in Frameworks */,
+				3B6F54CC1A9CDE2A008F6508 /* Security.framework in Frameworks */,
+				3B6F54CA1A9CDE24008F6508 /* QuartzCore.framework in Frameworks */,
+				3B6F54C41A9CDE15008F6508 /* AudioToolbox.framework in Frameworks */,
+				3B6F54C51A9CDE15008F6508 /* CFNetwork.framework in Frameworks */,
+				3B6F54C61A9CDE15008F6508 /* CoreGraphics.framework in Frameworks */,
+				3B6F54C71A9CDE15008F6508 /* CoreLocation.framework in Frameworks */,
+				3B6F54C81A9CDE15008F6508 /* MobileCoreServices.framework in Frameworks */,
+				3B6F54BB1A9CDDDF008F6508 /* Parse.framework in Frameworks */,
+				3B6F54BC1A9CDDDF008F6508 /* ParseCrashReporting.framework in Frameworks */,
+				3B6F54BE1A9CDDDF008F6508 /* ParseUI.framework in Frameworks */,
+				3B6F54BD1A9CDDDF008F6508 /* ParseFacebookUtils.framework in Frameworks */,
+				3B6F54BA1A9CDDDF008F6508 /* Bolts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B6F549D1A9CD51F008F6508 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B6F54821A9CD51E008F6508 = {
+			isa = PBXGroup;
+			children = (
+				3B6F548D1A9CD51E008F6508 /* Reviewify MVP */,
+				3B6F54A31A9CD51F008F6508 /* Reviewify MVPTests */,
+				3B6F548C1A9CD51E008F6508 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B6F548C1A9CD51E008F6508 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */,
+				3B6F54A01A9CD51F008F6508 /* Reviewify MVPTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B6F548D1A9CD51E008F6508 /* Reviewify MVP */ = {
+			isa = PBXGroup;
+			children = (
+				3B6F54901A9CD51E008F6508 /* AppDelegate.swift */,
+				3B6F54921A9CD51E008F6508 /* ViewController.swift */,
+				3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */,
+				3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */,
+				3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */,
+				3B6F54941A9CD51E008F6508 /* Main.storyboard */,
+				3B88D33B1AA0D27D0054388D /* ASStarRatingView.h */,
+				3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */,
+				3B6F54971A9CD51E008F6508 /* Images.xcassets */,
+				3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */,
+				3B9F32F71A9E830B005C6E8A /* Reviewify MVP-Bridging-Header.h */,
+				3B6F54B41A9CDDD0008F6508 /* Frameworks */,
+				3B6F548E1A9CD51E008F6508 /* Supporting Files */,
+			);
+			path = "Reviewify MVP";
+			sourceTree = "<group>";
+		};
+		3B6F548E1A9CD51E008F6508 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B6F548F1A9CD51E008F6508 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B6F54A31A9CD51F008F6508 /* Reviewify MVPTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B6F54A61A9CD51F008F6508 /* Reviewify_MVPTests.swift */,
+				3B6F54A41A9CD51F008F6508 /* Supporting Files */,
+			);
+			path = "Reviewify MVPTests";
+			sourceTree = "<group>";
+		};
+		3B6F54A41A9CD51F008F6508 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B6F54A51A9CD51F008F6508 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B6F54B41A9CDDD0008F6508 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B6F54D31A9CDE50008F6508 /* libsqlite3.dylib */,
+				3B6F54D11A9CDE45008F6508 /* libz.dylib */,
+				3B6F54CF1A9CDE3C008F6508 /* SystemConfiguration.framework */,
+				3B6F54CD1A9CDE32008F6508 /* StoreKit.framework */,
+				3B6F54CB1A9CDE2A008F6508 /* Security.framework */,
+				3B6F54C91A9CDE24008F6508 /* QuartzCore.framework */,
+				3B6F54BF1A9CDE15008F6508 /* AudioToolbox.framework */,
+				3B6F54C01A9CDE15008F6508 /* CFNetwork.framework */,
+				3B6F54C11A9CDE15008F6508 /* CoreGraphics.framework */,
+				3B6F54C21A9CDE15008F6508 /* CoreLocation.framework */,
+				3B6F54C31A9CDE15008F6508 /* MobileCoreServices.framework */,
+				3B6F54B51A9CDDDF008F6508 /* Bolts.framework */,
+				3B6F54B61A9CDDDF008F6508 /* Parse.framework */,
+				3B6F54B71A9CDDDF008F6508 /* ParseCrashReporting.framework */,
+				3B6F54B81A9CDDDF008F6508 /* ParseFacebookUtils.framework */,
+				3B6F54B91A9CDDDF008F6508 /* ParseUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B6F548A1A9CD51E008F6508 /* Reviewify MVP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B6F54AA1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVP" */;
+			buildPhases = (
+				3B6F54871A9CD51E008F6508 /* Sources */,
+				3B6F54881A9CD51E008F6508 /* Frameworks */,
+				3B6F54891A9CD51E008F6508 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Reviewify MVP";
+			productName = "Reviewify MVP";
+			productReference = 3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3B6F549F1A9CD51F008F6508 /* Reviewify MVPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B6F54AD1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVPTests" */;
+			buildPhases = (
+				3B6F549C1A9CD51F008F6508 /* Sources */,
+				3B6F549D1A9CD51F008F6508 /* Frameworks */,
+				3B6F549E1A9CD51F008F6508 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B6F54A21A9CD51F008F6508 /* PBXTargetDependency */,
+			);
+			name = "Reviewify MVPTests";
+			productName = "Reviewify MVPTests";
+			productReference = 3B6F54A01A9CD51F008F6508 /* Reviewify MVPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B6F54831A9CD51E008F6508 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Bryce Langlotz";
+				TargetAttributes = {
+					3B6F548A1A9CD51E008F6508 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					3B6F549F1A9CD51F008F6508 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 3B6F548A1A9CD51E008F6508;
+					};
+				};
+			};
+			buildConfigurationList = 3B6F54861A9CD51E008F6508 /* Build configuration list for PBXProject "Reviewify MVP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B6F54821A9CD51E008F6508;
+			productRefGroup = 3B6F548C1A9CD51E008F6508 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B6F548A1A9CD51E008F6508 /* Reviewify MVP */,
+				3B6F549F1A9CD51F008F6508 /* Reviewify MVPTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B6F54891A9CD51E008F6508 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B6F54961A9CD51E008F6508 /* Main.storyboard in Resources */,
+				3B6F549B1A9CD51E008F6508 /* LaunchScreen.xib in Resources */,
+				3B6F54981A9CD51E008F6508 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B6F549E1A9CD51F008F6508 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B6F54871A9CD51E008F6508 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B6F54B11A9CD64A008F6508 /* UIColor+Extension.swift in Sources */,
+				3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */,
+				3B6F54B31A9CD92F008F6508 /* ReviewViewController.swift in Sources */,
+				3B6F54DB1A9CE4C9008F6508 /* String+Extension.swift in Sources */,
+				3B6F54911A9CD51E008F6508 /* AppDelegate.swift in Sources */,
+				3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B6F549C1A9CD51F008F6508 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B6F54A71A9CD51F008F6508 /* Reviewify_MVPTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3B6F54A21A9CD51F008F6508 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B6F548A1A9CD51E008F6508 /* Reviewify MVP */;
+			targetProxy = 3B6F54A11A9CD51F008F6508 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3B6F54941A9CD51E008F6508 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B6F54951A9CD51E008F6508 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B6F549A1A9CD51E008F6508 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B6F54A81A9CD51F008F6508 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/brycelanglotz/Documents/Reviewify\\ MVP/Reviewify\\ MVP/";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B6F54A91A9CD51F008F6508 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/brycelanglotz/Documents/Reviewify\\ MVP/Reviewify\\ MVP/";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B6F54AB1A9CD51F008F6508 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Reviewify",
+					MVP,
+				);
+				INFOPLIST_FILE = "Reviewify MVP/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Reviewify MVP/Reviewify MVP-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B6F54AC1A9CD51F008F6508 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Reviewify",
+					MVP,
+				);
+				INFOPLIST_FILE = "Reviewify MVP/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Reviewify MVP/Reviewify MVP-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		3B6F54AE1A9CD51F008F6508 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Reviewify MVPTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reviewify MVP.app/Reviewify MVP";
+			};
+			name = Debug;
+		};
+		3B6F54AF1A9CD51F008F6508 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Reviewify MVPTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reviewify MVP.app/Reviewify MVP";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B6F54861A9CD51E008F6508 /* Build configuration list for PBXProject "Reviewify MVP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B6F54A81A9CD51F008F6508 /* Debug */,
+				3B6F54A91A9CD51F008F6508 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B6F54AA1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B6F54AB1A9CD51F008F6508 /* Debug */,
+				3B6F54AC1A9CD51F008F6508 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B6F54AD1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B6F54AE1A9CD51F008F6508 /* Debug */,
+				3B6F54AF1A9CD51F008F6508 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B6F54831A9CD51E008F6508 /* Project object */;
+}

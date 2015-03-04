@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YlR-T4-8AC">
+                                <rect key="frame" x="16" y="260" width="568" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="VyH-Ta-irE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="beginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pFW-x7-Kgc"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDs-fG-bkE">
+                                <rect key="frame" x="0.0" y="44" width="600" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="16T-1u-wfO"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dZ4-Kk-GBD"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="EDs-fG-bkE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="32A-3v-x0J"/>
+                            <constraint firstItem="YlR-T4-8AC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="3Rp-ox-P10"/>
+                            <constraint firstItem="EDs-fG-bkE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="8Ob-Hn-ZCT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EDs-fG-bkE" secondAttribute="trailing" constant="-16" id="8my-DF-4EC"/>
+                            <constraint firstItem="YlR-T4-8AC" firstAttribute="top" secondItem="EDs-fG-bkE" secondAttribute="bottom" constant="54" id="WdW-nZ-CMa"/>
+                            <constraint firstItem="YlR-T4-8AC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="zFc-ZH-uYq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beginButton" destination="YlR-T4-8AC" id="i94-y7-Cdk"/>
+                        <outlet property="restaurantPicker" destination="EDs-fG-bkE" id="AIO-L6-UFt"/>
+                        <segue destination="PIU-EC-gGo" kind="presentation" identifier="BeginReviewSegueIdentifier" id="oPo-Kz-ura"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rx5-Rb-4Sz">
+            <objects>
+                <navigationController id="PIU-EC-gGo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cyw-ug-G9r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8VO-a9-i70" kind="relationship" relationship="rootViewController" id="aAU-hy-8ea"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egS-0L-g8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108" y="277"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="hxc-9r-5ee">
+            <objects>
+                <viewController id="8VO-a9-i70" customClass="ReviewViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DlF-lB-1JR"/>
+                        <viewControllerLayoutGuide type="bottom" id="xNb-AU-q3H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GcV-od-2Oe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1I-nr-c9O">
+                                <rect key="frame" x="0.0" y="147" width="600" height="453"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fS5-nQ-iP5" customClass="ASStarRatingView">
+                                <rect key="frame" x="0.0" y="72" width="600" height="67"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fS5-nQ-iP5" firstAttribute="leading" secondItem="GcV-od-2Oe" secondAttribute="leading" id="0gE-aV-pqX"/>
+                            <constraint firstAttribute="trailing" secondItem="b1I-nr-c9O" secondAttribute="trailing" id="If4-9e-XEX"/>
+                            <constraint firstItem="b1I-nr-c9O" firstAttribute="leading" secondItem="GcV-od-2Oe" secondAttribute="leading" id="IuT-F6-xdD"/>
+                            <constraint firstItem="xNb-AU-q3H" firstAttribute="top" secondItem="b1I-nr-c9O" secondAttribute="bottom" id="KdX-XS-J2i"/>
+                            <constraint firstAttribute="trailing" secondItem="fS5-nQ-iP5" secondAttribute="trailing" id="grY-wX-6hh"/>
+                            <constraint firstItem="fS5-nQ-iP5" firstAttribute="top" secondItem="DlF-lB-1JR" secondAttribute="bottom" constant="8" id="hqB-wr-0xH"/>
+                            <constraint firstItem="b1I-nr-c9O" firstAttribute="top" secondItem="fS5-nQ-iP5" secondAttribute="bottom" constant="8" id="zVe-fL-HVm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="BDQ-tB-ghL">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AGH-ar-fFp">
+                            <connections>
+                                <action selector="cancelPressed:" destination="8VO-a9-i70" id="19i-Rc-zGT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="P27-tv-TWF">
+                            <connections>
+                                <action selector="donePressed:" destination="8VO-a9-i70" id="lnn-kM-5Qd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="feedbackTextView" destination="b1I-nr-c9O" id="E2s-bU-agg"/>
+                        <outlet property="starView" destination="fS5-nQ-iP5" id="dnh-0K-EvQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1V-qQ-KBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="277"/>
+        </scene>
+    </scenes>
+</document>
