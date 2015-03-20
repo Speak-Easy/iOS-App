@@ -7,94 +7,186 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    let beginButtonTitle = "Begin Review"
-    
-    var restaurants: [String] = []
-    var query = PFQuery(className: "Restaurants")
-    
-    @IBOutlet var restaurantPicker: UIPickerView!
-    @IBOutlet var beginButton: UIButton!
+class CameraFocus: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.clearColor()
+        self.layer.borderWidth = 2.0
+        self.layer.cornerRadius = 4.0
+        self.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        var selectionAnimation = CABasicAnimation(keyPath: "borderColor")
+        selectionAnimation.toValue = UIColor.blueColor().CGColor
+        selectionAnimation.repeatCount = 8
+        self.layer.addAnimation(selectionAnimation, forKey: "selectionAnimation")
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class ViewController: UIViewController, TesseractDelegate {
+
+    required init(coder aDecoder: NSCoder) {
+        stillImageOutput = AVCaptureStillImageOutput()
+        var outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
+        stillImageOutput.outputSettings = outputSettings
+        super.init(coder: aDecoder)
+    }
+
+    var stillImageOutput: AVCaptureStillImageOutput
+    var session: AVCaptureSession!
+    var tesseract:Tesseract!
+    var captureDevice: AVCaptureDevice?
+    var camFocus:CameraFocus!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        beginButton.layer.cornerRadius = 4.0
-        beginButton.layer.backgroundColor = UIColor.algorithmsGreen().CGColor
-        beginButton.setTitle(beginButtonTitle, forState: UIControlState.Normal)
-        beginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        tesseract = Tesseract()
+        tesseract.language = "eng"
+        tesseract.delegate = self
         
-        fetch()
+        imageToText(UIImage(named: "Screen Shot 2015-03-19 at 9.52.02 PM.png")!)
+        
+        //self.configureCamera()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: DataMethods
     
-    func fetch() {
-        
-        restaurants = []
-        
-        self.query.limit = 1000
-        self.query.skip = 0
-        
-        self.query.findObjectsInBackgroundWithBlock(self.closure)
+    func imageToText(image: UIImage) -> String {
+        tesseract.image = image
+        tesseract.recognize()
+        println("Text from image:\n\n\(tesseract.recognizedText)\n\n")
+        return tesseract.recognizedText
     }
     
-    func closure(results:[AnyObject]!, error:NSError!) -> Void {
-        if error == nil {
-            for response in results {
-                var restaurant = response as PFObject
-                var name = restaurant["name"] as String!
-                self.restaurants += [name]
-            }
-            if results.count == 1000 {
-                self.query.skip += 1000
-                self.query.findObjectsInBackgroundWithBlock(self.closure)
-            }
-            else {
-                restaurants.sort{$0 < $1}
-                restaurantPicker.reloadAllComponents()
+    /*
+    func configureCamera() -> Bool {
+        // init camera device
+        var devices: NSArray = AVCaptureDevice.devices()
+        
+        // find back camera
+        for device: AnyObject in devices {
+            if device.position == AVCaptureDevicePosition.Back {
+                captureDevice = device as? AVCaptureDevice
             }
         }
-        else {
-            println(error.description)
+        
+        if captureDevice != nil {
+            // Debug
+            println(captureDevice!.localizedName)
+            println(captureDevice!.modelID)
+        } else {
+            println("Missing Camera")
+            return false
+        }
+        
+        // init device input
+        var error: NSErrorPointer = nil
+        var deviceInput: AVCaptureInput = AVCaptureDeviceInput.deviceInputWithDevice(captureDevice, error: error) as AVCaptureInput
+        
+        // init session
+        self.session = AVCaptureSession()
+        self.session.sessionPreset = AVCaptureSessionPresetPhoto
+        self.session.addInput(deviceInput as AVCaptureInput)
+        
+        if self.session.canAddOutput(stillImageOutput) {
+            self.session.addOutput(stillImageOutput)
+        }
+        
+        // layer for preview
+        var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.layerWithSession(self.session) as AVCaptureVideoPreviewLayer
+        previewLayer.frame = self.view.bounds
+        self.view.layer.addSublayer(previewLayer)
+        
+        self.session.startRunning()
+        
+        return true
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        takePicture()
+        var touch: UITouch = event.allTouches()?.anyObject() as UITouch
+        var touchPoint:CGPoint = touch.locationInView(touch.view)
+        self.focus(touchPoint)
+        
+        if camFocus != nil {
+            camFocus.removeFromSuperview()
+            camFocus = nil
+        }
+        if touch.view.isKindOfClass(UIView) {
+            camFocus = CameraFocus(frame: CGRectMake(touchPoint.x - 40.0, touchPoint.y - 40.0, 80.0, 80.0))
+            self.view.addSubview(camFocus!)
+            camFocus?.setNeedsDisplay()
+            
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDuration(1.5)
+            camFocus.alpha = 0.0
+            UIView.commitAnimations()
         }
     }
+    
+    func focus(aPoint:CGPoint) {
+        if let device = captureDevice {
+            if (device.focusPointOfInterestSupported && device.isFocusModeSupported(AVCaptureFocusMode.AutoFocus)) {
+                var screenRect:CGRect = UIScreen.mainScreen().bounds
+                var screenWidth = screenRect.size.width
+                var screenHeight = screenRect.size.height
+                var focusX = aPoint.x / screenWidth
+                var focusY = aPoint.y / screenHeight
+                if device.lockForConfiguration(nil) {
+                    device.focusPointOfInterest = CGPointMake(focusX, focusY)
+                    device.focusMode = AVCaptureFocusMode.AutoFocus
+                    if device.isExposureModeSupported(AVCaptureExposureMode.AutoExpose) {
+                        device.exposureMode = AVCaptureExposureMode.AutoExpose
+                    }
+                    device.unlockForConfiguration()
+                }
+            }
+        }
+    }
+    
+    func takePicture() {
+        
+        var videoConnection:AVCaptureConnection!
+        for connection:AVCaptureConnection in (self.stillImageOutput.connections as [AVCaptureConnection]) {
+            for port:AVCaptureInputPort in (connection.inputPorts as [AVCaptureInputPort]) {
+                if port.mediaType == AVMediaTypeVideo {
+                    videoConnection = connection
+                    break
+                }
+            }
+            if videoConnection != nil {
+                break
+            }
+        }
+        
+        self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageSampleBuffer, error) -> Void in
+            var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
+            var image = UIImage(data: imageData)
+            var blackAndWhite = image!.blackAndWhite()
 
+        })
+    }
+    
+    */
     
     // MARK: Button Methods
-    
-    @IBAction func beginButtonPressed(sender:AnyObject) {
-        performSegueWithIdentifier("BeginReviewSegueIdentifier", sender: self)
-    }
-
-    // MARK: Picker Methods
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return restaurants.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return restaurants[row]
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "BeginReviewSegueIdentifier" {
             var destinationViewControllerNavigationController = (segue.destinationViewController as UINavigationController)
             var destinationViewController = destinationViewControllerNavigationController.viewControllers[0] as ReviewViewController
-            destinationViewController.restaurant = restaurants[restaurantPicker.selectedRowInComponent(0)]
-            destinationViewController.title = restaurants[restaurantPicker.selectedRowInComponent(0)]
+            destinationViewController.restaurant = "PKs"
+            destinationViewController.title = "Edit Segue Settings"
         }
     }
 }

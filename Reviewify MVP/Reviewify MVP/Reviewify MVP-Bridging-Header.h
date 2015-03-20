@@ -8,3 +8,4 @@
 
 #import <Parse/Parse.h>
 #import "ASStarRatingView.h"
+#import <TesseractOCR/TesseractOCR.h>

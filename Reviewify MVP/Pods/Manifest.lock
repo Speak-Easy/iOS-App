@@ -1,0 +1,16 @@
+PODS:
+  - Bolts (1.1.4)
+  - Parse (1.6.4):
+    - Bolts (~> 1.1)
+  - TesseractOCRiOS (3.4.0)
+
+DEPENDENCIES:
+  - Parse
+  - TesseractOCRiOS (= 3.4.0)
+
+SPEC CHECKSUMS:
+  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
+  Parse: c2610f7a12ad0defc974803b819c4efe7746e6db
+  TesseractOCRiOS: b2bdfc2c1041114ce146d2086d2376cfae17ff26
+
+COCOAPODS: 0.35.0
