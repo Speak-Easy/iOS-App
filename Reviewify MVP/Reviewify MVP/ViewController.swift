@@ -29,6 +29,8 @@ class CameraFocus: UIView {
 }
 
 class ViewController: UIViewController, TesseractDelegate {
+    
+    @IBOutlet var takePictureButton: UIButton!
 
     required init(coder aDecoder: NSCoder) {
         stillImageOutput = AVCaptureStillImageOutput()
@@ -42,6 +44,7 @@ class ViewController: UIViewController, TesseractDelegate {
     var tesseract:Tesseract!
     var captureDevice: AVCaptureDevice?
     var camFocus:CameraFocus!
+    var scanResult:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +54,13 @@ class ViewController: UIViewController, TesseractDelegate {
         tesseract.language = "eng"
         tesseract.delegate = self
         
-        imageToText(UIImage(named: "Screen Shot 2015-03-19 at 9.52.02 PM.png")!)
+        takePictureButton.backgroundColor = UIColor.algorithmsGreen()
+        takePictureButton.layer.cornerRadius = 3.0
         
-        //self.configureCamera()
+        self.navigationController?.navigationBarHidden = true
+        
+        
+        self.configureCamera()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,11 +71,11 @@ class ViewController: UIViewController, TesseractDelegate {
     func imageToText(image: UIImage) -> String {
         tesseract.image = image
         tesseract.recognize()
-        println("Text from image:\n\n\(tesseract.recognizedText)\n\n")
+        println("Text from image:\n\(tesseract.recognizedText)\n")
         return tesseract.recognizedText
     }
     
-    /*
+    
     func configureCamera() -> Bool {
         // init camera device
         var devices: NSArray = AVCaptureDevice.devices()
@@ -94,18 +101,20 @@ class ViewController: UIViewController, TesseractDelegate {
         var deviceInput: AVCaptureInput = AVCaptureDeviceInput.deviceInputWithDevice(captureDevice, error: error) as AVCaptureInput
         
         // init session
-        self.session = AVCaptureSession()
-        self.session.sessionPreset = AVCaptureSessionPresetPhoto
-        self.session.addInput(deviceInput as AVCaptureInput)
+        session = AVCaptureSession()
+        session.sessionPreset = AVCaptureSessionPresetPhoto
+        session.addInput(deviceInput as AVCaptureInput)
         
-        if self.session.canAddOutput(stillImageOutput) {
-            self.session.addOutput(stillImageOutput)
+        if session.canAddOutput(stillImageOutput) {
+            session.addOutput(stillImageOutput)
         }
         
         // layer for preview
         var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.layerWithSession(self.session) as AVCaptureVideoPreviewLayer
-        previewLayer.frame = self.view.bounds
-        self.view.layer.addSublayer(previewLayer)
+        var bounds = self.view.bounds
+        bounds.size = CGSizeMake(4/3 * bounds.size.width, bounds.size.height)
+        previewLayer.frame = bounds
+        self.view.layer.insertSublayer(previewLayer, below: takePictureButton.layer)
         
         self.session.startRunning()
         
@@ -113,7 +122,6 @@ class ViewController: UIViewController, TesseractDelegate {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        takePicture()
         var touch: UITouch = event.allTouches()?.anyObject() as UITouch
         var touchPoint:CGPoint = touch.locationInView(touch.view)
         self.focus(touchPoint)
@@ -154,7 +162,7 @@ class ViewController: UIViewController, TesseractDelegate {
         }
     }
     
-    func takePicture() {
+    @IBAction func takePicture() {
         
         var videoConnection:AVCaptureConnection!
         for connection:AVCaptureConnection in (self.stillImageOutput.connections as [AVCaptureConnection]) {
@@ -165,26 +173,30 @@ class ViewController: UIViewController, TesseractDelegate {
                 }
             }
             if videoConnection != nil {
+                videoConnection.videoOrientation = AVCaptureVideoOrientation.Portrait
                 break
             }
         }
         
+        videoConnection.videoOrientation = AVCaptureVideoOrientation.Portrait
+        
         self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageSampleBuffer, error) -> Void in
             var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
             var image = UIImage(data: imageData)
-            var blackAndWhite = image!.blackAndWhite()
-
+            var png = UIImagePNGRepresentation(image)
+            var blackAndWhite = UIImage(data: png)!.blackAndWhite()
+            self.scanResult = self.imageToText(blackAndWhite.imageRotatedByDegrees(90.0))
+            // Demo
+            // var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-03-19 at 9.52.02 PM.png")!.blackAndWhite()
+            // self.imageToText(demoBlackAndWhite)
         })
     }
-    
-    */
     
     // MARK: Button Methods
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "BeginReviewSegueIdentifier" {
-            var destinationViewControllerNavigationController = (segue.destinationViewController as UINavigationController)
-            var destinationViewController = destinationViewControllerNavigationController.viewControllers[0] as ReviewViewController
+            var destinationViewController = segue.destinationViewController as ReviewViewController
             destinationViewController.restaurant = "PKs"
             destinationViewController.title = "Edit Segue Settings"
         }

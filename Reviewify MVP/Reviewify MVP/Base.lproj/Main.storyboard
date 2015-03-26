@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PIU-EC-gGo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,14 +16,38 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbd-1Z-4VA">
+                                <rect key="frame" x="16" y="495" width="568" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="Bcv-Y2-q59"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Scan">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iwo-4J-Syo"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Kbd-1Z-4VA" secondAttribute="bottom" constant="20" id="IMa-Xx-MdJ"/>
+                            <constraint firstItem="Kbd-1Z-4VA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="MPo-EF-heU"/>
+                            <constraint firstItem="Kbd-1Z-4VA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PaL-8k-GZS"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vQp-3e-2m8"/>
                     <connections>
-                        <segue destination="PIU-EC-gGo" kind="presentation" identifier="BeginReviewSegueIdentifier" id="oPo-Kz-ura"/>
+                        <outlet property="takePictureButton" destination="Kbd-1Z-4VA" id="MDm-9L-eyl"/>
+                        <segue destination="8VO-a9-i70" kind="show" identifier="BeginReviewSegueIdentifier" id="nmF-vr-hE5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1120" y="277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rx5-Rb-4Sz">
@@ -33,12 +58,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="8VO-a9-i70" kind="relationship" relationship="rootViewController" id="aAU-hy-8ea"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rfJ-ja-BK3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egS-0L-g8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="277"/>
+            <point key="canvasLocation" x="346" y="277"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="hxc-9r-5ee">
@@ -78,12 +103,12 @@
                     <navigationItem key="navigationItem" id="BDQ-tB-ghL">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AGH-ar-fFp">
                             <connections>
-                                <action selector="cancelPressed:" destination="8VO-a9-i70" id="19i-Rc-zGT"/>
+                                <action selector="cancelPressed:" destination="8VO-a9-i70" id="8Eo-w8-Hv6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="P27-tv-TWF">
                             <connections>
-                                <action selector="donePressed:" destination="8VO-a9-i70" id="lnn-kM-5Qd"/>
+                                <action selector="donePressed:" destination="8VO-a9-i70" id="QeG-bN-OFC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

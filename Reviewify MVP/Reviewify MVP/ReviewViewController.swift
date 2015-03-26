@@ -57,6 +57,8 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         starView.maxAllowedRating = 5;
         starView.rating = 5;
         
+        self.navigationController?.navigationBarHidden = false
+        
         self.view.addSubview(starView)
     }
 
