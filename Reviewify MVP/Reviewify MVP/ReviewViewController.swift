@@ -23,9 +23,9 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         
         var restaurantReview = PFObject(className: restaurant.stripNonAlphanumeric())
         
-        restaurantReview["review"] = feedbackTextView.text
-        restaurantReview["star_rating"] = String(Int(starView.rating))
-        restaurantReview["reward"] = reward
+        restaurantReview.setObject(feedbackTextView.text, forKey: "review")
+        restaurantReview.setObject(String(Int(starView.rating)), forKey: "star_rating")
+        restaurantReview.setObject(reward, forKey: "reward")
         // restaurantReview["user"] = PFUser.currentUser().email
         
         restaurantReview.saveInBackgroundWithBlock { (success, error) -> Void in
@@ -42,7 +42,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
                 notification.displayNotificationWithMessage("You've been rewarded $\(rewardAsString)! You have $____.__ total rewards!", forDuration: 4.0)
             }
             else {
-                println("\(error.description)")
+                println("\(error!.description)")
             }
         }
     }
@@ -86,7 +86,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewShouldEndEditing(textView: UITextView) -> Bool {
-        if countElements(feedbackTextView.text) == 0 {
+        if count(feedbackTextView.text) == 0 {
             feedbackTextView.text = placeholderText
             feedbackTextView.textColor = UIColor.lightGrayColor()
         }

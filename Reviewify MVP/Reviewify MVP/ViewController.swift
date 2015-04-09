@@ -73,7 +73,7 @@ class ViewController: UIViewController, TesseractDelegate {
         
         // init device input
         var error: NSErrorPointer = nil
-        var deviceInput: AVCaptureInput = AVCaptureDeviceInput.deviceInputWithDevice(captureDevice, error: error) as AVCaptureInput
+        var deviceInput: AVCaptureInput = AVCaptureDeviceInput.deviceInputWithDevice(captureDevice, error: error) as! AVCaptureInput
         
         // init session
         session = AVCaptureSession()
@@ -84,7 +84,7 @@ class ViewController: UIViewController, TesseractDelegate {
         }
         
         // layer for preview
-        var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.layerWithSession(self.session) as AVCaptureVideoPreviewLayer
+        var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.layerWithSession(self.session) as! AVCaptureVideoPreviewLayer
         var bounds = self.view.bounds
         bounds.size = CGSizeMake(4/3 * bounds.size.width, bounds.size.height)
         previewLayer.frame = bounds
@@ -95,7 +95,8 @@ class ViewController: UIViewController, TesseractDelegate {
         return true
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        /*
         var touch: UITouch = event.allTouches()?.anyObject() as UITouch
         var touchPoint:CGPoint = touch.locationInView(touch.view)
         self.focus(touchPoint)
@@ -115,6 +116,7 @@ class ViewController: UIViewController, TesseractDelegate {
             camFocus.alpha = 0.0
             UIView.commitAnimations()
         }
+*/
     }
     
     func focus(aPoint:CGPoint) {
@@ -144,8 +146,8 @@ class ViewController: UIViewController, TesseractDelegate {
         self.view.userInteractionEnabled = false
         
         var videoConnection:AVCaptureConnection!
-        for connection:AVCaptureConnection in (self.stillImageOutput.connections as [AVCaptureConnection]) {
-            for port:AVCaptureInputPort in (connection.inputPorts as [AVCaptureInputPort]) {
+        for connection:AVCaptureConnection in (self.stillImageOutput.connections as! [AVCaptureConnection]) {
+            for port:AVCaptureInputPort in (connection.inputPorts as! [AVCaptureInputPort]) {
                 if port.mediaType == AVMediaTypeVideo {
                     videoConnection = connection
                     break
@@ -158,10 +160,10 @@ class ViewController: UIViewController, TesseractDelegate {
         }
         
 
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
         //////////////////////////
         // DEMO WITH SCREENSHOT //
         //////////////////////////
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 11.47.50 AM.png")!.blackAndWhite()
             self.scanResult = self.imageToText(demoBlackAndWhite)
@@ -248,11 +250,11 @@ class ViewController: UIViewController, TesseractDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "StartReviewSegueIdentifier" {
-            var destinationViewController = segue.destinationViewController as PurchasedItemListTableViewController
+            var destinationViewController = segue.destinationViewController as! PurchasedItemListTableViewController
             destinationViewController.totalLine
-                = self.processedScanResultDict["total"]? as String
-            destinationViewController.itemList = self.processedScanResultDict["item_lines"]? as [String]
-            destinationViewController.location = self.processedScanResultDict["location"]? as String
+                = self.processedScanResultDict["total"] as! String
+            destinationViewController.itemList = self.processedScanResultDict["item_lines"] as! [String]
+            destinationViewController.location = self.processedScanResultDict["location"] as! String
         }
     }
 }

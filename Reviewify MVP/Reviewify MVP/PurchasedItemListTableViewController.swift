@@ -59,7 +59,7 @@ class PurchasedItemListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ItemListReuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemListReuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
         
         cell.detailTextLabel?.textColor = UIColor.redColor()
         
@@ -136,7 +136,7 @@ class PurchasedItemListTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "BeginReviewSegueIdentifier" {
-            var destinationViewController = segue.destinationViewController as ReviewViewController
+            var destinationViewController = segue.destinationViewController as! ReviewViewController
             destinationViewController.restaurant = location
             destinationViewController.reward = potentialReward
         }

@@ -10,6 +10,6 @@ import Foundation
 
 extension String {
     func stripNonAlphanumeric() -> String {
-        return "".join((self as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet) as [String])
+        return "".join((self as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet) as! [String])
     }
 }
