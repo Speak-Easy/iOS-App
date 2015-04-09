@@ -12,6 +12,7 @@ import AVFoundation
 class CameraFocus: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.backgroundColor = UIColor.clearColor()
         self.layer.borderWidth = 2.0
         self.layer.cornerRadius = 4.0
@@ -28,27 +29,43 @@ class CameraFocus: UIView {
     }
 }
 
+class Regex {
+    let internalExpression: NSRegularExpression
+    let pattern: String
+    
+    init(pattern: String) {
+        self.pattern = pattern
+        var error: NSError?
+        self.internalExpression = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive | NSRegularExpressionOptions.AllowCommentsAndWhitespace, error: &error)!
+    }
+    
+    func test(input: String) -> Bool {
+        let matches = self.internalExpression.matchesInString(input, options: nil, range:NSMakeRange(0, countElements(input)))
+        return matches.count > 0
+    }
+}
+
 class ViewController: UIViewController, TesseractDelegate {
     
     @IBOutlet var takePictureButton: UIButton!
+    
+    var scanResult:String!
+    var processedScanResultDict:[String:AnyObject]!
+    var tesseract:Tesseract!
+    var camFocus:CameraFocus!
+    var session: AVCaptureSession!
+    var captureDevice: AVCaptureDevice?
+    var stillImageOutput: AVCaptureStillImageOutput!
 
     required init(coder aDecoder: NSCoder) {
-        stillImageOutput = AVCaptureStillImageOutput()
-        var outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
-        stillImageOutput.outputSettings = outputSettings
         super.init(coder: aDecoder)
     }
-
-    var stillImageOutput: AVCaptureStillImageOutput
-    var session: AVCaptureSession!
-    var tesseract:Tesseract!
-    var captureDevice: AVCaptureDevice?
-    var camFocus:CameraFocus!
-    var scanResult:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        stillImageOutput = AVCaptureStillImageOutput()
         
         tesseract = Tesseract()
         tesseract.language = "eng"
@@ -59,7 +76,6 @@ class ViewController: UIViewController, TesseractDelegate {
         
         self.navigationController?.navigationBarHidden = true
         
-        
         self.configureCamera()
     }
 
@@ -69,9 +85,11 @@ class ViewController: UIViewController, TesseractDelegate {
     }
     
     func imageToText(image: UIImage) -> String {
+        
         tesseract.image = image
+        
         tesseract.recognize()
-        println("Text from image:\n\(tesseract.recognizedText)\n")
+        
         return tesseract.recognizedText
     }
     
@@ -88,7 +106,6 @@ class ViewController: UIViewController, TesseractDelegate {
         }
         
         if captureDevice != nil {
-            // Debug
             println(captureDevice!.localizedName)
             println(captureDevice!.modelID)
         } else {
@@ -104,7 +121,6 @@ class ViewController: UIViewController, TesseractDelegate {
         session = AVCaptureSession()
         session.sessionPreset = AVCaptureSessionPresetPhoto
         session.addInput(deviceInput as AVCaptureInput)
-        
         if session.canAddOutput(stillImageOutput) {
             session.addOutput(stillImageOutput)
         }
@@ -126,6 +142,7 @@ class ViewController: UIViewController, TesseractDelegate {
         var touchPoint:CGPoint = touch.locationInView(touch.view)
         self.focus(touchPoint)
         
+        // If a camFocus is already on the screen remove it
         if camFocus != nil {
             camFocus.removeFromSuperview()
             camFocus = nil
@@ -163,6 +180,10 @@ class ViewController: UIViewController, TesseractDelegate {
     }
     
     @IBAction func takePicture() {
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Processing"
+        
+        self.view.userInteractionEnabled = false
         
         var videoConnection:AVCaptureConnection!
         for connection:AVCaptureConnection in (self.stillImageOutput.connections as [AVCaptureConnection]) {
@@ -178,27 +199,84 @@ class ViewController: UIViewController, TesseractDelegate {
             }
         }
         
-        videoConnection.videoOrientation = AVCaptureVideoOrientation.Portrait
-        
         self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageSampleBuffer, error) -> Void in
-            var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
-            var image = UIImage(data: imageData)
-            var png = UIImagePNGRepresentation(image)
-            var blackAndWhite = UIImage(data: png)!.blackAndWhite()
-            self.scanResult = self.imageToText(blackAndWhite.imageRotatedByDegrees(90.0))
-            // Demo
-            // var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-03-19 at 9.52.02 PM.png")!.blackAndWhite()
-            // self.imageToText(demoBlackAndWhite)
+            ////////////////
+            // REAL THING //
+            ////////////////
+            
+            // var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
+            // var image = UIImage(data: imageData)
+            // var png = UIImagePNGRepresentation(image)
+            // var blackAndWhite = UIImage(data: png)!.blackAndWhite()
+            // self.scanResult = self.imageToText(blackAndWhite.imageRotatedByDegrees(90.0))
+            
+            ////////////////
+            // REAL THING //
+            ////////////////
+            
+            //////////////////////////
+            // DEMO WITH SCREENSHOT //
+            ////////////////////////// 
+            
+            var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 12.20.18 AM.png")!.blackAndWhite()
+            self.scanResult = self.imageToText(demoBlackAndWhite)
+            
+            //////////////////////////
+            // DEMO WITH SCREENSHOT //
+            //////////////////////////
+            
+            self.processedScanResultDict = self.processReceiptText(self.scanResult)
+            
+            hud.hide(true)
+            self.view.userInteractionEnabled = true
+            
+            self.performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
         })
+    }
+    
+    func processReceiptText(text: String) -> [String:AnyObject] {
+        var result:[String:AnyObject] = [:]
+        
+        var trimmedWhiteSpace = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        println("Trimmed White Space: \n\(trimmedWhiteSpace)")
+        
+        var lineArray:[String] = trimmedWhiteSpace.componentsSeparatedByString("\n")
+        var itemLines = [String]()
+        var total = ""
+        var endsInPriceRegex = Regex(pattern: "\\d{1,6}(\\.\\d{2})$")
+        
+        for line in lineArray {
+            var endsInPrice = endsInPriceRegex.test(line)
+            if endsInPrice && line.lowercaseString.rangeOfString("total") != nil {
+                total = line
+            }
+            else if endsInPrice {
+                itemLines.append(line)
+            }
+        }
+        
+        result["item_lines"] = itemLines
+        result["total"] = total
+        
+        println(result)
+        
+        return result
     }
     
     // MARK: Button Methods
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        /*
         if segue.identifier == "BeginReviewSegueIdentifier" {
             var destinationViewController = segue.destinationViewController as ReviewViewController
             destinationViewController.restaurant = "PKs"
             destinationViewController.title = "Edit Segue Settings"
+        }
+*/
+        if segue.identifier == "StartReviewSegueIdentifier" {
+            var destinationViewController = segue.destinationViewController as PurchasedItemListTableViewController
+            destinationViewController.total = self.processedScanResultDict["total"]? as String
+            destinationViewController.itemList = self.processedScanResultDict["item_lines"]? as [String]
         }
     }
 }

@@ -1,16 +1,19 @@
 PODS:
   - Bolts (1.1.4)
+  - MBProgressHUD (0.9.1)
   - Parse (1.6.4):
     - Bolts (~> 1.1)
   - TesseractOCRiOS (3.4.0)
 
 DEPENDENCIES:
+  - MBProgressHUD (~> 0.9.1)
   - Parse
   - TesseractOCRiOS (= 3.4.0)
 
 SPEC CHECKSUMS:
-  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
-  Parse: c2610f7a12ad0defc974803b819c4efe7746e6db
-  TesseractOCRiOS: b2bdfc2c1041114ce146d2086d2376cfae17ff26
+  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Parse: 6ada00e82e77f73eb00f35accfe52a5f54e3c2aa
+  TesseractOCRiOS: cd79d4ce9d4c0f1e2776db8820cf8239e5569592
 
 COCOAPODS: 0.35.0

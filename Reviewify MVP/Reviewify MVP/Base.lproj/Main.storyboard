@@ -42,12 +42,54 @@
                     <navigationItem key="navigationItem" id="vQp-3e-2m8"/>
                     <connections>
                         <outlet property="takePictureButton" destination="Kbd-1Z-4VA" id="MDm-9L-eyl"/>
-                        <segue destination="8VO-a9-i70" kind="show" identifier="BeginReviewSegueIdentifier" id="nmF-vr-hE5"/>
+                        <segue destination="sQ1-m4-ZU0" kind="show" identifier="StartReviewSegueIdentifier" id="zeN-3s-EpD"/>
+                        <segue destination="8VO-a9-i70" kind="show" identifier="BeginReviewSegueIdentifier" id="0g6-Vg-6Qp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1120" y="277"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="8JN-2r-4s4">
+            <objects>
+                <tableViewController id="sQ1-m4-ZU0" customClass="PurchasedItemListTableViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="NCW-tW-g2t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemListReuseIdentifier" textLabel="L28-6v-TjJ" detailTextLabel="6jN-qz-wKL" style="IBUITableViewCellStyleValue1" id="n3G-nK-K7S">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n3G-nK-K7S" id="xDb-GP-9OD">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L28-6v-TjJ">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6jN-qz-wKL">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sQ1-m4-ZU0" id="dVd-pL-5tA"/>
+                            <outlet property="delegate" destination="sQ1-m4-ZU0" id="eyd-bE-Gta"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="00P-of-glX"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uaS-4F-e7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1962" y="277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rx5-Rb-4Sz">
@@ -119,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1V-qQ-KBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="277"/>
+            <point key="canvasLocation" x="1943" y="1205"/>
         </scene>
     </scenes>
 </document>
