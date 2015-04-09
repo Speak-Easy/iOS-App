@@ -185,12 +185,17 @@ class ViewController: UIViewController, TesseractDelegate {
         #else
         self.stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageSampleBuffer, error) -> Void in
 
-            
+            /*
             var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
             var imageDataAsUIImage = UIImage(data: imageData)
             var pngImageData = UIImagePNGRepresentation(imageDataAsUIImage)
             var blackAndWhitePngImage = UIImage(data: pngImageData)!.blackAndWhite()
             self.scanResult = self.imageToText(blackAndWhitePngImage.imageRotatedByDegrees(90.0))
+            */
+            
+            // DEMO ON PHONE
+            var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 11.47.50 AM.png")!.blackAndWhite()
+            self.scanResult = self.imageToText(demoBlackAndWhite)
             
             self.processedScanResultDict = self.processReceiptText(self.scanResult)
             
