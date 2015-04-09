@@ -63,7 +63,6 @@ class ViewController: UIViewController, TesseractDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         stillImageOutput = AVCaptureStillImageOutput()
         
@@ -78,11 +77,6 @@ class ViewController: UIViewController, TesseractDelegate {
         
         self.configureCamera()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func imageToText(image: UIImage) -> String {
         
@@ -92,7 +86,6 @@ class ViewController: UIViewController, TesseractDelegate {
         
         return tesseract.recognizedText
     }
-    
     
     func configureCamera() -> Bool {
         // init camera device
@@ -218,7 +211,7 @@ class ViewController: UIViewController, TesseractDelegate {
             // DEMO WITH SCREENSHOT //
             ////////////////////////// 
             
-            var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 12.20.18 AM.png")!.blackAndWhite()
+            var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 11.47.50 AM.png")!.blackAndWhite()
             self.scanResult = self.imageToText(demoBlackAndWhite)
             
             //////////////////////////

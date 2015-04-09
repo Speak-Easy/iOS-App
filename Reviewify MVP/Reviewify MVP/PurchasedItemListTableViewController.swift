@@ -56,7 +56,7 @@ class PurchasedItemListTableViewController: UITableViewController {
             cell.textLabel?.text = itemName
             cell.detailTextLabel?.text = "$" + price
         default:
-            var components:[String] = itemList[indexPath.row].componentsSeparatedByString(" ")
+            var components:[String] = total.componentsSeparatedByString(" ")
             var price = components.removeAtIndex(components.count - 1)
             
             cell.textLabel?.text = "Total:"

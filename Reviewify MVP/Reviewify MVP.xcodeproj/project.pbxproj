@@ -21,7 +21,7 @@
 		3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */; };
 		3BDF0F201ABB63F200120564 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 3BDF0F1F1ABB63F200120564 /* tessdata */; };
 		3BED175A1AD63158005DEA44 /* PurchasedItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED17591AD63158005DEA44 /* PurchasedItemListTableViewController.swift */; };
-		3BED175C1AD63592005DEA44 /* Screen Shot 2015-04-09 at 12.20.18 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BED175B1AD63592005DEA44 /* Screen Shot 2015-04-09 at 12.20.18 AM.png */; };
+		3BED17681AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		3B9F32F71A9E830B005C6E8A /* Reviewify MVP-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reviewify MVP-Bridging-Header.h"; sourceTree = "<group>"; };
 		3BDF0F1F1ABB63F200120564 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tessdata; path = "../../../../Downloads/tesseract-ocr/tessdata"; sourceTree = "<group>"; };
 		3BED17591AD63158005DEA44 /* PurchasedItemListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedItemListTableViewController.swift; sourceTree = "<group>"; };
-		3BED175B1AD63592005DEA44 /* Screen Shot 2015-04-09 at 12.20.18 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-04-09 at 12.20.18 AM.png"; sourceTree = "<group>"; };
+		3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-04-09 at 11.47.50 AM.png"; sourceTree = "<group>"; };
 		B29C8D25CF4DBF4FE3B8B94B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C9AF4DA62E1422BC486CCE67 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ECDBFFEF10147C2B908AB1EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +132,7 @@
 		3B6F548E1A9CD51E008F6508 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3BED175B1AD63592005DEA44 /* Screen Shot 2015-04-09 at 12.20.18 AM.png */,
+				3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */,
 				3B6F548F1A9CD51E008F6508 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -262,7 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BED175C1AD63592005DEA44 /* Screen Shot 2015-04-09 at 12.20.18 AM.png in Resources */,
+				3BED17681AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png in Resources */,
 				3B6F54961A9CD51E008F6508 /* Main.storyboard in Resources */,
 				3BDF0F201ABB63F200120564 /* tessdata in Resources */,
 				3B6F549B1A9CD51E008F6508 /* LaunchScreen.xib in Resources */,
