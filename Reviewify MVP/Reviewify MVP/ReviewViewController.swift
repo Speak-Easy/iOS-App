@@ -63,7 +63,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         starView.maxRating = 5;
         starView.minAllowedRating = 1;
         starView.maxAllowedRating = 5;
-        starView.rating = 5;
+        starView.rating = 0;
         
         self.title = restaurant
         
