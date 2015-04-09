@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbd-1Z-4VA">
-                                <rect key="frame" x="16" y="495" width="568" height="85"/>
+                                <rect key="frame" x="16" y="520" width="568" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="Bcv-Y2-q59"/>
+                                    <constraint firstAttribute="height" constant="60" id="Bcv-Y2-q59"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="Scan">

@@ -9,52 +9,16 @@
 import UIKit
 import AVFoundation
 
-class CameraFocus: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.backgroundColor = UIColor.clearColor()
-        self.layer.borderWidth = 2.0
-        self.layer.cornerRadius = 4.0
-        self.layer.borderColor = UIColor.whiteColor().CGColor
-        
-        var selectionAnimation = CABasicAnimation(keyPath: "borderColor")
-        selectionAnimation.toValue = UIColor.blueColor().CGColor
-        selectionAnimation.repeatCount = 8
-        self.layer.addAnimation(selectionAnimation, forKey: "selectionAnimation")
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class Regex {
-    let internalExpression: NSRegularExpression
-    let pattern: String
-    
-    init(pattern: String) {
-        self.pattern = pattern
-        var error: NSError?
-        self.internalExpression = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive | NSRegularExpressionOptions.AllowCommentsAndWhitespace, error: &error)!
-    }
-    
-    func test(input: String) -> Bool {
-        let matches = self.internalExpression.matchesInString(input, options: nil, range:NSMakeRange(0, countElements(input)))
-        return matches.count > 0
-    }
-}
-
 class ViewController: UIViewController, TesseractDelegate {
     
     @IBOutlet var takePictureButton: UIButton!
     
     var scanResult:String!
-    var processedScanResultDict:[String:AnyObject]!
     var tesseract:Tesseract!
     var camFocus:CameraFocus!
     var session: AVCaptureSession!
     var captureDevice: AVCaptureDevice?
+    var processedScanResultDict:[String:AnyObject]!
     var stillImageOutput: AVCaptureStillImageOutput!
 
     required init(coder aDecoder: NSCoder) {
@@ -83,11 +47,8 @@ class ViewController: UIViewController, TesseractDelegate {
     }
     
     func imageToText(image: UIImage) -> String {
-        
         tesseract.image = image
-        
         tesseract.recognize()
-        
         return tesseract.recognizedText
     }
     
@@ -196,31 +157,40 @@ class ViewController: UIViewController, TesseractDelegate {
             }
         }
         
-        self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageSampleBuffer, error) -> Void in
-            ////////////////
-            // REAL THING //
-            ////////////////
-            
-            // var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
-            // var image = UIImage(data: imageData)
-            // var png = UIImagePNGRepresentation(image)
-            // var blackAndWhite = UIImage(data: png)!.blackAndWhite()
-            // self.scanResult = self.imageToText(blackAndWhite.imageRotatedByDegrees(90.0))
-            
-            ////////////////
-            // REAL THING //
-            ////////////////
-            
-            //////////////////////////
-            // DEMO WITH SCREENSHOT //
-            ////////////////////////// 
-            
+
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+        //////////////////////////
+        // DEMO WITH SCREENSHOT //
+        //////////////////////////
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 11.47.50 AM.png")!.blackAndWhite()
             self.scanResult = self.imageToText(demoBlackAndWhite)
             
-            //////////////////////////
-            // DEMO WITH SCREENSHOT //
-            //////////////////////////
+            self.processedScanResultDict = self.processReceiptText(self.scanResult)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                hud.hide(true)
+                self.view.userInteractionEnabled = true
+                
+                self.performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
+            });
+        });
+        //////////////////////////
+        // DEMO WITH SCREENSHOT //
+        //////////////////////////
+            
+        ////////////////
+        // REAL THING //
+        ////////////////
+        #else
+        self.stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageSampleBuffer, error) -> Void in
+
+            
+            var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
+            var imageDataAsUIImage = UIImage(data: imageData)
+            var pngImageData = UIImagePNGRepresentation(imageDataAsUIImage)
+            var blackAndWhitePngImage = UIImage(data: pngImageData)!.blackAndWhite()
+            self.scanResult = self.imageToText(blackAndWhitePngImage.imageRotatedByDegrees(90.0))
             
             self.processedScanResultDict = self.processReceiptText(self.scanResult)
             
@@ -229,6 +199,10 @@ class ViewController: UIViewController, TesseractDelegate {
             
             self.performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
         })
+        #endif
+        ////////////////
+        // REAL THING //
+        ////////////////
     }
     
     func processReceiptText(text: String) -> [String:AnyObject] {
