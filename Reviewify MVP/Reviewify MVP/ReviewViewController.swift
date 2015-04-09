@@ -59,11 +59,11 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         feedbackTextView.textColor = UIColor.lightGrayColor()
         feedbackTextView.delegate = self
         
-        starView.canEdit = true;
-        starView.maxRating = 5;
-        starView.minAllowedRating = 1;
-        starView.maxAllowedRating = 5;
-        starView.rating = 0;
+        starView.canEdit = true
+        starView.maxRating = 5
+        starView.minAllowedRating = 0.5
+        starView.maxAllowedRating = 5
+        starView.rating = 5
         
         self.title = restaurant
         

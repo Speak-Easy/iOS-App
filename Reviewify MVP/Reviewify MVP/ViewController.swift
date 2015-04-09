@@ -96,8 +96,7 @@ class ViewController: UIViewController, TesseractDelegate {
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        /*
-        var touch: UITouch = event.allTouches()?.anyObject() as UITouch
+        var touch: UITouch = event.allTouches()!.first as! UITouch
         var touchPoint:CGPoint = touch.locationInView(touch.view)
         self.focus(touchPoint)
         
@@ -116,7 +115,6 @@ class ViewController: UIViewController, TesseractDelegate {
             camFocus.alpha = 0.0
             UIView.commitAnimations()
         }
-*/
     }
     
     func focus(aPoint:CGPoint) {

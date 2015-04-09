@@ -25,7 +25,7 @@
 - (void)refreshStars {
     for(int i = 0; i < _starViews.count; ++i) {
         UIImageView *imageView = [_starViews objectAtIndex:i];
-        if (_rating >= i+1) {
+        if (_rating > i + 0.5) {
             imageView.image = _selectedStar;
         } else if (_rating > i) {
             imageView.image = _halfSelectedStar;
@@ -129,16 +129,13 @@
 - (void)handleTouchAtLocation:(CGPoint)touchLocation {
     if (!_canEdit) return;
     
-    _rating = 0;
-    for(int i = _starViews.count - 1; i >= 0; i--) {
-        UIImageView *imageView = [_starViews objectAtIndex:i];        
-        if (touchLocation.x > imageView.frame.origin.x) {
-            _rating = i+1;
-            break;
-        }
-    }
+    _rating = touchLocation.x / self.frame.size.width * _starViews.count;
+    
+    _rating = (floorf(_rating * 2) / 2) + 0.5;
+    
     _rating = MAX(_minAllowedRating, _rating);
     _rating = MIN(_maxAllowedRating, _rating);
+    
     [self refreshStars];
 }
 
