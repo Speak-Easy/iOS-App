@@ -1,17 +1,20 @@
 PODS:
   - Bolts (1.1.4)
+  - CWStatusBarNotification (2.2.2)
   - MBProgressHUD (0.9.1)
   - Parse (1.6.4):
     - Bolts (~> 1.1)
   - TesseractOCRiOS (3.4.0)
 
 DEPENDENCIES:
+  - CWStatusBarNotification (~> 2.2.2)
   - MBProgressHUD (~> 0.9.1)
   - Parse
   - TesseractOCRiOS (= 3.4.0)
 
 SPEC CHECKSUMS:
   Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  CWStatusBarNotification: 8d21a6db7725e65f9b2e96182dd2c18116f15079
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 6ada00e82e77f73eb00f35accfe52a5f54e3c2aa
   TesseractOCRiOS: cd79d4ce9d4c0f1e2776db8820cf8239e5569592

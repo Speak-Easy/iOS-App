@@ -14,6 +14,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
     let placeholderText = "Leave any comments here"
     
     var restaurant:String!
+    var reward:Double!
     
     @IBOutlet var feedbackTextView: UITextView!
     @IBOutlet var starView: ASStarRatingView!
@@ -23,20 +24,27 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         var restaurantReview = PFObject(className: restaurant.stripNonAlphanumeric())
         
         restaurantReview["review"] = feedbackTextView.text
-        println(starView.rating)
         restaurantReview["star_rating"] = String(Int(starView.rating))
+        restaurantReview["reward"] = reward
+        // restaurantReview["user"] = PFUser.currentUser().email
         
-        /*
         restaurantReview.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
+                var navigationController = self.navigationController!
+                navigationController.popToRootViewControllerAnimated(true)
                 
+                var rewardAsString = self.reward.format(".2")
+                
+                var notification = CWStatusBarNotification()
+                notification.notificationLabelBackgroundColor = UIColor.algorithmsGreen()
+                notification.notificationLabelTextColor = UIColor.whiteColor()
+                notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
+                notification.displayNotificationWithMessage("You've been rewarded $\(rewardAsString)! You have $____.__ total rewards!", forDuration: 4.0)
             }
             else {
                 println("\(error.description)")
             }
-            self.dismissViewControllerAnimated(true, completion: nil)
         }
-*/
     }
     
     @IBAction func cancelPressed(sender: AnyObject) {
@@ -56,6 +64,8 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         starView.minAllowedRating = 1;
         starView.maxAllowedRating = 5;
         starView.rating = 5;
+        
+        self.title = restaurant
         
         self.navigationController?.navigationBarHidden = false
         

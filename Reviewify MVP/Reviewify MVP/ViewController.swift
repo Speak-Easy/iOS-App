@@ -73,9 +73,13 @@ class ViewController: UIViewController, TesseractDelegate {
         takePictureButton.backgroundColor = UIColor.algorithmsGreen()
         takePictureButton.layer.cornerRadius = 3.0
         
-        self.navigationController?.navigationBarHidden = true
+        self.title = "Scanner"
         
         self.configureCamera()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func imageToText(image: UIImage) -> String {
@@ -236,6 +240,7 @@ class ViewController: UIViewController, TesseractDelegate {
         var lineArray:[String] = trimmedWhiteSpace.componentsSeparatedByString("\n")
         var itemLines = [String]()
         var total = ""
+        var location = ""
         var endsInPriceRegex = Regex(pattern: "\\d{1,6}(\\.\\d{2})$")
         
         for line in lineArray {
@@ -246,8 +251,12 @@ class ViewController: UIViewController, TesseractDelegate {
             else if endsInPrice {
                 itemLines.append(line)
             }
+            else if line.lowercaseString.rangeOfString("welcome to") != nil {
+                var components = line.componentsSeparatedByString(" ")
+                location = components[components.count - 1]
+            }
         }
-        
+        result["location"] = location
         result["item_lines"] = itemLines
         result["total"] = total
         
@@ -259,17 +268,12 @@ class ViewController: UIViewController, TesseractDelegate {
     // MARK: Button Methods
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        /*
-        if segue.identifier == "BeginReviewSegueIdentifier" {
-            var destinationViewController = segue.destinationViewController as ReviewViewController
-            destinationViewController.restaurant = "PKs"
-            destinationViewController.title = "Edit Segue Settings"
-        }
-*/
         if segue.identifier == "StartReviewSegueIdentifier" {
             var destinationViewController = segue.destinationViewController as PurchasedItemListTableViewController
-            destinationViewController.total = self.processedScanResultDict["total"]? as String
+            destinationViewController.totalLine
+                = self.processedScanResultDict["total"]? as String
             destinationViewController.itemList = self.processedScanResultDict["item_lines"]? as [String]
+            destinationViewController.location = self.processedScanResultDict["location"]? as String
         }
     }
 }

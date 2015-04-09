@@ -39,11 +39,13 @@
                             <constraint firstItem="Kbd-1Z-4VA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PaL-8k-GZS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vQp-3e-2m8"/>
+                    <navigationItem key="navigationItem" id="vQp-3e-2m8">
+                        <barButtonItem key="leftBarButtonItem" title="My Account" id="v7j-Cj-LNJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Peak" id="40d-L8-uKt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="takePictureButton" destination="Kbd-1Z-4VA" id="MDm-9L-eyl"/>
                         <segue destination="sQ1-m4-ZU0" kind="show" identifier="StartReviewSegueIdentifier" id="zeN-3s-EpD"/>
-                        <segue destination="8VO-a9-i70" kind="show" identifier="BeginReviewSegueIdentifier" id="0g6-Vg-6Qp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -85,7 +87,18 @@
                             <outlet property="delegate" destination="sQ1-m4-ZU0" id="eyd-bE-Gta"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="00P-of-glX"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="CX4-Ae-gJg">
+                        <barButtonItem key="rightBarButtonItem" title="Review" id="1hE-qb-QVS">
+                            <connections>
+                                <action selector="beginReview:" destination="sQ1-m4-ZU0" id="eje-k3-qFl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="8VO-a9-i70" kind="show" identifier="BeginReviewSegueIdentifier" id="sCa-5a-NZv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uaS-4F-e7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,11 +156,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BDQ-tB-ghL">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AGH-ar-fFp">
-                            <connections>
-                                <action selector="cancelPressed:" destination="8VO-a9-i70" id="8Eo-w8-Hv6"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="P27-tv-TWF">
                             <connections>
                                 <action selector="donePressed:" destination="8VO-a9-i70" id="QeG-bN-OFC"/>
@@ -161,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1V-qQ-KBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1943" y="1205"/>
+            <point key="canvasLocation" x="1962" y="1085"/>
         </scene>
     </scenes>
 </document>

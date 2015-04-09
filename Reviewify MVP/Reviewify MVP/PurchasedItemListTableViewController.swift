@@ -11,15 +11,29 @@ import UIKit
 class PurchasedItemListTableViewController: UITableViewController {
     
     var itemList = [String]()
-    var total = ""
+    var totalLine = ""
+    var location = ""
+    var totalPrice = 0.00
+    var potentialReward = 0.00
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Summary"
+        
+        self.navigationController?.navigationBarHidden = false
+
+        var components:[String] = totalLine.componentsSeparatedByString(" ")
+        totalPrice = (components[components.count - 1] as NSString!).doubleValue
+        potentialReward = totalPrice * 0.1
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func beginReview(sender: AnyObject) {
+        performSegueWithIdentifier("BeginReviewSegueIdentifier", sender: self)
     }
 
     // MARK: - Table view data source
@@ -27,7 +41,7 @@ class PurchasedItemListTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,6 +50,8 @@ class PurchasedItemListTableViewController: UITableViewController {
         switch section {
         case 0:
             return itemList.count
+        case 1:
+            return 1
         default:
             return 1
         }
@@ -55,12 +71,24 @@ class PurchasedItemListTableViewController: UITableViewController {
             
             cell.textLabel?.text = itemName
             cell.detailTextLabel?.text = "$" + price
-        default:
-            var components:[String] = total.componentsSeparatedByString(" ")
-            var price = components.removeAtIndex(components.count - 1)
+        case 1:
+            var totalPriceAsString = totalPrice.format(".2")
             
             cell.textLabel?.text = "Total:"
-            cell.detailTextLabel?.text = "$" + price
+            cell.detailTextLabel?.text = "$\(totalPriceAsString)"
+        case 2:
+            switch indexPath.row {
+            case 0:
+                var rewardAsString = potentialReward.format(".2")
+                
+                cell.textLabel?.text = "Potential Reward (10%)"
+                cell.detailTextLabel?.text = "$\(rewardAsString)"
+                cell.detailTextLabel?.textColor = UIColor.algorithmsGreen()
+            default:
+                println("Error in section 3")
+            }
+        default:
+            println("No Section 4")
         }
 
         return cell
@@ -102,14 +130,17 @@ class PurchasedItemListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "BeginReviewSegueIdentifier" {
+            var destinationViewController = segue.destinationViewController as ReviewViewController
+            destinationViewController.restaurant = location
+            destinationViewController.reward = potentialReward
+        }
+        
     }
-    */
 
 }
