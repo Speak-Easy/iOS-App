@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet var logInButton:UIButton!
+    @IBOutlet var closeButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,13 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func closeLoginViewController(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func loginWithFacebook() {
         if let user = PFUser.currentUser() {
+            closeButton.enabled = false
             PFUser.logOut()
             logInButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
         }
@@ -39,6 +45,8 @@ class LoginViewController: UIViewController {
                     println(existingError.description)
                 }
                 else {
+                    self.closeButton.enabled = false
+                    self.logInButton.setTitle("Logout", forState: UIControlState.Normal)
                     self.dismissViewControllerAnimated(true, completion: {})
                 }
             })

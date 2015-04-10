@@ -50,16 +50,33 @@
                     <connections>
                         <outlet property="takePictureButton" destination="Kbd-1Z-4VA" id="MDm-9L-eyl"/>
                         <segue destination="sQ1-m4-ZU0" kind="show" identifier="StartReviewSegueIdentifier" id="zeN-3s-EpD"/>
-                        <segue destination="xqY-bd-Ltu" kind="presentation" identifier="ShowLogInSegueIdentifier" modalTransitionStyle="crossDissolve" id="UCK-xr-B6P"/>
+                        <segue destination="iDi-hA-H7d" kind="presentation" identifier="ShowLogInSegueIdentifier" id="gnV-ZW-4QL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1120" y="277"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rn4-q1-yzK">
+            <objects>
+                <navigationController id="iDi-hA-H7d" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pff-7u-Hj8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xqY-bd-Ltu" kind="relationship" relationship="rootViewController" id="7UH-t2-ayH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLb-hf-4lV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1120" y="962"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="pUW-OV-jWR">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-0s-4Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xqY-bd-Ltu" customClass="LoginViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GMb-Ln-xto"/>
@@ -85,13 +102,20 @@
                             <constraint firstAttribute="centerX" secondItem="hR7-BV-wJX" secondAttribute="centerX" id="yfg-eJ-bas"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="J4e-Ac-Ige">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="hZe-Kx-TAc">
+                            <connections>
+                                <action selector="closeLoginViewController:" destination="xqY-bd-Ltu" id="B0P-ke-sq8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="closeButton" destination="hZe-Kx-TAc" id="BPm-PN-5g9"/>
                         <outlet property="logInButton" destination="hR7-BV-wJX" id="PLa-q4-IzQ"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-0s-4Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1120" y="993"/>
+            <point key="canvasLocation" x="1128" y="1735"/>
         </scene>
         <!--Title-->
         <scene sceneID="8JN-2r-4s4">
