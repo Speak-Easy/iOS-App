@@ -26,7 +26,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         restaurantReview.setObject(feedbackTextView.text, forKey: "review")
         restaurantReview.setObject(String(Int(starView.rating)), forKey: "star_rating")
         restaurantReview.setObject(reward, forKey: "reward")
-        // restaurantReview["user"] = PFUser.currentUser().email
         
         restaurantReview.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {

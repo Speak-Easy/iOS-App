@@ -46,6 +46,20 @@ class ViewController: UIViewController, TesseractDelegate {
         super.viewWillAppear(animated)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let user = PFUser.currentUser() {
+            println("Logged In")
+        }
+        else {
+            performSegueWithIdentifier("ShowLogInSegueIdentifier", sender: self)
+        }
+    }
+    
+    @IBAction func showMyAccountDetails(sender:AnyObject!) {
+        performSegueWithIdentifier("ShowLogInSegueIdentifier", sender: self)
+    }
+    
     func imageToText(image: UIImage) -> String {
         tesseract.image = image
         tesseract.recognize()
@@ -248,7 +262,7 @@ class ViewController: UIViewController, TesseractDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "StartReviewSegueIdentifier" {
-            var destinationViewController = segue.destinationViewController as! PurchasedItemListTableViewController
+            var destinationViewController = segue.destinationViewController as! PurchasedItemsTableViewController
             destinationViewController.totalLine
                 = self.processedScanResultDict["total"] as! String
             destinationViewController.itemList = self.processedScanResultDict["item_lines"] as! [String]

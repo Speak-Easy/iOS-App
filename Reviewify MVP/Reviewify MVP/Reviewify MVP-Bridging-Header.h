@@ -7,8 +7,15 @@
 //
 
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FacebookSDK/FacebookSDK.h>
+
 #import "ASStarRatingView.h"
+
 #import <TesseractOCR/TesseractOCR.h>
+
 #import "MBProgressHUD.h"
+
 #import "CWStatusBarNotification.h"
+
 #include "TargetConditionals.h"

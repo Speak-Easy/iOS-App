@@ -22,7 +22,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Bcv-Y2-q59"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Scan">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,22 +40,63 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vQp-3e-2m8">
-                        <barButtonItem key="leftBarButtonItem" title="My Account" id="v7j-Cj-LNJ"/>
+                        <barButtonItem key="leftBarButtonItem" title="My Account" id="v7j-Cj-LNJ">
+                            <connections>
+                                <action selector="showMyAccountDetails:" destination="BYZ-38-t0r" id="Uj6-B2-VTu"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Peak" id="40d-L8-uKt"/>
                     </navigationItem>
                     <connections>
                         <outlet property="takePictureButton" destination="Kbd-1Z-4VA" id="MDm-9L-eyl"/>
                         <segue destination="sQ1-m4-ZU0" kind="show" identifier="StartReviewSegueIdentifier" id="zeN-3s-EpD"/>
+                        <segue destination="xqY-bd-Ltu" kind="presentation" identifier="ShowLogInSegueIdentifier" modalTransitionStyle="crossDissolve" id="UCK-xr-B6P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1120" y="277"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="pUW-OV-jWR">
+            <objects>
+                <viewController id="xqY-bd-Ltu" customClass="LoginViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GMb-Ln-xto"/>
+                        <viewControllerLayoutGuide type="bottom" id="fj2-F5-S2W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="duT-iZ-lXU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-BV-wJX">
+                                <rect key="frame" x="229" y="285" width="143" height="30"/>
+                                <state key="normal" title="Login with Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginWithFacebook" destination="xqY-bd-Ltu" eventType="touchUpInside" id="A2Y-4l-BIJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="hR7-BV-wJX" secondAttribute="centerY" id="kPz-Ql-GcE"/>
+                            <constraint firstAttribute="centerX" secondItem="hR7-BV-wJX" secondAttribute="centerX" id="yfg-eJ-bas"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logInButton" destination="hR7-BV-wJX" id="PLa-q4-IzQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-0s-4Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1120" y="993"/>
+        </scene>
         <!--Title-->
         <scene sceneID="8JN-2r-4s4">
             <objects>
-                <tableViewController id="sQ1-m4-ZU0" customClass="PurchasedItemListTableViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sQ1-m4-ZU0" customClass="PurchasedItemsTableViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="NCW-tW-g2t">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
