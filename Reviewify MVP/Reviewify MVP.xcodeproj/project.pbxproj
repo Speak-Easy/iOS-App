@@ -24,6 +24,7 @@
 		3BDF0F201ABB63F200120564 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 3BDF0F1F1ABB63F200120564 /* tessdata */; };
 		3BE38AB01AD762FB00830511 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE38AAF1AD762FB00830511 /* LoginViewController.swift */; };
 		3BE3CD151AD77FAC00DB7EA8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE3CD141AD77FAC00DB7EA8 /* MapKit.framework */; };
+		3BE3CD171ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */; };
 		3BED175A1AD63158005DEA44 /* PurchasedItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED17591AD63158005DEA44 /* PurchasedItemsTableViewController.swift */; };
 		3BED17681AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */; };
 		3BED176B1AD6DEBF005DEA44 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */; };
@@ -62,6 +63,7 @@
 		3BDF0F1F1ABB63F200120564 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tessdata; path = "../../../../Downloads/tesseract-ocr/tessdata"; sourceTree = "<group>"; };
 		3BE38AAF1AD762FB00830511 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3BE3CD141AD77FAC00DB7EA8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyRestaurantsMapViewController.swift; sourceTree = "<group>"; };
 		3BED17591AD63158005DEA44 /* PurchasedItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedItemsTableViewController.swift; sourceTree = "<group>"; };
 		3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-04-09 at 11.47.50 AM.png"; sourceTree = "<group>"; };
 		3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				3B6F54921A9CD51E008F6508 /* ViewController.swift */,
 				3BED17591AD63158005DEA44 /* PurchasedItemsTableViewController.swift */,
 				3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */,
+				3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */,
 				3B6F54941A9CD51E008F6508 /* Main.storyboard */,
 				3B6F54971A9CD51E008F6508 /* Images.xcassets */,
 				3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */,
@@ -361,6 +364,7 @@
 				3B4293141AC38E830064B38F /* UIImage+Rotation.swift in Sources */,
 				3BED175A1AD63158005DEA44 /* PurchasedItemsTableViewController.swift in Sources */,
 				3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */,
+				3BE3CD171ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

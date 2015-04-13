@@ -60,6 +60,10 @@ class ViewController: UIViewController, TesseractDelegate {
         performSegueWithIdentifier("ShowLogInSegueIdentifier", sender: self)
     }
     
+    @IBAction func showNearbyRestaurants(sender: AnyObject) {
+        performSegueWithIdentifier("PeekSegueIdentifier", sender: self)
+    }
+    
     func imageToText(image: UIImage) -> String {
         tesseract.image = image
         tesseract.recognize()
@@ -267,6 +271,9 @@ class ViewController: UIViewController, TesseractDelegate {
                 = self.processedScanResultDict["total"] as! String
             destinationViewController.itemList = self.processedScanResultDict["item_lines"] as! [String]
             destinationViewController.location = self.processedScanResultDict["location"] as! String
+        }
+        if segue.identifier == "PeekSegueIdentifier" {
+            println("Show Nearby")
         }
     }
 }

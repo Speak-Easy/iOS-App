@@ -47,7 +47,8 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Peak" id="40d-L8-uKt">
                             <connections>
-                                <segue destination="WPP-PJ-EYP" kind="show" identifier="PeekSegueIdentifier" id="dqJ-tq-rPO"/>
+                                <action selector="showNearbyRestaurants:" destination="BYZ-38-t0r" id="2Nq-ld-hk1"/>
+                                <segue destination="yfB-ls-yKp" kind="show" identifier="PeekSegueIdentifier" id="Uo6-Z3-bDk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -61,27 +62,10 @@
             </objects>
             <point key="canvasLocation" x="1120" y="277"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="n6A-Le-XGJ">
-            <objects>
-                <navigationController id="WPP-PJ-EYP" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="yKN-Y0-ecL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N8r-AQ-ki4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="yfB-ls-yKp" kind="relationship" relationship="rootViewController" id="CJR-QZ-DrY"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ktx-5p-ukJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1886" y="277"/>
-        </scene>
         <!--Near You-->
         <scene sceneID="fKt-Jm-KDV">
             <objects>
-                <viewController id="yfB-ls-yKp" sceneMemberID="viewController">
+                <viewController id="yfB-ls-yKp" customClass="NearbyRestaurantsMapViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Aq7-26-PSj"/>
                         <viewControllerLayoutGuide type="bottom" id="Bgk-ia-02n"/>
@@ -90,8 +74,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hx2-9l-j8B">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hx2-9l-j8B">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="yfB-ls-yKp" id="2XN-Vx-6tP"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,10 +90,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Near You" id="EDS-Mg-MDV"/>
+                    <connections>
+                        <outlet property="mapView" destination="hx2-9l-j8B" id="EyD-7N-7On"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fO-Pb-aiE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2698" y="282"/>
+            <point key="canvasLocation" x="1882" y="277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rn4-q1-yzK">
@@ -127,7 +117,6 @@
         <!--Login View Controller-->
         <scene sceneID="pUW-OV-jWR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-0s-4Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xqY-bd-Ltu" customClass="LoginViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GMb-Ln-xto"/>
@@ -165,6 +154,7 @@
                         <outlet property="logInButton" destination="hR7-BV-wJX" id="PLa-q4-IzQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-0s-4Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="346" y="1055"/>
         </scene>
