@@ -29,9 +29,10 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
             for response in resultsArray {
                 var restaurant = response as! PFObject
                 var name = restaurant["name"] as! String
-                var coordinateAsGeoPoint = restaurant["location"] as! PFGeoPoint
-                var coordinate = CLLocationCoordinate2D(latitude: coordinateAsGeoPoint.latitude, longitude: coordinateAsGeoPoint.longitude)
-                self.restaurants[name] = coordinate
+                if let coordinateAsGeoPoint = restaurant["location"] as? PFGeoPoint {
+                    var coordinate = CLLocationCoordinate2D(latitude: coordinateAsGeoPoint.latitude, longitude: coordinateAsGeoPoint.longitude)
+                    self.restaurants[name] = coordinate
+                }
             }
             if resultsArray.count == 1000 {
                 self.query.skip += 1000

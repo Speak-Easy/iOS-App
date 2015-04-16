@@ -45,7 +45,7 @@
                                 <action selector="showMyAccountDetails:" destination="BYZ-38-t0r" id="Uj6-B2-VTu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Peak" id="40d-L8-uKt">
+                        <barButtonItem key="rightBarButtonItem" title="Nearby" id="40d-L8-uKt">
                             <connections>
                                 <action selector="showNearbyRestaurants:" destination="BYZ-38-t0r" id="2Nq-ld-hk1"/>
                                 <segue destination="yfB-ls-yKp" kind="show" identifier="PeekSegueIdentifier" id="Uo6-Z3-bDk"/>

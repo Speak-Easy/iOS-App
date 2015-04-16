@@ -38,7 +38,19 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
                 notification.notificationLabelBackgroundColor = UIColor.algorithmsGreen()
                 notification.notificationLabelTextColor = UIColor.whiteColor()
                 notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
-                notification.displayNotificationWithMessage("You've been rewarded $\(rewardAsString)! You have $____.__ total rewards!", forDuration: 4.0)
+                
+                var totalRewards = PFUser.currentUser()!.objectForKey("total_rewards") as! Double
+                totalRewards += self.reward
+                PFUser.currentUser()!.setObject(totalRewards, forKey: "total_rewards")
+                PFUser.currentUser()!.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
+                    if let existingError = error {
+                        println(existingError.description)
+                    }
+                    else {
+                        var totalRewardsString = totalRewards.format(".2")
+                        notification.displayNotificationWithMessage("You've been rewarded $\(rewardAsString)! You have $\(totalRewardsString) total rewards!", forDuration: 4.0)
+                    }
+                })
             }
             else {
                 println("\(error!.description)")

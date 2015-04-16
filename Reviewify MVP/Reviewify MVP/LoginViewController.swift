@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         if let user = PFUser.currentUser() {
-            logInButton.setTitle("Logout", forState: UIControlState.Normal)
+           logInButton.setTitle("Logout", forState: UIControlState.Normal)
         }
         
         // Do any additional setup after loading the view.
@@ -39,6 +39,10 @@ class LoginViewController: UIViewController {
             logInButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
         }
         else {
+            self.view.userInteractionEnabled = false
+            var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.labelText = "Logging In"
+            
             var permissionsArray = ["email", "public_profile", "user_friends", "user_about_me", "user_relationships", "user_birthday", "user_location"]
             PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user: PFUser?, error:NSError?) -> Void in
                 if let existingError = error {
@@ -49,6 +53,8 @@ class LoginViewController: UIViewController {
                     self.logInButton.setTitle("Logout", forState: UIControlState.Normal)
                     self.dismissViewControllerAnimated(true, completion: {})
                 }
+                hud.hide(true)
+                self.view.userInteractionEnabled = true
             })
         }
     }
