@@ -15,15 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let clientKey: String! = "5cUQj1EYf3azLeyvCOtMlyxkpqHYexewg8qBqZMh"
     
     var window: UIWindow?
-    var locationManager = CLLocationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        locationManager.requestAlwaysAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
         
         Parse.enableLocalDatastore()
         

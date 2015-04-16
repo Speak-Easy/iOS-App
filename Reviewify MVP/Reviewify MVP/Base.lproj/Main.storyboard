@@ -133,6 +133,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pff-7u-Hj8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="xqY-bd-Ltu" kind="relationship" relationship="rootViewController" id="7UH-t2-ayH"/>
@@ -158,12 +159,17 @@
                                 <rect key="frame" x="16" y="285" width="568" height="44"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="kvv-qJ-j3r"/>
+                                    <constraint firstAttribute="height" constant="60" id="kvv-qJ-j3r"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Login with Facebook">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginWithFacebook" destination="xqY-bd-Ltu" eventType="touchUpInside" id="A2Y-4l-BIJ"/>
                                 </connections>
@@ -178,6 +184,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="J4e-Ac-Ige">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="hZe-Kx-TAc">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="closeLoginViewController:" destination="xqY-bd-Ltu" id="B0P-ke-sq8"/>
                             </connections>

@@ -63,7 +63,11 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var locationManager:CLLocationManager  = (UIApplication.sharedApplication().delegate as! AppDelegate).locationManager
+        var locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
         if let location = locationManager.location?.coordinate {
