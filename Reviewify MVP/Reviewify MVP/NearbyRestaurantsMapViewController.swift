@@ -12,10 +12,10 @@ import MapKit
 class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var mapView:MKMapView!
-    
-    var locationManager = CLLocationManager()
+
     var restaurants: [String:CLLocationCoordinate2D] = [:]
     var query = PFQuery(className: "Restaurants")
+    var selectedRestaurant:String!
     
     func fetch() {
         self.query.limit = 1000
@@ -63,12 +63,12 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.requestAlwaysAuthorization()
-        
+        var locationManager:CLLocationManager  = (UIApplication.sharedApplication().delegate as! AppDelegate).locationManager
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+        
+        if let location = locationManager.location?.coordinate {
+            mapView.region = MKCoordinateRegionMakeWithDistance(location, 10000, 10000);
+        }
         
         fetch()
     }
@@ -99,7 +99,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
             annotationView.frame.size = CGSizeMake(viewWidth, (viewWidth / annotationView.frame.size.width) * annotationView.frame.size.height)
             
             var rightButton:UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
-            rightButton.addTarget(self, action: "test:", forControlEvents: UIControlEvents.TouchUpInside)
+            rightButton.addTarget(self, action: "selectRestaurant:", forControlEvents: UIControlEvents.TouchUpInside)
             rightButton.setTitle(annotation.title, forState: UIControlState.Normal)
             
             annotationView.rightCalloutAccessoryView = rightButton
@@ -112,33 +112,21 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         }
     }
     
-    func test(sender:AnyObject!) {
+    func selectRestaurant(sender:AnyObject!) {
         var button = sender as! UIButton
         var name = button.titleForState(UIControlState.Normal)!
-        println(name)
-    }
-    
-    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        var region = MKCoordinateRegion()
-        var span = MKCoordinateSpan()
-        span.latitudeDelta = 0.005
-        span.longitudeDelta = 0.005
-        var location = CLLocationCoordinate2D()
-        location.latitude = userLocation.coordinate.latitude
-        location.longitude = userLocation.coordinate.longitude
-        region.span = span
-        region.center = location
-        mapView.setRegion(region, animated: true)
+        selectedRestaurant = name
+        performSegueWithIdentifier("ShowRestaurantDetailsSegueIdentifier", sender: self)
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowRestaurantDetailsSegueIdentifier" {
+            var destinationViewController = segue.destinationViewController as! RestaurantDetailsTableViewController
+            destinationViewController.restaurantName = selectedRestaurant
+        }
     }
-    */
 
 }

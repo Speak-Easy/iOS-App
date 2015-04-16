@@ -18,6 +18,7 @@
 		3B6F54B11A9CD64A008F6508 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */; };
 		3B6F54B31A9CD92F008F6508 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */; };
 		3B6F54DB1A9CE4C9008F6508 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */; };
+		3B8816091AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */; };
 		3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */; };
 		3B8DC2A21AD70F68002198CA /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DC2A11AD70F68002198CA /* Regex.swift */; };
 		3B8DC2A41AD70F87002198CA /* CameraFocusBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DC2A31AD70F87002198CA /* CameraFocusBox.swift */; };
@@ -55,6 +56,7 @@
 		3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3B88D33B1AA0D27D0054388D /* ASStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStarRatingView.h; sourceTree = "<group>"; };
 		3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStarRatingView.m; sourceTree = "<group>"; };
 		3B8DC2A11AD70F68002198CA /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				3BED17591AD63158005DEA44 /* PurchasedItemsTableViewController.swift */,
 				3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */,
 				3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */,
+				3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */,
 				3B6F54941A9CD51E008F6508 /* Main.storyboard */,
 				3B6F54971A9CD51E008F6508 /* Images.xcassets */,
 				3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */,
@@ -354,6 +357,7 @@
 			files = (
 				3BE38AB01AD762FB00830511 /* LoginViewController.swift in Sources */,
 				3B6F54B11A9CD64A008F6508 /* UIColor+Extension.swift in Sources */,
+				3B8816091AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift in Sources */,
 				3B8DC2A41AD70F87002198CA /* CameraFocusBox.swift in Sources */,
 				3B8DC2A21AD70F68002198CA /* Regex.swift in Sources */,
 				3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */,

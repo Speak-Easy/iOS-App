@@ -92,11 +92,39 @@
                     <navigationItem key="navigationItem" title="Near You" id="EDS-Mg-MDV"/>
                     <connections>
                         <outlet property="mapView" destination="hx2-9l-j8B" id="EyD-7N-7On"/>
+                        <segue destination="hfc-54-oq1" kind="show" identifier="ShowRestaurantDetailsSegueIdentifier" id="q5v-ad-D0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fO-Pb-aiE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1882" y="277"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="f52-oc-fi5">
+            <objects>
+                <tableViewController id="hfc-54-oq1" customClass="RestaurantDetailsTableViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ywb-9E-mvK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ih9-VO-IGt">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ih9-VO-IGt" id="qHo-3O-Kjr">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hfc-54-oq1" id="SOv-It-XFm"/>
+                            <outlet property="delegate" destination="hfc-54-oq1" id="kNd-OL-TEU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="Bsw-Ty-4fA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNL-5z-gzq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2668" y="277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rn4-q1-yzK">
@@ -126,10 +154,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-BV-wJX">
-                                <rect key="frame" x="229" y="285" width="143" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-BV-wJX">
+                                <rect key="frame" x="16" y="285" width="568" height="44"/>
+                                <color key="backgroundColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="kvv-qJ-j3r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Login with Facebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="loginWithFacebook" destination="xqY-bd-Ltu" eventType="touchUpInside" id="A2Y-4l-BIJ"/>
@@ -138,8 +171,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="hR7-BV-wJX" secondAttribute="centerY" id="kPz-Ql-GcE"/>
-                            <constraint firstAttribute="centerX" secondItem="hR7-BV-wJX" secondAttribute="centerX" id="yfg-eJ-bas"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="trailing" secondItem="duT-iZ-lXU" secondAttribute="trailingMargin" id="5fa-Dp-kET"/>
+                            <constraint firstAttribute="centerY" secondItem="hR7-BV-wJX" secondAttribute="centerY" id="OIB-np-ZH9"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leadingMargin" id="g4O-jZ-nKY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="J4e-Ac-Ige">
