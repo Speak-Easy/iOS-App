@@ -118,6 +118,18 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         println(name)
     }
     
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        var region = MKCoordinateRegion()
+        var span = MKCoordinateSpan()
+        span.latitudeDelta = 0.005
+        span.longitudeDelta = 0.005
+        var location = CLLocationCoordinate2D()
+        location.latitude = userLocation.coordinate.latitude
+        location.longitude = userLocation.coordinate.longitude
+        region.span = span
+        region.center = location
+        mapView.setRegion(region, animated: true)
+    }
 
     /*
     // MARK: - Navigation

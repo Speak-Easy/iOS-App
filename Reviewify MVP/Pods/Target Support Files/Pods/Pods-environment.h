@@ -16,7 +16,7 @@
 #define COCOAPODS_POD_AVAILABLE_CWStatusBarNotification
 #define COCOAPODS_VERSION_MAJOR_CWStatusBarNotification 2
 #define COCOAPODS_VERSION_MINOR_CWStatusBarNotification 2
-#define COCOAPODS_VERSION_PATCH_CWStatusBarNotification 2
+#define COCOAPODS_VERSION_PATCH_CWStatusBarNotification 4
 
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK

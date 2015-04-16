@@ -1,6 +1,6 @@
 PODS:
   - Bolts (1.1.4)
-  - CWStatusBarNotification (2.2.2)
+  - CWStatusBarNotification (2.2.4)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
   - MBProgressHUD (0.9.1)
@@ -21,7 +21,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
-  CWStatusBarNotification: 8d21a6db7725e65f9b2e96182dd2c18116f15079
+  CWStatusBarNotification: 24ea6215e9b4a0cea66f8377fb0130f313e0b3d4
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: fa8ec29de6d82035635986c11946299fb1b38316
