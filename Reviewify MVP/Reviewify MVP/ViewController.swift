@@ -9,17 +9,15 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, TesseractDelegate {
-    
-    @IBOutlet var takePictureButton: UIButton!
+class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     var scanResult:String!
-    var tesseract:Tesseract!
     var camFocus:CameraFocus!
     var session: AVCaptureSession!
-    var captureDevice: AVCaptureDevice?
-    var processedScanResultDict:[String:AnyObject]!
-    var stillImageOutput: AVCaptureStillImageOutput!
+    var captureSession:AVCaptureSession?
+    var videoPreviewLayer:AVCaptureVideoPreviewLayer?
+    var qrCodeFrameView:UIView?
+    var QRCode:String?
 
     let PriceRecognitionRegex = "\\d{1,6}(\\.\\d{2})$"
     let DemoImage = "Screen Shot 2015-04-09 at 11.47.50 AM.png"
@@ -30,21 +28,16 @@ class ViewController: UIViewController, TesseractDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        stillImageOutput = AVCaptureStillImageOutput()
-        
-        tesseract = Tesseract()
-        tesseract.language = "eng"
-        tesseract.delegate = self
-        
-        takePictureButton.backgroundColor = UIColor.algorithmsGreen()
-        takePictureButton.layer.cornerRadius = 3.0
 
         self.configureCamera()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        qrCodeFrameView?.frame = CGRectZero
+        captureSession?.startRunning()
+        QRCode = nil
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,58 +58,82 @@ class ViewController: UIViewController, TesseractDelegate {
         performSegueWithIdentifier("PeekSegueIdentifier", sender: self)
     }
     
-    func imageToText(image: UIImage) -> String {
-        tesseract.image = image
-        tesseract.recognize()
-        return tesseract.recognizedText
-    }
-    
     func configureCamera() -> Bool {
-        // init camera device
-        var devices: NSArray = AVCaptureDevice.devices()
         
-        // find back camera
-        for device: AnyObject in devices {
-            if device.position == AVCaptureDevicePosition.Back {
-                captureDevice = device as? AVCaptureDevice
-            }
-        }
+        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
+        // as the media type parameter.
+        let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
-        if captureDevice != nil {
-            println(captureDevice!.localizedName)
-            println(captureDevice!.modelID)
-        } else {
+        // Get an instance of the AVCaptureDeviceInput class using the previous device object.
+        var error:NSError?
+        let input: AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(captureDevice, error: &error)
+        
+        if (error != nil) {
+            // If any error occurs, simply log the description of it and don't continue any more.
+            println("\(error?.localizedDescription)")
             return false
         }
         
-        // init device input
-        var error: NSErrorPointer = nil
-        var deviceInput: AVCaptureInput = AVCaptureDeviceInput.deviceInputWithDevice(captureDevice, error: error) as! AVCaptureInput
+        // Initialize the captureSession object.
+        captureSession = AVCaptureSession()
         
-        // init session
-        session = AVCaptureSession()
-        session.sessionPreset = AVCaptureSessionPresetPhoto
-        session.addInput(deviceInput as AVCaptureInput)
-        if session.canAddOutput(stillImageOutput) {
-            session.addOutput(stillImageOutput)
-        }
+        // Set the input device on the capture session.
+        captureSession?.addInput(input as! AVCaptureInput)
         
-        // layer for preview
-        var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.layerWithSession(self.session) as! AVCaptureVideoPreviewLayer
+        // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
+        let captureMetadataOutput = AVCaptureMetadataOutput()
+        captureSession?.addOutput(captureMetadataOutput)
+        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+        captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+        
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         var bounds = self.view.bounds
         bounds.size = CGSizeMake(4/3 * bounds.size.width, bounds.size.height)
-        previewLayer.frame = bounds
-        self.view.layer.insertSublayer(previewLayer, below: takePictureButton.layer)
+        videoPreviewLayer?.frame = bounds
+        view.layer.addSublayer(videoPreviewLayer)
         
-        self.session.startRunning()
+        captureSession?.startRunning()
+        
+        // Initialize QR Code Frame to highlight the QR code
+        qrCodeFrameView = UIView()
+        qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
+        qrCodeFrameView?.layer.borderWidth = 2
+        view.addSubview(qrCodeFrameView!)
+        view.bringSubviewToFront(qrCodeFrameView!)
         
         return true
+    }
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+        
+        // Check if the metadataObjects array is not nil and it contains at least one object.
+        if metadataObjects == nil || metadataObjects.count == 0 {
+            qrCodeFrameView?.frame = CGRectZero
+            println("No QR Code is Detected!")
+            return
+        }
+        
+        // Get the metadata object.
+        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        
+        if metadataObj.type == AVMetadataObjectTypeQRCode {
+            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
+            qrCodeFrameView?.frame = barCodeObject.bounds;
+            
+            if metadataObj.stringValue != nil {
+                QRCode = metadataObj.stringValue
+                captureSession?.stopRunning()
+                performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
+            }
+        }
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         var touch: UITouch = event.allTouches()!.first as! UITouch
         var touchPoint:CGPoint = touch.locationInView(touch.view)
-        self.focus(touchPoint)
+        focus()
         
         // If a camFocus is already on the screen remove it
         if camFocus != nil {
@@ -135,130 +152,8 @@ class ViewController: UIViewController, TesseractDelegate {
         }
     }
     
-    func focus(aPoint:CGPoint) {
-        if let device = captureDevice {
-            if (device.focusPointOfInterestSupported && device.isFocusModeSupported(AVCaptureFocusMode.AutoFocus)) {
-                var screenRect:CGRect = UIScreen.mainScreen().bounds
-                var screenWidth = screenRect.size.width
-                var screenHeight = screenRect.size.height
-                var focusX = aPoint.x / screenWidth
-                var focusY = aPoint.y / screenHeight
-                if device.lockForConfiguration(nil) {
-                    device.focusPointOfInterest = CGPointMake(focusX, focusY)
-                    device.focusMode = AVCaptureFocusMode.AutoFocus
-                    if device.isExposureModeSupported(AVCaptureExposureMode.AutoExpose) {
-                        device.exposureMode = AVCaptureExposureMode.AutoExpose
-                    }
-                    device.unlockForConfiguration()
-                }
-            }
-        }
-    }
-    
-    @IBAction func takePicture() {
-        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "Processing"
+    func focus() {
         
-        self.view.userInteractionEnabled = false
-        
-        var videoConnection:AVCaptureConnection!
-        for connection:AVCaptureConnection in (self.stillImageOutput.connections as! [AVCaptureConnection]) {
-            for port:AVCaptureInputPort in (connection.inputPorts as! [AVCaptureInputPort]) {
-                if port.mediaType == AVMediaTypeVideo {
-                    videoConnection = connection
-                    break
-                }
-            }
-            if videoConnection != nil {
-                videoConnection.videoOrientation = AVCaptureVideoOrientation.Portrait
-                break
-            }
-        }
-        
-
-        //////////////////////////
-        // DEMO WITH SCREENSHOT //
-        //////////////////////////
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            var demoBlackAndWhite = UIImage(named: DemoImage)!.blackAndWhite()
-            self.scanResult = self.imageToText(demoBlackAndWhite)
-            
-            self.processedScanResultDict = self.processReceiptText(self.scanResult)
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                hud.hide(true)
-                self.view.userInteractionEnabled = true
-                
-                self.performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
-            });
-        });
-        //////////////////////////
-        // DEMO WITH SCREENSHOT //
-        //////////////////////////
-            
-        ////////////////
-        // REAL THING //
-        ////////////////
-        #else
-        self.stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageSampleBuffer, error) -> Void in
-
-            /*
-            var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
-            var imageDataAsUIImage = UIImage(data: imageData)
-            var pngImageData = UIImagePNGRepresentation(imageDataAsUIImage)
-            var blackAndWhitePngImage = UIImage(data: pngImageData)!.blackAndWhite()
-            self.scanResult = self.imageToText(blackAndWhitePngImage.imageRotatedByDegrees(90.0))
-            */
-            
-            // DEMO ON PHONE
-            var demoBlackAndWhite = UIImage(named: self.DemoImage)!.blackAndWhite()
-            self.scanResult = self.imageToText(demoBlackAndWhite)
-            
-            self.processedScanResultDict = self.processReceiptText(self.scanResult)
-            
-            hud.hide(true)
-            self.view.userInteractionEnabled = true
-            
-            self.performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
-        })
-        #endif
-        ////////////////
-        // REAL THING //
-        ////////////////
-    }
-    
-    func processReceiptText(text: String) -> [String:AnyObject] {
-        var result:[String:AnyObject] = [:]
-        
-        var trimmedWhiteSpace = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        
-        var lineArray:[String] = trimmedWhiteSpace.componentsSeparatedByString("\n")
-        var itemLines = [String]()
-        var total = ""
-        var location = ""
-        var endsInPriceRegex = Regex(pattern: PriceRecognitionRegex)
-        
-        for line in lineArray {
-            var endsInPrice = endsInPriceRegex.test(line)
-            if endsInPrice && line.lowercaseString.rangeOfString("total") != nil {
-                total = line
-            }
-            else if endsInPrice {
-                itemLines.append(line)
-            }
-            else if line.lowercaseString.rangeOfString("welcome to") != nil {
-                var components = line.componentsSeparatedByString(" ")
-                location = components[components.count - 1]
-            }
-        }
-        result["location"] = location
-        result["item_lines"] = itemLines
-        result["total"] = total
-        
-        println(result)
-        
-        return result
     }
     
     // MARK: Button Methods
@@ -266,11 +161,11 @@ class ViewController: UIViewController, TesseractDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "StartReviewSegueIdentifier" {
             var destinationViewController = segue.destinationViewController as! PurchasedItemsTableViewController
-            destinationViewController.totalLine
-                = self.processedScanResultDict["total"] as! String
-            destinationViewController.itemList = self.processedScanResultDict["item_lines"] as! [String]
-            destinationViewController.location = self.processedScanResultDict["location"] as! String
+            destinationViewController.totalLine = ""
+            destinationViewController.itemList = []
+            destinationViewController.location = QRCode!
         }
+        
         if segue.identifier == "PeekSegueIdentifier" {
             println("Show Nearby")
         }

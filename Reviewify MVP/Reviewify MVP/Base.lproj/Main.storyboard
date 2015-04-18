@@ -16,28 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbd-1Z-4VA">
-                                <rect key="frame" x="16" y="520" width="568" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Bcv-Y2-q59"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Scan">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iwo-4J-Syo"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Kbd-1Z-4VA" secondAttribute="bottom" constant="20" id="IMa-Xx-MdJ"/>
-                            <constraint firstItem="Kbd-1Z-4VA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="MPo-EF-heU"/>
-                            <constraint firstItem="Kbd-1Z-4VA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PaL-8k-GZS"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="vQp-3e-2m8">
                         <barButtonItem key="leftBarButtonItem" title="My Account" id="v7j-Cj-LNJ">
@@ -53,7 +32,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="takePictureButton" destination="Kbd-1Z-4VA" id="MDm-9L-eyl"/>
                         <segue destination="sQ1-m4-ZU0" kind="show" identifier="StartReviewSegueIdentifier" id="zeN-3s-EpD"/>
                         <segue destination="iDi-hA-H7d" kind="presentation" identifier="ShowLogInSegueIdentifier" id="gnV-ZW-4QL"/>
                     </connections>
