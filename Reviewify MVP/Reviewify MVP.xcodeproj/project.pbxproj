@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		29DFA9EFC676F9AF79C96774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDBFFEF10147C2B908AB1EE /* libPods.a */; };
 		3B4293141AC38E830064B38F /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4293131AC38E830064B38F /* UIImage+Rotation.swift */; };
+		3B4FE6021AE075C000CB0F6D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4FE6011AE075C000CB0F6D /* Constants.swift */; };
 		3B6F54911A9CD51E008F6508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54901A9CD51E008F6508 /* AppDelegate.swift */; };
 		3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54921A9CD51E008F6508 /* ViewController.swift */; };
 		3B6F54961A9CD51E008F6508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6F54941A9CD51E008F6508 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		3B4293131AC38E830064B38F /* UIImage+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
+		3B4FE6011AE075C000CB0F6D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reviewify MVP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6F548F1A9CD51E008F6508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6F54901A9CD51E008F6508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		3B6F548D1A9CD51E008F6508 /* Reviewify MVP */ = {
 			isa = PBXGroup;
 			children = (
+				3B4FE6011AE075C000CB0F6D /* Constants.swift */,
 				3B6F54901A9CD51E008F6508 /* AppDelegate.swift */,
 				3BE38AAF1AD762FB00830511 /* LoginViewController.swift */,
 				3B6F54921A9CD51E008F6508 /* ViewController.swift */,
@@ -369,6 +372,7 @@
 				3BED175A1AD63158005DEA44 /* PurchasedItemsTableViewController.swift in Sources */,
 				3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */,
 				3BE3CD171ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift in Sources */,
+				3B4FE6021AE075C000CB0F6D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

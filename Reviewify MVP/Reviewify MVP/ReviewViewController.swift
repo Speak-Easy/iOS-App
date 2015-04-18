@@ -14,7 +14,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
     let placeholderText = "Leave any comments here"
     
     var restaurant:String!
-    var reward:Double!
+    var reward:Int!
     
     @IBOutlet var feedbackTextView: UITextView!
     @IBOutlet var starView: ASStarRatingView!
@@ -32,14 +32,12 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
                 var navigationController = self.navigationController!
                 navigationController.popToRootViewControllerAnimated(true)
                 
-                var rewardAsString = self.reward.format(".2")
-                
                 var notification = CWStatusBarNotification()
                 notification.notificationLabelBackgroundColor = UIColor.algorithmsGreen()
                 notification.notificationLabelTextColor = UIColor.whiteColor()
-                notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
+                notification.notificationStyle = CWNotificationStyle.StatusBarNotification
                 
-                var totalRewards = PFUser.currentUser()!.objectForKey("total_rewards") as! Double
+                var totalRewards = PFUser.currentUser()!.objectForKey("total_rewards") as! Int
                 totalRewards += self.reward
                 PFUser.currentUser()!.setObject(totalRewards, forKey: "total_rewards")
                 PFUser.currentUser()!.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
@@ -47,8 +45,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
                         println(existingError.description)
                     }
                     else {
-                        var totalRewardsString = totalRewards.format(".2")
-                        notification.displayNotificationWithMessage("You've been rewarded $\(rewardAsString)! You have $\(totalRewardsString) total rewards!", forDuration: 4.0)
+                        notification.displayNotificationWithMessage("You've been rewarded \(self.reward)! You have \(totalRewards) total rewards!", forDuration: 4.0)
                     }
                 })
             }

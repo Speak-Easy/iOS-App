@@ -21,6 +21,9 @@ class ViewController: UIViewController, TesseractDelegate {
     var processedScanResultDict:[String:AnyObject]!
     var stillImageOutput: AVCaptureStillImageOutput!
 
+    let PriceRecognitionRegex = "\\d{1,6}(\\.\\d{2})$"
+    let DemoImage = "Screen Shot 2015-04-09 at 11.47.50 AM.png"
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -36,9 +39,7 @@ class ViewController: UIViewController, TesseractDelegate {
         
         takePictureButton.backgroundColor = UIColor.algorithmsGreen()
         takePictureButton.layer.cornerRadius = 3.0
-        
-        self.title = "Scanner"
-        
+
         self.configureCamera()
     }
     
@@ -85,7 +86,6 @@ class ViewController: UIViewController, TesseractDelegate {
             println(captureDevice!.localizedName)
             println(captureDevice!.modelID)
         } else {
-            println("Missing Camera")
             return false
         }
         
@@ -181,7 +181,7 @@ class ViewController: UIViewController, TesseractDelegate {
         //////////////////////////
         #if (arch(i386) || arch(x86_64)) && os(iOS)
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 11.47.50 AM.png")!.blackAndWhite()
+            var demoBlackAndWhite = UIImage(named: DemoImage)!.blackAndWhite()
             self.scanResult = self.imageToText(demoBlackAndWhite)
             
             self.processedScanResultDict = self.processReceiptText(self.scanResult)
@@ -212,7 +212,7 @@ class ViewController: UIViewController, TesseractDelegate {
             */
             
             // DEMO ON PHONE
-            var demoBlackAndWhite = UIImage(named: "Screen Shot 2015-04-09 at 11.47.50 AM.png")!.blackAndWhite()
+            var demoBlackAndWhite = UIImage(named: self.DemoImage)!.blackAndWhite()
             self.scanResult = self.imageToText(demoBlackAndWhite)
             
             self.processedScanResultDict = self.processReceiptText(self.scanResult)
@@ -232,13 +232,12 @@ class ViewController: UIViewController, TesseractDelegate {
         var result:[String:AnyObject] = [:]
         
         var trimmedWhiteSpace = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        println("Trimmed White Space: \n\(trimmedWhiteSpace)")
         
         var lineArray:[String] = trimmedWhiteSpace.componentsSeparatedByString("\n")
         var itemLines = [String]()
         var total = ""
         var location = ""
-        var endsInPriceRegex = Regex(pattern: "\\d{1,6}(\\.\\d{2})$")
+        var endsInPriceRegex = Regex(pattern: PriceRecognitionRegex)
         
         for line in lineArray {
             var endsInPrice = endsInPriceRegex.test(line)

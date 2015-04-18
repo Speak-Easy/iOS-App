@@ -14,18 +14,16 @@ class PurchasedItemsTableViewController: UITableViewController {
     var totalLine = ""
     var location = ""
     var totalPrice = 0.00
-    var potentialReward = 0.00
+    var potentialReward:Int! = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Summary"
         
         self.navigationController?.navigationBarHidden = false
 
         var components:[String] = totalLine.componentsSeparatedByString(" ")
         totalPrice = (components[components.count - 1] as NSString!).doubleValue
-        potentialReward = totalPrice * 0.1
+        potentialReward = Int(totalPrice * 100)
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,11 +77,10 @@ class PurchasedItemsTableViewController: UITableViewController {
         case 2:
             switch indexPath.row {
             case 0:
-                var rewardAsString = potentialReward.format(".2")
-                
-                cell.textLabel?.text = "Potential Reward (10%)"
-                cell.detailTextLabel?.text = "$\(rewardAsString)"
+                cell.textLabel?.text = "Potential Reward:"
+                cell.detailTextLabel?.text = "\(potentialReward)"
                 cell.detailTextLabel?.textColor = UIColor.algorithmsGreen()
+                cell.detailTextLabel?.font = UIFont.boldSystemFontOfSize(16.0)
             default:
                 println("Error in section 3")
             }

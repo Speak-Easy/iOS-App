@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Scanner-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,7 +39,7 @@
                             <constraint firstItem="Kbd-1Z-4VA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PaL-8k-GZS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vQp-3e-2m8">
+                    <navigationItem key="navigationItem" title="Scanner" id="vQp-3e-2m8">
                         <barButtonItem key="leftBarButtonItem" title="My Account" id="v7j-Cj-LNJ">
                             <connections>
                                 <action selector="showMyAccountDetails:" destination="BYZ-38-t0r" id="Uj6-B2-VTu"/>
@@ -155,11 +155,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-BV-wJX">
-                                <rect key="frame" x="16" y="285" width="568" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-BV-wJX">
+                                <rect key="frame" x="16" y="356" width="568" height="60"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="kvv-qJ-j3r"/>
+                                    <constraint firstAttribute="height" constant="60" id="zq0-Gj-fDb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Login with Facebook">
@@ -174,13 +174,57 @@
                                     <action selector="loginWithFacebook" destination="xqY-bd-Ltu" eventType="touchUpInside" id="A2Y-4l-BIJ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81C-LL-eU1">
+                                <rect key="frame" x="16" y="270" width="568" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RKy-et-n40"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="removeKeyboard:" destination="xqY-bd-Ltu" eventType="editingDidEndOnExit" id="QlT-lp-bhO"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dGW-ET-paD">
+                                <rect key="frame" x="16" y="211" width="568" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="aQW-hk-uPy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="removeKeyboard:" destination="xqY-bd-Ltu" eventType="editingDidEndOnExit" id="zow-dU-UzF"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hR7-BV-wJX" firstAttribute="trailing" secondItem="duT-iZ-lXU" secondAttribute="trailingMargin" id="5fa-Dp-kET"/>
-                            <constraint firstAttribute="centerY" secondItem="hR7-BV-wJX" secondAttribute="centerY" id="OIB-np-ZH9"/>
-                            <constraint firstItem="hR7-BV-wJX" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leadingMargin" id="g4O-jZ-nKY"/>
+                            <constraint firstAttribute="trailing" secondItem="hR7-BV-wJX" secondAttribute="trailing" constant="16" id="3FO-za-zVT"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="trailing" secondItem="duT-iZ-lXU" secondAttribute="trailingMargin" id="3LF-VG-rMj"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leading" constant="16" id="8oF-3P-AuM"/>
+                            <constraint firstAttribute="trailing" secondItem="81C-LL-eU1" secondAttribute="trailing" constant="16" id="RjA-5Z-tnX"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="top" secondItem="81C-LL-eU1" secondAttribute="bottom" constant="26" id="Sde-z4-jEJ"/>
+                            <constraint firstItem="dGW-ET-paD" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leading" constant="16" id="V07-sP-hOK"/>
+                            <constraint firstItem="81C-LL-eU1" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leadingMargin" id="VbH-dp-wUM"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="top" secondItem="dGW-ET-paD" secondAttribute="bottom" constant="85" id="X0K-1a-ZEF"/>
+                            <constraint firstItem="dGW-ET-paD" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leading" constant="16" id="c7t-Fi-QiL"/>
+                            <constraint firstItem="81C-LL-eU1" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leading" constant="16" id="hGf-2Y-wDV"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leadingMargin" id="ohE-oO-QzW"/>
+                            <constraint firstAttribute="trailing" secondItem="dGW-ET-paD" secondAttribute="trailing" constant="16" id="qnX-Ts-Xws"/>
+                            <constraint firstAttribute="centerY" secondItem="81C-LL-eU1" secondAttribute="centerY" id="unL-h6-MSn"/>
+                            <constraint firstItem="81C-LL-eU1" firstAttribute="trailing" secondItem="duT-iZ-lXU" secondAttribute="trailingMargin" id="xbZ-wT-mHL"/>
+                            <constraint firstAttribute="trailing" secondItem="dGW-ET-paD" secondAttribute="trailing" constant="16" id="zXW-fJ-ss7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="V07-sP-hOK"/>
+                                <exclude reference="zXW-fJ-ss7"/>
+                                <exclude reference="VbH-dp-wUM"/>
+                                <exclude reference="xbZ-wT-mHL"/>
+                                <exclude reference="3LF-VG-rMj"/>
+                                <exclude reference="ohE-oO-QzW"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="J4e-Ac-Ige">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="hZe-Kx-TAc">
@@ -199,7 +243,7 @@
             </objects>
             <point key="canvasLocation" x="346" y="1055"/>
         </scene>
-        <!--Title-->
+        <!--Summary-->
         <scene sceneID="8JN-2r-4s4">
             <objects>
                 <tableViewController id="sQ1-m4-ZU0" customClass="PurchasedItemsTableViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
@@ -235,7 +279,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="CX4-Ae-gJg">
+                    <navigationItem key="navigationItem" title="Summary" id="CX4-Ae-gJg">
                         <barButtonItem key="rightBarButtonItem" title="Review" id="1hE-qb-QVS">
                             <connections>
                                 <action selector="beginReview:" destination="sQ1-m4-ZU0" id="eje-k3-qFl"/>

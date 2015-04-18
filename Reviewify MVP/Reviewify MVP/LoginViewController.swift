@@ -12,13 +12,19 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var logInButton:UIButton!
     @IBOutlet var closeButton: UIBarButtonItem!
+    
+    let permissionsArray = ["email", "public_profile", "user_friends", "user_about_me", "user_relationships", "user_birthday", "user_location"]
+    let LogoutText = "Logout"
+    let LoginText = "Login with Facebook"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let user = PFUser.currentUser() {
-           logInButton.setTitle("Logout", forState: UIControlState.Normal)
+           logInButton.setTitle(LogoutText, forState: UIControlState.Normal)
         }
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -36,27 +42,38 @@ class LoginViewController: UIViewController {
         if let user = PFUser.currentUser() {
             closeButton.enabled = false
             PFUser.logOut()
-            logInButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
+            logInButton.setTitle(LoginText, forState: UIControlState.Normal)
         }
         else {
             self.view.userInteractionEnabled = false
             var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.labelText = "Logging In"
             
-            var permissionsArray = ["email", "public_profile", "user_friends", "user_about_me", "user_relationships", "user_birthday", "user_location"]
             PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user: PFUser?, error:NSError?) -> Void in
                 if let existingError = error {
                     println(existingError.description)
                 }
                 else {
+                    if PFUser.currentUser()!.objectForKey(Constants.UserKey.TotalRewards) == nil {
+                        PFUser.currentUser()!.setObject(0, forKey: Constants.UserKey.TotalRewards)
+                        PFUser.currentUser()!.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
+                            if let existingError = error {
+                                println(existingError.description)
+                            }
+                        })
+                    }
                     self.closeButton.enabled = false
-                    self.logInButton.setTitle("Logout", forState: UIControlState.Normal)
+                    self.logInButton.setTitle(self.LogoutText, forState: UIControlState.Normal)
                     self.dismissViewControllerAnimated(true, completion: {})
                 }
                 hud.hide(true)
                 self.view.userInteractionEnabled = true
             })
         }
+    }
+    
+    @IBAction func removeKeyboard(sender:AnyObject!) {
+        self.resignFirstResponder()
     }
     
 

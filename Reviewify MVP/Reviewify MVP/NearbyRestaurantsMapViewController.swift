@@ -17,6 +17,8 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
     var query = PFQuery(className: "Restaurants")
     var selectedRestaurant:String!
     
+    let PinImage = "map_pin_green"
+    
     func fetch() {
         self.query.limit = 1000
         self.query.skip = 0
@@ -28,8 +30,8 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         if let resultsArray = results {
             for response in resultsArray {
                 var restaurant = response as! PFObject
-                var name = restaurant["name"] as! String
-                if let coordinateAsGeoPoint = restaurant["location"] as? PFGeoPoint {
+                var name = restaurant[Constants.RestaurantKey.Name] as! String
+                if let coordinateAsGeoPoint = restaurant[Constants.RestaurantKey.Location] as? PFGeoPoint {
                     var coordinate = CLLocationCoordinate2D(latitude: coordinateAsGeoPoint.latitude, longitude: coordinateAsGeoPoint.longitude)
                     self.restaurants[name] = coordinate
                 }
@@ -99,7 +101,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
             var viewWidth:CGFloat = 35.0
             var annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView.canShowCallout = true
-            annotationView.image = UIImage(named: "map_pin_green")
+            annotationView.image = UIImage(named: PinImage)
             annotationView.frame.size = CGSizeMake(viewWidth, (viewWidth / annotationView.frame.size.width) * annotationView.frame.size.height)
             
             var rightButton:UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
