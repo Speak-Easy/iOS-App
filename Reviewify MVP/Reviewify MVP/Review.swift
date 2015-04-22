@@ -12,10 +12,10 @@ class Review {
     
     init(restaurant:String!, mealCode:String!, reviewText:String!, rating:Float!, reward:Int!) {
         object = PFObject(className: restaurant)
-        object.setObject(mealCode, forKey: Constants.Review.Meal)
-        object.setObject(reviewText, forKey: Constants.Review.Review)
-        object.setObject("\(rating)", forKey: Constants.Review.StarRating)
-        object.setObject(reward, forKey: Constants.Review.Reward)
+        object.setValue(mealCode, forKey: Constants.Review.Meal)
+        object.setValue(reviewText, forKey: Constants.Review.Review)
+        object.setValue("\(rating)", forKey: Constants.Review.StarRating)
+        object.setValue(reward, forKey: Constants.Review.Reward)
         
         object.saveInBackgroundWithBlock { (success, error) -> Void in
             if let error = error {

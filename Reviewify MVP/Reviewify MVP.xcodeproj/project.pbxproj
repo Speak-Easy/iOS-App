@@ -135,15 +135,10 @@
 		3B6F548D1A9CD51E008F6508 /* Reviewify MVP */ = {
 			isa = PBXGroup;
 			children = (
-				3B4FE6011AE075C000CB0F6D /* Constants.swift */,
 				3B6F54901A9CD51E008F6508 /* AppDelegate.swift */,
 				3BE38AAF1AD762FB00830511 /* LoginViewController.swift */,
-				3B6F54921A9CD51E008F6508 /* ViewController.swift */,
-				3BED17591AD63158005DEA44 /* RewardsDetailsTableViewController.swift */,
-				3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */,
-				3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */,
-				3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */,
-				3B573A4C1AE84DCC00518071 /* Review.swift */,
+				3BD905CC1AE861010087186B /* Earning Rewards */,
+				3BD905CD1AE8610F0087186B /* Nearby */,
 				3B6F54941A9CD51E008F6508 /* Main.storyboard */,
 				3B6F54971A9CD51E008F6508 /* Images.xcassets */,
 				3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */,
@@ -185,11 +180,32 @@
 		3B8DC2A01AD70F44002198CA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				3B4FE6011AE075C000CB0F6D /* Constants.swift */,
+				3B573A4C1AE84DCC00518071 /* Review.swift */,
 				3BED17691AD6DDA0005DEA44 /* ASStarRatingView */,
 				3B8DC2A11AD70F68002198CA /* Regex.swift */,
 				3B8DC2A31AD70F87002198CA /* CameraFocusBox.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		3BD905CC1AE861010087186B /* Earning Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				3B6F54921A9CD51E008F6508 /* ViewController.swift */,
+				3BED17591AD63158005DEA44 /* RewardsDetailsTableViewController.swift */,
+				3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */,
+			);
+			name = "Earning Rewards";
+			sourceTree = "<group>";
+		};
+		3BD905CD1AE8610F0087186B /* Nearby */ = {
+			isa = PBXGroup;
+			children = (
+				3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */,
+				3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */,
+			);
+			name = Nearby;
 			sourceTree = "<group>";
 		};
 		3BDF0F2A1ABBB73B00120564 /* ImageToText */ = {

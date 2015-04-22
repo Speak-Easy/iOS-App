@@ -27,6 +27,20 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         super.viewDidLoad()
 
         self.configureCamera()
+        
+        /*
+        var meal = PFObject(className: "Meals")
+        meal.setValue("gGRC9GomWJ", forKey: "restaurant")
+        meal.setValue(false, forKey: "claimed")
+        meal.setValue("", forKey:"claimed_by")
+        meal.setValue("Steve", forKey:"server")
+        meal.setValue(100, forKey:"potential_reward")
+        meal.saveInBackgroundWithBlock { (success, error) -> Void in
+            if let error = error {
+                println(error.description)
+            }
+        }
+*/
     }
     
     override func viewWillAppear(animated: Bool) {

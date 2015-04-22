@@ -13,9 +13,10 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
 
     @IBOutlet var mapView:MKMapView!
 
-    var restaurants: [String:CLLocationCoordinate2D] = [:]
+    var restaurants: [String:PFObject] = [:]
     var query = PFQuery(className: "Restaurants")
     var selectedRestaurant:String!
+    var selectedRestaurantDeals:[String]?
     
     let PinImage = "map_pin_green"
     
@@ -31,10 +32,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
             for response in resultsArray {
                 var restaurant = response as! PFObject
                 var name = restaurant[Constants.RestaurantKey.Name] as! String
-                if let coordinateAsGeoPoint = restaurant[Constants.RestaurantKey.Location] as? PFGeoPoint {
-                    var coordinate = CLLocationCoordinate2D(latitude: coordinateAsGeoPoint.latitude, longitude: coordinateAsGeoPoint.longitude)
-                    self.restaurants[name] = coordinate
-                }
+                self.restaurants[name] = restaurant
             }
             if resultsArray.count == 1000 {
                 self.query.skip += 1000
@@ -53,11 +51,14 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         var keys = restaurants.keys
         for key in keys {
             var restaurantName = key as String
-            if let restaurantCoordinate = restaurants[restaurantName] {
+            if let restaurantObject = restaurants[restaurantName] {
                 var annotation = MKPointAnnotation()
-                annotation.coordinate = restaurantCoordinate
-                annotation.title = restaurantName
-                mapView.addAnnotation(annotation)
+                if let coordinateAsGeoPoint = restaurantObject[Constants.RestaurantKey.Location] as? PFGeoPoint {
+                    var coordinate = CLLocationCoordinate2D(latitude: coordinateAsGeoPoint.latitude, longitude: coordinateAsGeoPoint.longitude)
+                    annotation.coordinate = coordinate
+                    annotation.title = restaurantName
+                    mapView.addAnnotation(annotation)
+                }
             }
         }
     }
@@ -122,6 +123,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         var button = sender as! UIButton
         var name = button.titleForState(UIControlState.Normal)!
         selectedRestaurant = name
+        selectedRestaurantDeals = restaurants[selectedRestaurant]?["deals"] as? [String]
         performSegueWithIdentifier("ShowRestaurantDetailsSegueIdentifier", sender: self)
     }
 
@@ -132,6 +134,9 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         if segue.identifier == "ShowRestaurantDetailsSegueIdentifier" {
             var destinationViewController = segue.destinationViewController as! RestaurantDetailsTableViewController
             destinationViewController.restaurantName = selectedRestaurant
+            if let deals = selectedRestaurantDeals {
+                destinationViewController.deals = deals
+            }
         }
     }
 
