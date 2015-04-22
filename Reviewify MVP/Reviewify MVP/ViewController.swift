@@ -121,8 +121,28 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             
             if metadataObj.stringValue != nil {
                 QRCode = metadataObj.stringValue
-                captureSession?.stopRunning()
-                performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
+                
+                var splitQRCode = QRCode!.componentsSeparatedByString(" ")
+                
+                var restaurantCode = splitQRCode[0]
+                var mealCode = splitQRCode[1]
+                
+                PFCloud.verifyMeal(restaurantCode, mealCode: mealCode, block:  { (results, error) -> Void in
+                    if let error = error {
+                        println(error.description)
+                        if let alertMessage = error.userInfo?["error"] as? String {
+                            println(alertMessage)
+                        }
+                        self.captureSession?.startRunning()
+                    }
+                    if let totalRewards = results as? PFObject {
+                        self.performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
+                    }
+                })
+                
+                self.captureSession?.stopRunning()
+                
+                
             }
         }
     }

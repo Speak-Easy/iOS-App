@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PIU-EC-gGo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0bY-Zz-por">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -52,7 +52,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hx2-9l-j8B">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hx2-9l-j8B">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <outlet property="delegate" destination="yfB-ls-yKp" id="2XN-Vx-6tP"/>
@@ -273,10 +273,49 @@
             </objects>
             <point key="canvasLocation" x="1120" y="1033"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Redeem-->
+        <scene sceneID="t8L-WI-sCr">
+            <objects>
+                <viewController id="5Dd-72-xUY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RAb-EG-nLU"/>
+                        <viewControllerLayoutGuide type="bottom" id="7pa-Ec-hfg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sRi-pe-16i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Redeem" id="3yU-PE-TnC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4oQ-vJ-q37" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1176" y="-1437"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="A73-Z1-ANj">
+            <objects>
+                <tabBarController id="0bY-Zz-por" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="ecC-2C-otC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="PIU-EC-gGo" kind="relationship" relationship="viewControllers" id="RcR-JE-DIL"/>
+                        <segue destination="5Dd-72-xUY" kind="relationship" relationship="viewControllers" id="Ps5-Yu-Gzp"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MA0-Ij-K4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="312" y="-1259"/>
+        </scene>
+        <!--Review-->
         <scene sceneID="Rx5-Rb-4Sz">
             <objects>
                 <navigationController id="PIU-EC-gGo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Review" id="W04-6a-PnR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cyw-ug-G9r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

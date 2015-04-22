@@ -10,6 +10,8 @@
 		29DFA9EFC676F9AF79C96774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDBFFEF10147C2B908AB1EE /* libPods.a */; };
 		3B4293141AC38E830064B38F /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4293131AC38E830064B38F /* UIImage+Rotation.swift */; };
 		3B4FE6021AE075C000CB0F6D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4FE6011AE075C000CB0F6D /* Constants.swift */; };
+		3B573A4B1AE8255400518071 /* PFCloud+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B573A4A1AE8255400518071 /* PFCloud+Extension.swift */; };
+		3B573A4D1AE84DCC00518071 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B573A4C1AE84DCC00518071 /* Review.swift */; };
 		3B6F54911A9CD51E008F6508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54901A9CD51E008F6508 /* AppDelegate.swift */; };
 		3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54921A9CD51E008F6508 /* ViewController.swift */; };
 		3B6F54961A9CD51E008F6508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6F54941A9CD51E008F6508 /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		3B4293131AC38E830064B38F /* UIImage+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		3B4FE6011AE075C000CB0F6D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3B573A4A1AE8255400518071 /* PFCloud+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFCloud+Extension.swift"; sourceTree = "<group>"; };
+		3B573A4C1AE84DCC00518071 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reviewify MVP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6F548F1A9CD51E008F6508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6F54901A9CD51E008F6508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				3B4293131AC38E830064B38F /* UIImage+Rotation.swift */,
 				3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */,
 				3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */,
+				3B573A4A1AE8255400518071 /* PFCloud+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */,
 				3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */,
 				3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */,
+				3B573A4C1AE84DCC00518071 /* Review.swift */,
 				3B6F54941A9CD51E008F6508 /* Main.storyboard */,
 				3B6F54971A9CD51E008F6508 /* Images.xcassets */,
 				3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */,
@@ -365,11 +371,13 @@
 				3B8DC2A21AD70F68002198CA /* Regex.swift in Sources */,
 				3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */,
 				3BED176B1AD6DEBF005DEA44 /* Double+Extension.swift in Sources */,
+				3B573A4B1AE8255400518071 /* PFCloud+Extension.swift in Sources */,
 				3B6F54B31A9CD92F008F6508 /* ReviewViewController.swift in Sources */,
 				3B6F54DB1A9CE4C9008F6508 /* String+Extension.swift in Sources */,
 				3B6F54911A9CD51E008F6508 /* AppDelegate.swift in Sources */,
 				3B4293141AC38E830064B38F /* UIImage+Rotation.swift in Sources */,
 				3BED175A1AD63158005DEA44 /* RewardsDetailsTableViewController.swift in Sources */,
+				3B573A4D1AE84DCC00518071 /* Review.swift in Sources */,
 				3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */,
 				3BE3CD171ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift in Sources */,
 				3B4FE6021AE075C000CB0F6D /* Constants.swift in Sources */,
