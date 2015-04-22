@@ -24,4 +24,11 @@ class Constants {
         static let ClaimedBy = "claimed_by"
         static let Restaurant = "restaurant"
     }
+    
+    struct Review {
+        static let Review = "review"
+        static let StarRating = "star_rating"
+        static let Reward = "reward"
+        static let Meal = "meal"
+    }
 }

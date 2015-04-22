@@ -28,13 +28,13 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         
         var restaurantReview = PFObject(className: restaurantCode)
         
-        restaurantReview.setObject(feedbackTextView.text, forKey: "review")
-        restaurantReview.setObject(String(Int(starView.rating)), forKey: "star_rating")
-        restaurantReview.setObject(potentialReward, forKey: "reward")
+        restaurantReview.setObject(feedbackTextView.text, forKey: Constants.Review.Review)
+        restaurantReview.setObject(String(Int(starView.rating)), forKey: Constants.Review.StarRating)
+        restaurantReview.setObject(potentialReward, forKey: Constants.Review.Reward)
         
         validateMeal { (success) -> () in
             if success {
-                restaurantReview.setObject(self.validMeal.objectId!, forKey: "meal")
+                restaurantReview.setObject(self.validMeal.objectId!, forKey: Constants.Review.Meal)
                 restaurantReview.saveInBackgroundWithBlock { (success, error) -> Void in
                     if success {
                         var navigationController = self.navigationController!
