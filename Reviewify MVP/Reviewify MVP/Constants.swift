@@ -16,4 +16,12 @@ class Constants {
         static let Name = "name"
         static let Location = "location"
     }
+    
+    struct MealValidation {
+        static let ClassName = "Meals"
+        static let MealID = "objectId"
+        static let Claimed = "claimed"
+        static let ClaimedBy = "claimed_by"
+        static let Restaurant = "restaurant"
+    }
 }

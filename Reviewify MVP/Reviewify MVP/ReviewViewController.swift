@@ -13,44 +13,99 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
 
     let placeholderText = "Leave any comments here"
     
-    var restaurant:String!
-    var reward:Int!
+    var restaurantCode:String!
+    var mealCode:String!
+    var server:String!
+    var potentialReward:Int!
+    var validationQuery:PFQuery!
+    var validMeal:PFObject!
+    let timeLimitInSeconds:Double = 60 * 60 * 100000000 // 1 Hour (Time Intervals are done in seconds) * a lot for demo purposes
     
     @IBOutlet var feedbackTextView: UITextView!
     @IBOutlet var starView: ASStarRatingView!
     
     @IBAction func donePressed(sender: AnyObject) {
         
-        var restaurantReview = PFObject(className: restaurant.stripNonAlphanumeric())
+        var restaurantReview = PFObject(className: restaurantCode)
         
         restaurantReview.setObject(feedbackTextView.text, forKey: "review")
         restaurantReview.setObject(String(Int(starView.rating)), forKey: "star_rating")
-        restaurantReview.setObject(reward, forKey: "reward")
+        restaurantReview.setObject(potentialReward, forKey: "reward")
         
-        restaurantReview.saveInBackgroundWithBlock { (success, error) -> Void in
+        validateMeal { (success) -> () in
             if success {
-                var navigationController = self.navigationController!
-                navigationController.popToRootViewControllerAnimated(true)
-                
-                var notification = CWStatusBarNotification()
-                notification.notificationLabelBackgroundColor = UIColor.algorithmsGreen()
-                notification.notificationLabelTextColor = UIColor.whiteColor()
-                notification.notificationStyle = CWNotificationStyle.StatusBarNotification
-                
-                var totalRewards = PFUser.currentUser()!.objectForKey("total_rewards") as! Int
-                totalRewards += self.reward
-                PFUser.currentUser()!.setObject(totalRewards, forKey: "total_rewards")
-                PFUser.currentUser()!.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-                    if let existingError = error {
-                        println(existingError.description)
+                restaurantReview.setObject(self.validMeal.objectId!, forKey: "meal")
+                restaurantReview.saveInBackgroundWithBlock { (success, error) -> Void in
+                    if success {
+                        var navigationController = self.navigationController!
+                        navigationController.popToRootViewControllerAnimated(true)
+                        
+                        var notification = CWStatusBarNotification()
+                        notification.notificationLabelBackgroundColor = UIColor.algorithmsGreen()
+                        notification.notificationLabelTextColor = UIColor.whiteColor()
+                        notification.notificationStyle = CWNotificationStyle.StatusBarNotification
+                        
+                        var totalRewards = PFUser.currentUser()!.objectForKey("total_rewards") as! Int
+                        totalRewards += self.potentialReward
+                        PFUser.currentUser()!.setObject(totalRewards, forKey: "total_rewards")
+                        PFUser.currentUser()!.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
+                            if let existingError = error {
+                                println(existingError.description)
+                            }
+                            else {
+                                notification.displayNotificationWithMessage("You've been rewarded \(self.potentialReward)! You have \(totalRewards) total rewards!", forDuration: 4.0)
+                            }
+                        })
                     }
                     else {
-                        notification.displayNotificationWithMessage("You've been rewarded \(self.reward)! You have \(totalRewards) total rewards!", forDuration: 4.0)
+                        println("\(error!.description)")
                     }
-                })
+                }
             }
             else {
-                println("\(error!.description)")
+                // Tell user the meal has been claimed
+            }
+        }
+    }
+    
+    func validateMeal(completion:(success :Bool) ->())
+    {
+        validationQuery = PFQuery(className: Constants.MealValidation.ClassName)
+        validationQuery.whereKey(Constants.MealValidation.MealID, equalTo: mealCode)
+        validationQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+            if let error = error {
+                completion(success: false)
+                println("Invalid Meals Query")
+            }
+            else if results!.count == 0 {
+                completion(success: false)
+                println("Meal Doesn't Exist")
+            }
+            else {
+                var meal = results![0] as! PFObject
+                var creationDate = meal.createdAt!
+                var timeSinceCreation = -creationDate.timeIntervalSinceNow
+                var claimed = meal[Constants.MealValidation.Claimed] as! Bool
+                var withinTimeRestraint = (timeSinceCreation as Double) < self.timeLimitInSeconds
+                if !claimed && withinTimeRestraint {
+                    self.validMeal = meal
+                    meal[Constants.MealValidation.Claimed] = true
+                    meal[Constants.MealValidation.ClaimedBy] = PFUser.currentUser()!.username
+                    meal[Constants.MealValidation.Restaurant] = self.restaurantCode
+                    meal.saveInBackgroundWithBlock({ (success, error) -> Void in
+                        if success {
+                            completion(success: true)
+                        }
+                        if let error = error{
+                            println(error.description)
+                        }
+                    })
+                }
+                else {
+                    println("Meal Has Been Claimed or Is More Than An Hour Old")
+                    completion(success: false)
+                }
+
             }
         }
     }
@@ -72,8 +127,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
         starView.minAllowedRating = 0.5
         starView.maxAllowedRating = 5
         starView.rating = 5
-        
-        self.title = restaurant
         
         self.navigationController?.navigationBarHidden = false
         

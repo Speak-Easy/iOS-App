@@ -18,10 +18,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var QRCode:String?
-
-    let PriceRecognitionRegex = "\\d{1,6}(\\.\\d{2})$"
-    let DemoImage = "Screen Shot 2015-04-09 at 11.47.50 AM.png"
-
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -160,10 +157,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "StartReviewSegueIdentifier" {
-            var destinationViewController = segue.destinationViewController as! PurchasedItemsTableViewController
-            destinationViewController.totalLine = ""
-            destinationViewController.itemList = []
-            destinationViewController.location = QRCode!
+            var destinationViewController = segue.destinationViewController as! RewardsDetailsTableViewController
+            destinationViewController.QRCode = QRCode!
         }
         
         if segue.identifier == "PeekSegueIdentifier" {

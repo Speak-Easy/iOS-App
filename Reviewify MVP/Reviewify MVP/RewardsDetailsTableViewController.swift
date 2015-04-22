@@ -8,22 +8,29 @@
 
 import UIKit
 
-class PurchasedItemsTableViewController: UITableViewController {
+class RewardsDetailsTableViewController: UITableViewController {
     
-    var itemList = [String]()
-    var totalLine = ""
-    var location = ""
-    var totalPrice = 0.00
-    var potentialReward:Int! = 0
+    var QRCode:String!
+    var restaurantCode:String!
+    var mealCode:String!
+    var server:String!
+    var potentialReward:Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = false
-
-        var components:[String] = totalLine.componentsSeparatedByString(" ")
-        totalPrice = (components[components.count - 1] as NSString!).doubleValue
-        potentialReward = Int(totalPrice * 100)
+        
+        var splitQRCode = QRCode.componentsSeparatedByString(" ")
+        if splitQRCode.count >= 4 {
+            restaurantCode = splitQRCode[0]
+            mealCode = splitQRCode[1]
+            server = splitQRCode[2]
+            potentialReward = splitQRCode[3].toInt()
+        }
+        else {
+            println("Invalid QR Code")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +46,7 @@ class PurchasedItemsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 3
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,11 +54,12 @@ class PurchasedItemsTableViewController: UITableViewController {
         // Return the number of rows in the section.
         switch section {
         case 0:
-            return itemList.count
+            return 1
         case 1:
             return 1
         default:
-            return 1
+            println("Invalid Section (\(section)) in func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int in RewardsDetailsTableViewController")
+            return 0
         }
     }
 
@@ -59,33 +67,18 @@ class PurchasedItemsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemListReuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.detailTextLabel?.textColor = UIColor.redColor()
+        cell.textLabel?.textColor = (UIApplication.sharedApplication().delegate as! AppDelegate).window!.tintColor
+        cell.detailTextLabel?.textColor = UIColor.blackColor()
         
         switch indexPath.section {
         case 0:
-            var components:[String] = itemList[indexPath.row].componentsSeparatedByString(" ")
-            var price = components.removeAtIndex(components.count - 1)
-            var itemName = " ".join(components)
-            
-            cell.textLabel?.text = itemName
-            cell.detailTextLabel?.text = "$" + price
+            cell.textLabel?.text = "Server Name:"
+            cell.detailTextLabel?.text = server
         case 1:
-            var totalPriceAsString = totalPrice.format(".2")
-            
-            cell.textLabel?.text = "Total:"
-            cell.detailTextLabel?.text = "$\(totalPriceAsString)"
-        case 2:
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = "Potential Reward:"
-                cell.detailTextLabel?.text = "\(potentialReward)"
-                cell.detailTextLabel?.textColor = UIColor.algorithmsGreen()
-                cell.detailTextLabel?.font = UIFont.boldSystemFontOfSize(16.0)
-            default:
-                println("Error in section 3")
-            }
+            cell.textLabel?.text = "Potential Points:"
+            cell.detailTextLabel?.text = "\(potentialReward)"
         default:
-            println("No Section 4")
+            println("Invalid Section (\(indexPath.section)) in func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell in RewardsDetailsTableViewController")
         }
 
         return cell
@@ -134,10 +127,11 @@ class PurchasedItemsTableViewController: UITableViewController {
         
         if segue.identifier == "BeginReviewSegueIdentifier" {
             var destinationViewController = segue.destinationViewController as! ReviewViewController
-            destinationViewController.restaurant = location
-            destinationViewController.reward = potentialReward
+            destinationViewController.restaurantCode = restaurantCode
+            destinationViewController.mealCode = mealCode
+            destinationViewController.server = server
+            destinationViewController.potentialReward = potentialReward
         }
-        
     }
 
 }
