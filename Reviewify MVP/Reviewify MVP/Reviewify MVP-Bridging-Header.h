@@ -17,5 +17,3 @@
 #import "MBProgressHUD.h"
 
 #import "CWStatusBarNotification.h"
-
-#include "TargetConditionals.h"
