@@ -105,7 +105,6 @@
 				3B90CF5B1AE96762008E5C11 /* LaunchScreen.xib */,
 				3B90CF501AE96762008E5C11 /* Supporting Files */,
 				3B90CF761AE96BCC008E5C11 /* Extensions */,
-				3B90CF7E1AE97248008E5C11 /* QRCodeViewController.swift */,
 			);
 			path = "SpeakEasy: Restaurant";
 			sourceTree = "<group>";

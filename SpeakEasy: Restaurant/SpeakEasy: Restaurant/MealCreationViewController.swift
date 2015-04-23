@@ -28,6 +28,34 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        sizeQRCodeView()
+    }
+    
+    func sizeQRCodeView() {
+        var frame = QRCodeImageView.frame
+        var originDistanceFromBottom = self.view.bounds.size.height - frame.origin.y - (frame.origin.x)
+        var originDistanceFromSide = self.view.bounds.size.width - frame.origin.x - (frame.origin.x)
+        var sideLength = min(originDistanceFromBottom, originDistanceFromSide)
+        frame.size = CGSizeMake(sideLength, sideLength)
+        QRCodeImageView.frame = frame
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let user = PFUser.currentUser() {
+            if let isRestaurant = user["is_restaurant"] as? Bool {
+                if isRestaurant == true {
+                    self.performSegueWithIdentifier("ShowRestaurantOptionsSegueIdentifier", sender: self)
+                }
+            }
+        }
+        else {
+            performSegueWithIdentifier("ShowLogInSegueIdentifier", sender: self)
+        }
+    }
+    
     @IBAction func generate(sender: AnyObject) {
         var newMeal = PFObject(className: "Meals")
         newMeal["claimed"] = false
@@ -52,13 +80,15 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate {
         
         var writer:ZXMultiFormatWriter = ZXMultiFormatWriter()
         QRCodeString = restaurantCode + " " + mealObjectId + " " + serverTextField.text + " " + pointsTextField.text
-        var result = writer.encode(QRCodeString, format: kBarcodeFormatQRCode, width: 500, height: 500, error: &error)
+        var width:Int32 = Int32(QRCodeImageView.frame.size.width)
+        var height:Int32 = Int32(QRCodeImageView.frame.size.height)
+        var result = writer.encode(QRCodeString, format: kBarcodeFormatQRCode, width: width, height: height, error: &error)
         
         if let error = error {
             println(error.localizedDescription)
         }
         else {
-            var image = UIImage(CGImage: ZXImage(matrix: result).cgimage)
+            var image = UIImage(CGImage: ZXImage(matrix: result, onColor: UIColor.whiteColor().CGColor, offColor: UIColor.algorithmsGreen().CGColor).cgimage)
             QRCodeImageView.image = image
         }
     }

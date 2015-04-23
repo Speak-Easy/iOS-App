@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.tintColor = UIColor.algorithmsGreen()
         
+        PFUser.logOut()
+        
         return true
     }
 
