@@ -88,7 +88,7 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate {
             println(error.localizedDescription)
         }
         else {
-            var image = UIImage(CGImage: ZXImage(matrix: result, onColor: UIColor.whiteColor().CGColor, offColor: UIColor.algorithmsGreen().CGColor).cgimage)
+            var image = UIImage(CGImage: ZXImage(matrix: result).cgimage)
             QRCodeImageView.image = image
         }
     }

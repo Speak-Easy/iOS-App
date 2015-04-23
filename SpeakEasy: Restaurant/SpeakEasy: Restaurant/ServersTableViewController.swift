@@ -9,12 +9,13 @@
 import UIKit
 
 class ServersTableViewController: UITableViewController {
-
-    var servers:[PFUser] = []
     
     @IBAction func logout(sender: AnyObject) {
         PFUser.logOut()
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    @IBAction func addServer(sender: AnyObject) {
+        // performSegueWithIdentifier("AddServerSegueIdentifier", sender: self)
     }
     
     override func viewDidLoad() {
@@ -29,21 +30,6 @@ class ServersTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        var user = PFUser.currentUser()!
-        var serverIds = user["servers"] as! [String]
-        
-        var query = PFUser.query()!
-        query.whereKey("objectId", containedIn: serverIds)
-        
-        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            if let error = error {
-                println(error.localizedDescription)
-            }
-            else {
-                self.tableView.reloadData()
-            }
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,15 +48,11 @@ class ServersTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return servers.count
+        return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ServerCellReuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        var server:PFUser! = servers[indexPath.row]
-        
-        cell.textLabel?.text = server.username
 
         return cell
     }

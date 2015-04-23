@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7E1650E0-3098-4DFE-9BC8-512E261BA947</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B5FDADE187B3847630120A907513BFD0D513235C</key>
+		<string>https://github.com/Reviewify/iOS-App.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SpeakEasy: Restaurant/SpeakEasy: Restaurant.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B5FDADE187B3847630120A907513BFD0D513235C</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Reviewify/iOS-App.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B5FDADE187B3847630120A907513BFD0D513235C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B5FDADE187B3847630120A907513BFD0D513235C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS-App</string>
+		</dict>
+	</array>
+</dict>
+</plist>

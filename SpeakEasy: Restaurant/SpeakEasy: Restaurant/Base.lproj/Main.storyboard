@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ayP-I7-ow0">
-                                <rect key="frame" x="16" y="188" width="240" height="240"/>
+                                <rect key="frame" x="16" y="188" width="77" height="90"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="H71-bp-2Ol"/>
@@ -170,7 +170,11 @@
                                 <action selector="logout:" destination="9am-dV-xeW" id="2KA-lO-2gi"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9mY-bb-hzh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9mY-bb-hzh">
+                            <connections>
+                                <action selector="addServer:" destination="9am-dV-xeW" id="xta-fg-O21"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4AW-Xa-n2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
