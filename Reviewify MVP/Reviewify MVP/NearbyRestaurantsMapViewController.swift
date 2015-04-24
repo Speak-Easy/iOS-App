@@ -13,38 +13,44 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
 
     @IBOutlet var mapView:MKMapView!
 
-    var restaurants: [String:PFObject] = [:]
-    var query = PFQuery(className: "Restaurants")
+    var restaurants: [String:PFUser] = [:]
     var selectedRestaurant:String!
     var selectedRestaurantDeals:[String]?
+    var query:PFQuery!
+    var locationManager = CLLocationManager()
     
     let PinImage = "map_pin_green"
     
     func fetch() {
-        self.query.limit = 1000
-        self.query.skip = 0
+        query = PFRole.query()
         
-        self.query.findObjectsInBackgroundWithBlock(self.closure)
-    }
-    
-    func closure(results:[AnyObject]?, error:NSError?) -> Void {
-        if let resultsArray = results {
-            for response in resultsArray {
-                var restaurant = response as! PFObject
-                var name = restaurant[Constants.RestaurantKey.Name] as! String
-                self.restaurants[name] = restaurant
-            }
-            if resultsArray.count == 1000 {
-                self.query.skip += 1000
-                self.query.findObjectsInBackgroundWithBlock(self.closure)
+        query.whereKey("name", equalTo: "Restaurant")
+        
+        query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
+            if let error = error {
+                println(error.localizedDescription)
             }
             else {
-                self.refreshRestaurants()
+                var role = object as! PFRole
+                var userRelation = role.relationForKey("users") as PFRelation
+                var userRelationQuery = userRelation.query()!
+                
+                userRelationQuery.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
+                    if let error = error {
+                        println(error.localizedDescription)
+                    }
+                    else {
+                        var users = results as! [PFUser]!
+                        for user in users {
+                            if let name = user["restaurant_name"] as? String {
+                                self.restaurants[name] = user
+                            }
+                        }
+                        self.refreshRestaurants()
+                    }
+                })
             }
-        }
-        if let existingError = error {
-            println(existingError.description)
-        }
+        })
     }
     
     func refreshRestaurants() {
@@ -66,7 +72,6 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var locationManager = CLLocationManager()
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLLocationAccuracyBest

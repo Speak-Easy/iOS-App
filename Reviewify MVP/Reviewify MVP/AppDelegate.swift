@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFFacebookUtils.initializeFacebook()
         
-        PFUser.logOut()
-        
         return true
     }
     
