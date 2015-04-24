@@ -127,13 +127,13 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
     func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
         var annotationViews = views as! [MKAnnotationView]
         for annotationView:MKAnnotationView in annotationViews {
-            if annotationView.isKindOfClass(MKUserLocation) {
+            if annotationView.annotation.isKindOfClass(MKUserLocation) {
 
             }
             else {
                 var endFrame = annotationView.frame
                 
-                annotationView.frame = CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y - 230.0, annotationView.frame.size.width, annotationView.frame.size.height)
+                annotationView.frame = CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y - self.view.bounds.size.height, annotationView.frame.size.width, annotationView.frame.size.height)
                 
                 UIView.beginAnimations(nil, context: nil)
                 UIView.setAnimationDuration(0.45)
