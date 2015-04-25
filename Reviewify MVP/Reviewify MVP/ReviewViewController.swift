@@ -44,7 +44,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
                 notification.notificationLabelTextColor = UIColor.whiteColor()
                 notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
                 
-                notification.displayNotificationWithMessage("You've been rewarded \(self.potentialReward)! You have \(totalRewards) total rewards!", forDuration: 4.0)
+                notification.displayNotificationWithMessage("You've been rewarded \(self.potentialReward)! You have \(totalRewards) total points!", forDuration: 4.0)
             }
         }
     }
