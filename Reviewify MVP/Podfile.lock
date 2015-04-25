@@ -1,5 +1,10 @@
 PODS:
-  - Bolts (1.1.4)
+  - Bolts (1.1.5):
+    - Bolts/AppLinks (= 1.1.5)
+    - Bolts/Tasks (= 1.1.5)
+  - Bolts/AppLinks (1.1.5):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.1.5)
   - CWStatusBarNotification (2.2.4)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
@@ -20,7 +25,7 @@ DEPENDENCIES:
   - TesseractOCRiOS (= 3.4.0)
 
 SPEC CHECKSUMS:
-  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
   CWStatusBarNotification: 24ea6215e9b4a0cea66f8377fb0130f313e0b3d4
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad

@@ -51,17 +51,9 @@ class LoginViewController: UIViewController {
             
             PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user: PFUser?, error:NSError?) -> Void in
                 if let existingError = error {
-                    println(existingError.description)
+                    println(existingError.localizedDescription)
                 }
-                else {
-                    if PFUser.currentUser()!.objectForKey(Constants.UserKey.TotalRewards) == nil {
-                        PFUser.currentUser()!.setObject(0, forKey: Constants.UserKey.TotalRewards)
-                        PFUser.currentUser()!.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-                            if let existingError = error {
-                                println(existingError.description)
-                            }
-                        })
-                    }
+                else if user != nil {
                     self.closeButton.enabled = false
                     self.logInButton.setTitle(self.LogoutText, forState: UIControlState.Normal)
                     self.dismissViewControllerAnimated(true, completion: {})
