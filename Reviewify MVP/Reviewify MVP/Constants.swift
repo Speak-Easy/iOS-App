@@ -30,5 +30,8 @@ class Constants {
         static let StarRating = "star_rating"
         static let Reward = "reward"
         static let Meal = "meal"
+        static let Restaurant = "restaurant_objectId"
+        static let Reviewer = "uploader_username"
+        static let ClassName = "Reviews"
     }
 }

@@ -25,7 +25,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func donePressed(sender: AnyObject) {
         
-        PFCloud.reviewRestaurantInBackground(restaurantCode, mealCode: mealCode, potentialReward: potentialReward, review: feedbackTextView.text, starRating: starView.rating, currentUsername: PFUser.currentUser()!.username) { (results, error) -> Void in
+        PFCloud.reviewRestaurantInBackground(restaurantCode, mealCode: mealCode, potentialReward: potentialReward, currentUsername: PFUser.currentUser()!.username) { (results, error) -> Void in
             if let error = error {
                 println(error.description)
                 if let alertMessage = error.userInfo?["error"] as? String {
@@ -50,7 +50,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     func showAlert(message:String!) {
-        var alertView = UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "OK")
+        var alertView = UIAlertView(title: message, message: nil, delegate: nil, cancelButtonTitle: "OK")
         alertView.show()
     }
     

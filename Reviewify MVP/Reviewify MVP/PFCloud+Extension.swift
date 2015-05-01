@@ -10,7 +10,7 @@ import Foundation
 
 extension PFCloud {
     
-    class func reviewRestaurantInBackground(restaurantCode:String!, mealCode:String!, potentialReward:Int!, review:String!, starRating:Float!, currentUsername:String!, block: PFIdResultBlock) {
+    class func reviewRestaurantInBackground(restaurantCode:String!, mealCode:String!, potentialReward:Int!, currentUsername:String!, block: PFIdResultBlock) {
         
         var parameters = [NSObject:AnyObject]()
         
@@ -18,8 +18,6 @@ extension PFCloud {
         parameters["restaurantCode"] = restaurantCode
         parameters["mealCode"] = mealCode
         parameters["potentialReward"] = potentialReward
-        parameters["review"] = review
-        parameters["starRating"] = "\(starRating)"
         
         PFCloud.callFunctionInBackground("ReviewMeal", withParameters: parameters, block: block)
     }
