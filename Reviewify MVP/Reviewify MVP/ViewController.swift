@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
     
     var scanResult:String!
     var camFocus:CameraFocus!
@@ -27,20 +27,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         super.viewDidLoad()
 
         self.configureCamera()
-        
-        /*
-        var meal = PFObject(className: "Meals")
-        meal.setValue("gGRC9GomWJ", forKey: "restaurant")
-        meal.setValue(false, forKey: "claimed")
-        meal.setValue("", forKey:"claimed_by")
-        meal.setValue("Steve", forKey:"server")
-        meal.setValue(100, forKey:"potential_reward")
-        meal.saveInBackgroundWithBlock { (success, error) -> Void in
-            if let error = error {
-                println(error.description)
-            }
-        }
-*/
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -143,11 +129,10 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
                 PFCloud.verifyMeal(restaurantCode, mealCode: mealCode, block:  { (results, error) -> Void in
                     if let error = error {
-                        println(error.description)
+                        println(error.localizedDescription)
                         if let alertMessage = error.userInfo?["error"] as? String {
-                            println(alertMessage)
+                            self.showAlert(alertMessage)
                         }
-                        self.captureSession?.startRunning()
                     }
                     if let totalRewards = results as? PFObject {
                         self.performSegueWithIdentifier("StartReviewSegueIdentifier", sender: self)
@@ -159,6 +144,16 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
             }
         }
+    }
+    
+    func showAlert(message:String!) {
+        var alertView = UIAlertView(title: message, message: nil, delegate: self, cancelButtonTitle: "OK")
+        alertView.show()
+    }
+    
+    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
+        qrCodeFrameView?.frame = CGRectZero
+        self.captureSession?.startRunning()
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
