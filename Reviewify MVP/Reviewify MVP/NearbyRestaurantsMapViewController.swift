@@ -59,7 +59,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
             var restaurantName = key as String
             if let restaurantObject = restaurants[restaurantName] {
                 var annotation = MKPointAnnotation()
-                if let coordinateAsGeoPoint = restaurantObject[Constants.RestaurantKey.Location] as? PFGeoPoint {
+                if let coordinateAsGeoPoint = restaurantObject[Constants.Restaurants.Location] as? PFGeoPoint {
                     var coordinate = CLLocationCoordinate2D(latitude: coordinateAsGeoPoint.latitude, longitude: coordinateAsGeoPoint.longitude)
                     annotation.coordinate = coordinate
                     annotation.title = restaurantName

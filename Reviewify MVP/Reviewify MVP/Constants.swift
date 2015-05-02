@@ -8,28 +8,26 @@
 
 import Foundation
 class Constants {
-    struct UserKey {
-        static let TotalRewards = "total_rewards"
-    }
-    
-    struct RestaurantKey {
-        static let Name = "name"
+    struct Restaurants {
+        static let Name = "restaurant_name"
         static let Location = "location"
     }
     
-    struct MealValidation {
+    struct Meals {
         static let ClassName = "Meals"
         static let MealID = "objectId"
         static let Claimed = "claimed"
         static let ClaimedBy = "claimed_by"
-        static let Restaurant = "restaurant"
+        static let Restaurant = "restaurant_objectId"
+        static let PotentialReward = "potential_reward"
+        static let Server = "server_objectId"
     }
     
     struct Review {
         static let Review = "review"
         static let StarRating = "star_rating"
         static let Reward = "reward"
-        static let Meal = "meal"
+        static let Meal = "meal_objectId"
         static let Restaurant = "restaurant_objectId"
         static let Reviewer = "uploader_username"
         static let ClassName = "Reviews"

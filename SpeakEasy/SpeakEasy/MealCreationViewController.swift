@@ -17,6 +17,9 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate {
     var mealObjectId: String!
     var QRCodeString: String!
 
+    @IBAction func settingsPressed(sender: AnyObject) {
+        performSegueWithIdentifier("ShowRestaurantOptionsSegueIdentifier", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,9 +65,9 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate {
     @IBAction func generate(sender: AnyObject) {
         var newMeal = PFObject(className: "Meals")
         newMeal["claimed"] = false
-        newMeal["restaurant"] = PFUser.currentUser()?.objectId
+        newMeal["restaurant_objectId"] = PFUser.currentUser()?.objectId
         newMeal["claimed_by"] = ""
-        newMeal["server"] = serverTextField.text
+        newMeal["server_objectId"] = serverTextField.text
         newMeal["potential_reward"] = pointsTextField.text.toInt()!
         
         newMeal.saveInBackgroundWithBlock { (success, error) -> Void in
@@ -72,6 +75,27 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate {
                 self.mealObjectId = newMeal.objectId!
                 self.generateQRCode()
             }
+            if let error = error {
+                println(error.description)
+            }
+        }
+        
+        var newServer = PFObject(className: "Servers")
+        newServer.setValue("Bryce", forKey: "first_name")
+        newServer.setValue("Langlotz", forKey: "last_name")
+        newServer.setValue("brycel@vt.edu", forKey: "email")
+        newServer.setValue(PFUser.currentUser()!.objectId!, forKey: "restaurant_objectId")
+        newServer.saveInBackgroundWithBlock { (success, error) -> Void in
+            if let error = error {
+                println(error.description)
+            }
+        }
+        
+        var newDeal = PFObject(className: "Deals")
+        newDeal.setValue("Test Deal", forKey: "information")
+        newDeal.setValue(100, forKey: "cost")
+        newDeal.setValue(PFUser.currentUser()!.objectId!, forKey: "restaurant_objectId")
+        newDeal.saveInBackgroundWithBlock { (success, error) -> Void in
             if let error = error {
                 println(error.description)
             }
