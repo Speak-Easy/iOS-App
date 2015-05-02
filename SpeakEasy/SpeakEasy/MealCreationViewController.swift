@@ -73,7 +73,8 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        sizeQRCodeView()
+        pointsTextField.text = ""
+        serverTextField.text = ""
         
         if let user = PFUser.currentUser() {
             PFUser.currentUser()?.isRestaurant({ (success, error) -> Void in
