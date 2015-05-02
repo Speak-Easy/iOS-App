@@ -11,14 +11,24 @@ import UIKit
 class RestaurantDetailsTableViewController: UITableViewController {
 
     var restaurantName:String!
-    var deals:[String]! = []
+    var restaurantObjectId:String!
+    var dealsQuery = PFQuery(className: Constants.Deals.ClassName)
+    var deals = [PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = restaurantName
-        
-        
+        dealsQuery.whereKey(Constants.Deals.Restaurant, equalTo: restaurantObjectId)
+        dealsQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+            if let error = error {
+                println(error.localizedDescription)
+            }
+            if let dealsResults = results as? [PFObject] {
+                self.deals = dealsResults
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,11 +49,18 @@ class RestaurantDetailsTableViewController: UITableViewController {
         // Return the number of rows in the section.
         return deals.count
     }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Cost | Information"
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        cell.textLabel?.text = deals[indexPath.row]
+        
+        var information = deals[indexPath.row][Constants.Deals.Information] as! String
+        var cost = deals[indexPath.row][Constants.Deals.Cost] as! Int
+        cell.textLabel?.text = "\(cost)"
+        cell.detailTextLabel?.text = information
 
         return cell
     }

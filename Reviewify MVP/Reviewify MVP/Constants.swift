@@ -32,4 +32,11 @@ class Constants {
         static let Reviewer = "uploader_username"
         static let ClassName = "Reviews"
     }
+    
+    struct Deals {
+        static let Restaurant = "restaurant_objectId"
+        static let ClassName = "Deals"
+        static let Information = "information"
+        static let Cost = "cost"
+    }
 }

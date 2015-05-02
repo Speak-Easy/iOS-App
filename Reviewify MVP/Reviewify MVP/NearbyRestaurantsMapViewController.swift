@@ -15,7 +15,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
 
     var restaurants: [String:PFUser] = [:]
     var selectedRestaurant:String!
-    var selectedRestaurantDeals:[String]?
+    var selectedRestaurantObjectId:String!
     var query:PFQuery!
     var locationManager = CLLocationManager()
     
@@ -148,7 +148,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         var button = sender as! UIButton
         var name = button.titleForState(UIControlState.Normal)!
         selectedRestaurant = name
-        selectedRestaurantDeals = restaurants[selectedRestaurant]?["deals"] as? [String]
+        selectedRestaurantObjectId = restaurants[selectedRestaurant]?.objectId
         performSegueWithIdentifier("ShowRestaurantDetailsSegueIdentifier", sender: self)
     }
 
@@ -159,8 +159,8 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
         if segue.identifier == "ShowRestaurantDetailsSegueIdentifier" {
             var destinationViewController = segue.destinationViewController as! RestaurantDetailsTableViewController
             destinationViewController.restaurantName = selectedRestaurant
-            if let deals = selectedRestaurantDeals {
-                destinationViewController.deals = deals
+            if let deals = selectedRestaurantObjectId{
+                destinationViewController.restaurantObjectId = selectedRestaurantObjectId
             }
         }
     }
