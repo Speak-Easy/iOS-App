@@ -16,12 +16,17 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender:AnyObject!) {
         PFUser.logInWithUsernameInBackground(emailTextField.text, password: passwordTextField.text) { (user, error) -> Void in
             if let error = error {
-                println(error.localizedDescription)
+                self.showAlert("Invalid Login Credentials")
             }
             else {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
+    }
+    
+    func showAlert(message:String!) {
+        var alertView = UIAlertView(title: message, message: nil, delegate: nil, cancelButtonTitle: "OK")
+        alertView.show()
     }
     
     override func viewDidLoad() {
@@ -31,6 +36,8 @@ class LoginViewController: UIViewController {
         PFUser.logOutInBackgroundWithBlock { (error) -> Void in
             println(error?.localizedDescription)
         }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

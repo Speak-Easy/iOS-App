@@ -15,6 +15,8 @@ class ServersTableViewController: UITableViewController {
     
     var servers = [PFObject]()
     var deals = [PFObject]()
+    var selectedServer:PFObject?
+    var selectedDeal:PFObject?
     
     @IBAction func addServer(sender: AnyObject) {
         // performSegueWithIdentifier("AddServerSegueIdentifier", sender: self)
@@ -26,7 +28,17 @@ class ServersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedServer = nil
+        selectedDeal = nil
+        
         serverQuery.whereKey("restaurant_objectId", equalTo: PFUser.currentUser()!.objectId!)
         serverQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if let error = error {
@@ -52,10 +64,6 @@ class ServersTableViewController: UITableViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -196,6 +204,29 @@ class ServersTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0..<servers.count:
+                selectedServer = servers[indexPath.row]
+                performSegueWithIdentifier("AddOrEditServerSegueIdentifier", sender: self)
+            default:
+                performSegueWithIdentifier("AddOrEditServerSegueIdentifier", sender: self)
+            }
+        case 1:
+            switch indexPath.row {
+            case 0..<deals.count:
+                selectedDeal = deals[indexPath.row]
+                performSegueWithIdentifier("AddOrEditDealSegueIdentifier", sender: self)
+            default:
+                performSegueWithIdentifier("AddOrEditDealSegueIdentifier", sender: self)
+            }
+        default:
+            println("Shouldn't Be Able To Delete In Section")
+        }
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -212,14 +243,20 @@ class ServersTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "AddOrEditServerSegueIdentifier" {
+            var destinationViewControllerNavigationController = segue.destinationViewController as! UINavigationController
+            var destinationViewController = destinationViewControllerNavigationController.viewControllers[0] as! AddOrEditServerTableViewController
+            destinationViewController.server = selectedServer
+        }
+        if segue.identifier == "AddOrEditDealSegueIdentifier" {
+            var destinationViewControllerNavigationController = segue.destinationViewController as! UINavigationController
+            var destinationViewController = destinationViewControllerNavigationController.viewControllers[0] as! AddOrEditDealTableViewController
+            destinationViewController.deal = selectedDeal
+        }
     }
-    */
 
 }
