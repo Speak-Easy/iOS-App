@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3B6F548A1A9CD51E008F6508"
-               BuildableName = "Reviewify MVP.app"
-               BlueprintName = "Reviewify MVP"
-               ReferencedContainer = "container:Reviewify MVP.xcodeproj">
+               BuildableName = "Speakeasy.app"
+               BlueprintName = "Speakeasy"
+               ReferencedContainer = "container:Speakeasy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3B6F549F1A9CD51F008F6508"
-               BuildableName = "Reviewify MVPTests.xctest"
-               BlueprintName = "Reviewify MVPTests"
-               ReferencedContainer = "container:Reviewify MVP.xcodeproj">
+               BuildableName = "SpeakeasyTests.xctest"
+               BlueprintName = "SpeakeasyTests"
+               ReferencedContainer = "container:Speakeasy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3B6F549F1A9CD51F008F6508"
-               BuildableName = "Reviewify MVPTests.xctest"
-               BlueprintName = "Reviewify MVPTests"
-               ReferencedContainer = "container:Reviewify MVP.xcodeproj">
+               BuildableName = "SpeakeasyTests.xctest"
+               BlueprintName = "SpeakeasyTests"
+               ReferencedContainer = "container:Speakeasy.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B6F548A1A9CD51E008F6508"
-            BuildableName = "Reviewify MVP.app"
-            BlueprintName = "Reviewify MVP"
-            ReferencedContainer = "container:Reviewify MVP.xcodeproj">
+            BuildableName = "Speakeasy.app"
+            BlueprintName = "Speakeasy"
+            ReferencedContainer = "container:Speakeasy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,13 +72,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B6F548A1A9CD51E008F6508"
-            BuildableName = "Reviewify MVP.app"
-            BlueprintName = "Reviewify MVP"
-            ReferencedContainer = "container:Reviewify MVP.xcodeproj">
+            BuildableName = "Speakeasy.app"
+            BlueprintName = "Speakeasy"
+            ReferencedContainer = "container:Speakeasy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,13 +91,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B6F548A1A9CD51E008F6508"
-            BuildableName = "Reviewify MVP.app"
-            BlueprintName = "Reviewify MVP"
-            ReferencedContainer = "container:Reviewify MVP.xcodeproj">
+            BuildableName = "Speakeasy.app"
+            BlueprintName = "Speakeasy"
+            ReferencedContainer = "container:Speakeasy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

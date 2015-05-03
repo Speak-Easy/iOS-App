@@ -49,14 +49,14 @@
 		3B4FE6011AE075C000CB0F6D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3B573A4A1AE8255400518071 /* PFCloud+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFCloud+Extension.swift"; sourceTree = "<group>"; };
 		3B573A4C1AE84DCC00518071 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
-		3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reviewify MVP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6F548B1A9CD51E008F6508 /* Speakeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speakeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6F548F1A9CD51E008F6508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6F54901A9CD51E008F6508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B6F54921A9CD51E008F6508 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B6F54951A9CD51E008F6508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B6F54971A9CD51E008F6508 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3B6F549A1A9CD51E008F6508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3B6F54A01A9CD51F008F6508 /* Reviewify MVPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Reviewify MVPTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6F54A01A9CD51F008F6508 /* SpeakeasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakeasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6F54A51A9CD51F008F6508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6F54A61A9CD51F008F6508 /* Reviewify_MVPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviewify_MVPTests.swift; sourceTree = "<group>"; };
 		3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -126,8 +126,8 @@
 		3B6F548C1A9CD51E008F6508 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */,
-				3B6F54A01A9CD51F008F6508 /* Reviewify MVPTests.xctest */,
+				3B6F548B1A9CD51E008F6508 /* Speakeasy.app */,
+				3B6F54A01A9CD51F008F6508 /* SpeakeasyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,9 +246,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B6F548A1A9CD51E008F6508 /* Reviewify MVP */ = {
+		3B6F548A1A9CD51E008F6508 /* Speakeasy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B6F54AA1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVP" */;
+			buildConfigurationList = 3B6F54AA1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Speakeasy" */;
 			buildPhases = (
 				028330F04E9ABFBE72ADE646 /* Check Pods Manifest.lock */,
 				3B6F54871A9CD51E008F6508 /* Sources */,
@@ -260,14 +260,14 @@
 			);
 			dependencies = (
 			);
-			name = "Reviewify MVP";
+			name = Speakeasy;
 			productName = "Reviewify MVP";
-			productReference = 3B6F548B1A9CD51E008F6508 /* Reviewify MVP.app */;
+			productReference = 3B6F548B1A9CD51E008F6508 /* Speakeasy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3B6F549F1A9CD51F008F6508 /* Reviewify MVPTests */ = {
+		3B6F549F1A9CD51F008F6508 /* SpeakeasyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B6F54AD1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVPTests" */;
+			buildConfigurationList = 3B6F54AD1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "SpeakeasyTests" */;
 			buildPhases = (
 				3B6F549C1A9CD51F008F6508 /* Sources */,
 				3B6F549D1A9CD51F008F6508 /* Frameworks */,
@@ -278,9 +278,9 @@
 			dependencies = (
 				3B6F54A21A9CD51F008F6508 /* PBXTargetDependency */,
 			);
-			name = "Reviewify MVPTests";
+			name = SpeakeasyTests;
 			productName = "Reviewify MVPTests";
-			productReference = 3B6F54A01A9CD51F008F6508 /* Reviewify MVPTests.xctest */;
+			productReference = 3B6F54A01A9CD51F008F6508 /* SpeakeasyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -294,6 +294,7 @@
 				TargetAttributes = {
 					3B6F548A1A9CD51E008F6508 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = N5CM9T495P;
 					};
 					3B6F549F1A9CD51F008F6508 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -301,7 +302,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3B6F54861A9CD51E008F6508 /* Build configuration list for PBXProject "Reviewify MVP" */;
+			buildConfigurationList = 3B6F54861A9CD51E008F6508 /* Build configuration list for PBXProject "Speakeasy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -314,8 +315,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B6F548A1A9CD51E008F6508 /* Reviewify MVP */,
-				3B6F549F1A9CD51F008F6508 /* Reviewify MVPTests */,
+				3B6F548A1A9CD51E008F6508 /* Speakeasy */,
+				3B6F549F1A9CD51F008F6508 /* SpeakeasyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -413,7 +414,7 @@
 /* Begin PBXTargetDependency section */
 		3B6F54A21A9CD51F008F6508 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3B6F548A1A9CD51E008F6508 /* Reviewify MVP */;
+			target = 3B6F548A1A9CD51E008F6508 /* Speakeasy */;
 			targetProxy = 3B6F54A11A9CD51F008F6508 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -525,6 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Reviewify",
@@ -532,7 +534,7 @@
 				);
 				INFOPLIST_FILE = "Reviewify MVP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Speakeasy;
 				SWIFT_OBJC_BRIDGING_HEADER = "Reviewify MVP/Reviewify MVP-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -545,6 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Reviewify",
@@ -552,7 +555,7 @@
 				);
 				INFOPLIST_FILE = "Reviewify MVP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Speakeasy;
 				SWIFT_OBJC_BRIDGING_HEADER = "Reviewify MVP/Reviewify MVP-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -572,7 +575,7 @@
 				);
 				INFOPLIST_FILE = "Reviewify MVPTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SpeakeasyTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reviewify MVP.app/Reviewify MVP";
 			};
 			name = Debug;
@@ -587,7 +590,7 @@
 				);
 				INFOPLIST_FILE = "Reviewify MVPTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SpeakeasyTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reviewify MVP.app/Reviewify MVP";
 			};
 			name = Release;
@@ -595,7 +598,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B6F54861A9CD51E008F6508 /* Build configuration list for PBXProject "Reviewify MVP" */ = {
+		3B6F54861A9CD51E008F6508 /* Build configuration list for PBXProject "Speakeasy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B6F54A81A9CD51F008F6508 /* Debug */,
@@ -604,7 +607,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B6F54AA1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVP" */ = {
+		3B6F54AA1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Speakeasy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B6F54AB1A9CD51F008F6508 /* Debug */,
@@ -613,7 +616,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B6F54AD1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "Reviewify MVPTests" */ = {
+		3B6F54AD1A9CD51F008F6508 /* Build configuration list for PBXNativeTarget "SpeakeasyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B6F54AE1A9CD51F008F6508 /* Debug */,
