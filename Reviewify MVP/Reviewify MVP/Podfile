@@ -1,0 +1,6 @@
+pod 'TesseractOCRiOS', '3.4.0'
+pod 'Parse'
+pod 'MBProgressHUD', '~> 0.9.1'
+pod 'CWStatusBarNotification', '~> 2.2.2'
+pod 'Facebook-iOS-SDK'
+pod 'ParseFacebookUtils'
