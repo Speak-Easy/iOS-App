@@ -125,7 +125,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pff-7u-Hj8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="xqY-bd-Ltu" kind="relationship" relationship="rootViewController" id="7UH-t2-ayH"/>
@@ -184,7 +183,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="J4e-Ac-Ige">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="hZe-Kx-TAc">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="closeLoginViewController:" destination="xqY-bd-Ltu" id="B0P-ke-sq8"/>
                             </connections>

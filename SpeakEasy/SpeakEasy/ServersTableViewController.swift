@@ -39,28 +39,34 @@ class ServersTableViewController: UITableViewController {
         selectedServer = nil
         selectedDeal = nil
         
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Loading Servers"
+        
         serverQuery.whereKey("restaurant_objectId", equalTo: PFUser.currentUser()!.objectId!)
+        dealsQuery.whereKey("restaurant_objectId", equalTo: PFUser.currentUser()!.objectId!)
+        
         serverQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if let error = error {
                 println(error.localizedDescription)
+                hud.hide(true)
             }
             else {
                 if let serversResults = results as? [PFObject] {
                     self.servers = serversResults
                     self.tableView.reloadData()
-                }
-            }
-        }
-        
-        dealsQuery.whereKey("restaurant_objectId", equalTo: PFUser.currentUser()!.objectId!)
-        dealsQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            if let error = error {
-                println(error.localizedDescription)
-            }
-            else {
-                if let dealsResults = results as? [PFObject] {
-                    self.deals = dealsResults
-                    self.tableView.reloadData()
+                    hud.labelText = "Loading Deals"
+                    self.dealsQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+                        if let error = error {
+                            println(error.localizedDescription)
+                        }
+                        else {
+                            if let dealsResults = results as? [PFObject] {
+                                self.deals = dealsResults
+                                self.tableView.reloadData()
+                            }
+                        }
+                        hud.hide(true)
+                    }
                 }
             }
         }

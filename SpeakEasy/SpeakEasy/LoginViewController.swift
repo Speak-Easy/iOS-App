@@ -14,13 +14,18 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     
     @IBAction func login(sender:AnyObject!) {
+        
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Logging In"
         PFUser.logInWithUsernameInBackground(emailTextField.text, password: passwordTextField.text) { (user, error) -> Void in
             if let error = error {
-                self.showAlert("Invalid Login Credentials")
+                AppDelegate.showErrorWithMessage("Invalid Login Credentials", duration: 2.0)
             }
             else {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            hud.hide(true)
+            
         }
     }
     

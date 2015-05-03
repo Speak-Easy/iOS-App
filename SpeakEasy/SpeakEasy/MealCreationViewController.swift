@@ -119,7 +119,7 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
         var server = serverTextField.text
         
         if points == "" || server == "" {
-            showAlert("All fields are required to generate a QR Code.")
+            showAlert("All fields are required.")
         }
         else {
             var newMeal = PFObject(className: "Meals")

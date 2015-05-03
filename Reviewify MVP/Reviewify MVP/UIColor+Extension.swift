@@ -12,4 +12,8 @@ extension UIColor {
     class func algorithmsGreen() -> UIColor! {
         return UIColor(red:46.0/255.0, green:204.0/255.0, blue:113.0/255.0, alpha:1.0)
     }
+    
+    class func speakeasyRed() -> UIColor! {
+        return UIColor(red:212.0/255.0, green:58.0/255.0, blue:83.0/255.0, alpha:1.0)
+    }
 }

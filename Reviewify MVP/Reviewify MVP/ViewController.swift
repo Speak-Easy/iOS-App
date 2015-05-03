@@ -159,7 +159,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         var touch: UITouch = event.allTouches()!.first as! UITouch
         var touchPoint:CGPoint = touch.locationInView(touch.view)
-        focus()
         
         // If a camFocus is already on the screen remove it
         if camFocus != nil {
@@ -176,10 +175,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
             camFocus.alpha = 0.0
             UIView.commitAnimations()
         }
-    }
-    
-    func focus() {
-        
     }
     
     // MARK: Button Methods

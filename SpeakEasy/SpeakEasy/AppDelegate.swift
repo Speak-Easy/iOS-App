@@ -32,6 +32,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    class func showErrorWithMessage(message:String!, duration:CGFloat!) {
+        var notification = CWStatusBarNotification()
+        notification.notificationLabelFont = UIFont.systemFontOfSize(20.0)
+        notification.notificationLabelBackgroundColor = UIColor.speakeasyRed()
+        notification.notificationLabelTextColor = UIColor.whiteColor()
+        notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
+        notification.displayNotificationWithMessage(message, forDuration: duration)
+    }
+    
+    class func showInformationWithMessage(message:String!, duration:CGFloat!) {
+        var notification = CWStatusBarNotification()
+        notification.notificationLabelFont = UIFont.systemFontOfSize(20.0)
+        notification.notificationLabelBackgroundColor = UIColor.algorithmsGreen()
+        notification.notificationLabelTextColor = UIColor.whiteColor()
+        notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
+        notification.displayNotificationWithMessage(message, forDuration: duration)
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

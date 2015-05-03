@@ -112,8 +112,7 @@
 				3B4A72A71AEACE610093101C /* Main.storyboard */,
 				3B4A72AA1AEACE610093101C /* Images.xcassets */,
 				3B4A72AC1AEACE610093101C /* LaunchScreen.xib */,
-				3BCAD0D41AEACF7700020FA7 /* PFUser+Extension.swift */,
-				3BCAD0DA1AEACF8900020FA7 /* UIColor+Extension.swift */,
+				3B9E35DA1AF5BA2400753A92 /* Extensions */,
 				3B4A729F1AEACE610093101C /* Supporting Files */,
 			);
 			path = SpeakEasy;
@@ -143,6 +142,15 @@
 				3B4A72B81AEACE610093101C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B9E35DA1AF5BA2400753A92 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3BCAD0D41AEACF7700020FA7 /* PFUser+Extension.swift */,
+				3BCAD0DA1AEACF8900020FA7 /* UIColor+Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		408A2D845F4CA2B4BFDCD3C4 /* Frameworks */ = {
