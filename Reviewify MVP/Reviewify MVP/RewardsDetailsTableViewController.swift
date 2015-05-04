@@ -14,6 +14,7 @@ class RewardsDetailsTableViewController: UITableViewController {
     var restaurantCode:String!
     var mealCode:String!
     var server:String!
+    var serverName:String!
     var potentialReward:Int!
 
     override func viewDidLoad() {
@@ -27,6 +28,22 @@ class RewardsDetailsTableViewController: UITableViewController {
             mealCode = splitQRCode[1]
             server = splitQRCode[2]
             potentialReward = splitQRCode[3].toInt()
+            
+            var query = PFQuery(className: Constants.Servers.ClassName)
+            query.whereKey(Constants.Servers.ObjectId, equalTo: self.server)
+            query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
+                if let error = error {
+                    println(error.localizedDescription)
+                }
+                if let server = object {
+                    self.serverName = server[Constants.Servers.FirstName] as! String
+                    self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                }
+                else {
+                    println("Server Doesn't Exist")
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                }
+            })
         }
         else {
             println("Invalid QR Code")
@@ -73,7 +90,7 @@ class RewardsDetailsTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = "Server Name:"
-            cell.detailTextLabel?.text = server
+            cell.detailTextLabel?.text = serverName
         case 1:
             cell.textLabel?.text = "Potential Points:"
             cell.detailTextLabel?.text = "\(potentialReward)"

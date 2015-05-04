@@ -129,6 +129,11 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
             newMeal["server_objectId"] = selectedServerObjectId
             newMeal["potential_reward"] = pointsTextField.text.toInt()!
             
+            self.view.userInteractionEnabled = false
+            
+            var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.labelText = "Creating Meal"
+            
             newMeal.saveInBackgroundWithBlock { (success, error) -> Void in
                 if success {
                     self.mealObjectId = newMeal.objectId!
@@ -137,6 +142,8 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
                 if let error = error {
                     println(error.description)
                 }
+                hud.hide(true)
+                self.view.userInteractionEnabled = true
             }
         }
     }

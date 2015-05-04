@@ -13,6 +13,12 @@ class Constants {
         static let Location = "location"
     }
     
+    struct Servers {
+        static let ClassName = "Servers"
+        static let FirstName = "first_name"
+        static let ObjectId = "objectId"
+    }
+    
     struct Meals {
         static let ClassName = "Meals"
         static let MealID = "objectId"
