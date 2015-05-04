@@ -17,6 +17,13 @@ class RestaurantDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.userInteractionEnabled = false
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Loading Deals"
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.tintColor = UIColor.algorithmsGreen()
+        self.refreshControl?.addTarget(self, action: "getLatestDeals:", forControlEvents: UIControlEvents.ValueChanged)
 
         self.title = restaurantName
         dealsQuery.whereKey(Constants.Deals.Restaurant, equalTo: restaurantObjectId)
@@ -28,7 +35,13 @@ class RestaurantDetailsTableViewController: UITableViewController {
                 self.deals = dealsResults
                 self.tableView.reloadData()
             }
+            hud.hide(true)
+            self.view.userInteractionEnabled = true
         }
+    }
+    
+    func getLatestDeals(sender:AnyObject!) {
+        self.refreshControl?.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
