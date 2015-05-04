@@ -14,11 +14,11 @@
 		<string>https://github.com/Reviewify/iOS-App.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Reviewify MVP/Reviewify MVP.xcworkspace</string>
+	<string>Reviewify MVP/Reviewify MVP/Reviewify MVP.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B5FDADE187B3847630120A907513BFD0D513235C</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Reviewify/iOS-App.git</string>
