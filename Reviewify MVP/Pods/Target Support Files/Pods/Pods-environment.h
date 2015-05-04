@@ -44,19 +44,33 @@
 
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
-#define COCOAPODS_VERSION_MAJOR_Parse 1
-#define COCOAPODS_VERSION_MINOR_Parse 7
-#define COCOAPODS_VERSION_PATCH_Parse 1
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 1.7.2.1.
 
 // ParseFacebookUtils
 #define COCOAPODS_POD_AVAILABLE_ParseFacebookUtils
-#define COCOAPODS_VERSION_MAJOR_ParseFacebookUtils 1
-#define COCOAPODS_VERSION_MINOR_ParseFacebookUtils 7
-#define COCOAPODS_VERSION_PATCH_ParseFacebookUtils 1
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 1.7.2.1.
 
 // TesseractOCRiOS
 #define COCOAPODS_POD_AVAILABLE_TesseractOCRiOS
 #define COCOAPODS_VERSION_MAJOR_TesseractOCRiOS 3
 #define COCOAPODS_VERSION_MINOR_TesseractOCRiOS 4
 #define COCOAPODS_VERSION_PATCH_TesseractOCRiOS 0
+
+// ZXingObjC
+#define COCOAPODS_POD_AVAILABLE_ZXingObjC
+#define COCOAPODS_VERSION_MAJOR_ZXingObjC 3
+#define COCOAPODS_VERSION_MINOR_ZXingObjC 1
+#define COCOAPODS_VERSION_PATCH_ZXingObjC 0
+
+// ZXingObjC/All
+#define COCOAPODS_POD_AVAILABLE_ZXingObjC_All
+#define COCOAPODS_VERSION_MAJOR_ZXingObjC_All 3
+#define COCOAPODS_VERSION_MINOR_ZXingObjC_All 1
+#define COCOAPODS_VERSION_PATCH_ZXingObjC_All 0
 

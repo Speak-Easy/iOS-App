@@ -21,6 +21,8 @@
 		3B6F54B11A9CD64A008F6508 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */; };
 		3B6F54B31A9CD92F008F6508 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */; };
 		3B6F54DB1A9CE4C9008F6508 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */; };
+		3B8174851AF6C1F20029AEDD /* QRCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8174841AF6C1F20029AEDD /* QRCodeImageView.swift */; };
+		3B8174881AF6C3770029AEDD /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8174871AF6C3770029AEDD /* RedeemViewController.swift */; };
 		3B8816091AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */; };
 		3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */; };
 		3B8DC2A21AD70F68002198CA /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DC2A11AD70F68002198CA /* Regex.swift */; };
@@ -62,6 +64,8 @@
 		3B6F54B01A9CD64A008F6508 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3B6F54B21A9CD92F008F6508 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		3B8174841AF6C1F20029AEDD /* QRCodeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeImageView.swift; sourceTree = "<group>"; };
+		3B8174871AF6C3770029AEDD /* RedeemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
 		3B8816081AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3B88D33B1AA0D27D0054388D /* ASStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStarRatingView.h; sourceTree = "<group>"; };
 		3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStarRatingView.m; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				3BE38AAF1AD762FB00830511 /* LoginViewController.swift */,
 				3BD905CC1AE861010087186B /* Earning Rewards */,
 				3BD905CD1AE8610F0087186B /* Nearby */,
+				3B8174861AF6C3580029AEDD /* Redeem */,
 				3B6F54941A9CD51E008F6508 /* Main.storyboard */,
 				3B6F54971A9CD51E008F6508 /* Images.xcassets */,
 				3B6F54991A9CD51E008F6508 /* LaunchScreen.xib */,
@@ -175,6 +180,15 @@
 				3B6F54A51A9CD51F008F6508 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B8174861AF6C3580029AEDD /* Redeem */ = {
+			isa = PBXGroup;
+			children = (
+				3B8174841AF6C1F20029AEDD /* QRCodeImageView.swift */,
+				3B8174871AF6C3770029AEDD /* RedeemViewController.swift */,
+			);
+			name = Redeem;
 			sourceTree = "<group>";
 		};
 		3B8DC2A01AD70F44002198CA /* Helper */ = {
@@ -388,11 +402,13 @@
 				3B8DC2A21AD70F68002198CA /* Regex.swift in Sources */,
 				3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */,
 				3BED176B1AD6DEBF005DEA44 /* Double+Extension.swift in Sources */,
+				3B8174881AF6C3770029AEDD /* RedeemViewController.swift in Sources */,
 				3B573A4B1AE8255400518071 /* PFCloud+Extension.swift in Sources */,
 				3B6F54B31A9CD92F008F6508 /* ReviewViewController.swift in Sources */,
 				3B6F54DB1A9CE4C9008F6508 /* String+Extension.swift in Sources */,
 				3B6F54911A9CD51E008F6508 /* AppDelegate.swift in Sources */,
 				3B4293141AC38E830064B38F /* UIImage+Rotation.swift in Sources */,
+				3B8174851AF6C1F20029AEDD /* QRCodeImageView.swift in Sources */,
 				3BED175A1AD63158005DEA44 /* RewardsDetailsTableViewController.swift in Sources */,
 				3B573A4D1AE84DCC00518071 /* Review.swift in Sources */,
 				3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */,
@@ -576,7 +592,7 @@
 				INFOPLIST_FILE = "Reviewify MVPTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SpeakeasyTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reviewify MVP.app/Reviewify MVP";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Speakeasy.app/Speakeasy";
 			};
 			name = Debug;
 		};
@@ -591,7 +607,7 @@
 				INFOPLIST_FILE = "Reviewify MVPTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SpeakeasyTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reviewify MVP.app/Reviewify MVP";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Speakeasy.app/Speakeasy";
 			};
 			name = Release;
 		};

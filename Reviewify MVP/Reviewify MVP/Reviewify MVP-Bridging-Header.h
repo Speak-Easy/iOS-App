@@ -17,3 +17,5 @@
 #import "MBProgressHUD.h"
 
 #import "CWStatusBarNotification.h"
+
+#import "ZXingObjC.h"

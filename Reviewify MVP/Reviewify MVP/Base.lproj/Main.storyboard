@@ -8,7 +8,7 @@
         <!--Scanner-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -43,7 +43,7 @@
         <!--Near You-->
         <scene sceneID="fKt-Jm-KDV">
             <objects>
-                <viewController id="yfB-ls-yKp" customClass="NearbyRestaurantsMapViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yfB-ls-yKp" customClass="NearbyRestaurantsMapViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Aq7-26-PSj"/>
                         <viewControllerLayoutGuide type="bottom" id="Bgk-ia-02n"/>
@@ -80,7 +80,7 @@
         <!--Title-->
         <scene sceneID="f52-oc-fi5">
             <objects>
-                <tableViewController id="hfc-54-oq1" customClass="RestaurantDetailsTableViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hfc-54-oq1" customClass="RestaurantDetailsTableViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ywb-9E-mvK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
         <!--Login View Controller-->
         <scene sceneID="pUW-OV-jWR">
             <objects>
-                <viewController id="xqY-bd-Ltu" customClass="LoginViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xqY-bd-Ltu" customClass="LoginViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GMb-Ln-xto"/>
                         <viewControllerLayoutGuide type="bottom" id="fj2-F5-S2W"/>
@@ -201,7 +201,7 @@
         <!--Summary-->
         <scene sceneID="8JN-2r-4s4">
             <objects>
-                <tableViewController id="sQ1-m4-ZU0" customClass="RewardsDetailsTableViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sQ1-m4-ZU0" customClass="RewardsDetailsTableViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" id="NCW-tW-g2t">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,7 +253,7 @@
         <!--Redeem-->
         <scene sceneID="t8L-WI-sCr">
             <objects>
-                <viewController id="5Dd-72-xUY" sceneMemberID="viewController">
+                <viewController id="5Dd-72-xUY" customClass="RedeemViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RAb-EG-nLU"/>
                         <viewControllerLayoutGuide type="bottom" id="7pa-Ec-hfg"/>
@@ -261,9 +261,30 @@
                     <view key="view" contentMode="scaleToFill" id="sRi-pe-16i">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Points Cost" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nn7-Mh-3vV">
+                                <rect key="frame" x="16" y="40" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DkP-yF-njO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5Dd-72-xUY" id="reI-jT-Xsv"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nn7-Mh-3vV" firstAttribute="leading" secondItem="sRi-pe-16i" secondAttribute="leadingMargin" id="FeI-o4-u7D"/>
+                            <constraint firstItem="nn7-Mh-3vV" firstAttribute="trailing" secondItem="sRi-pe-16i" secondAttribute="trailingMargin" id="R2W-VK-dTr"/>
+                            <constraint firstItem="nn7-Mh-3vV" firstAttribute="top" secondItem="RAb-EG-nLU" secondAttribute="bottom" constant="20" id="pEh-wA-Fuk"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Redeem" id="3yU-PE-TnC"/>
+                    <tabBarItem key="tabBarItem" title="Redeem" image="QR_code-50" id="3yU-PE-TnC"/>
+                    <connections>
+                        <outlet property="pointsTextField" destination="nn7-Mh-3vV" id="eku-xy-QFR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4oQ-vJ-q37" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -288,11 +309,11 @@
             </objects>
             <point key="canvasLocation" x="312" y="-1259"/>
         </scene>
-        <!--Review-->
+        <!--Earn-->
         <scene sceneID="Rx5-Rb-4Sz">
             <objects>
                 <navigationController id="PIU-EC-gGo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Review" id="W04-6a-PnR"/>
+                    <tabBarItem key="tabBarItem" title="Earn" image="QR_code-50" id="W04-6a-PnR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cyw-ug-G9r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -308,7 +329,7 @@
         <!--Review View Controller-->
         <scene sceneID="hxc-9r-5ee">
             <objects>
-                <viewController id="8VO-a9-i70" customClass="ReviewViewController" customModule="Reviewify_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8VO-a9-i70" customClass="ReviewViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DlF-lB-1JR"/>
                         <viewControllerLayoutGuide type="bottom" id="xNb-AU-q3H"/>
@@ -360,4 +381,7 @@
             <point key="canvasLocation" x="1120" y="1841"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="QR_code-50" width="25" height="25"/>
+    </resources>
 </document>
