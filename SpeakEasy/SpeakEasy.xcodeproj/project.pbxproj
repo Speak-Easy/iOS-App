@@ -12,10 +12,11 @@
 		3B4A72AB1AEACE610093101C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B4A72AA1AEACE610093101C /* Images.xcassets */; };
 		3B4A72AE1AEACE610093101C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B4A72AC1AEACE610093101C /* LaunchScreen.xib */; };
 		3B4A72BA1AEACE610093101C /* SpeakEasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A72B91AEACE610093101C /* SpeakEasyTests.swift */; };
+		3B945F501AF72A90004520C8 /* ChargingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B945F4F1AF72A90004520C8 /* ChargingViewController.swift */; };
+		3B945F521AF72B9C004520C8 /* DealsToChargeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B945F511AF72B9C004520C8 /* DealsToChargeTableViewController.swift */; };
 		3BCAD0D11AEACF6B00020FA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAD0D01AEACF6B00020FA7 /* LoginViewController.swift */; };
 		3BCAD0D31AEACF7100020FA7 /* MealCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAD0D21AEACF7100020FA7 /* MealCreationViewController.swift */; };
 		3BCAD0D51AEACF7700020FA7 /* PFUser+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAD0D41AEACF7700020FA7 /* PFUser+Extension.swift */; };
-		3BCAD0D71AEACF7D00020FA7 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAD0D61AEACF7D00020FA7 /* QRCodeViewController.swift */; };
 		3BCAD0D91AEACF8100020FA7 /* ServersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAD0D81AEACF8100020FA7 /* ServersTableViewController.swift */; };
 		3BCAD0DB1AEACF8900020FA7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAD0DA1AEACF8900020FA7 /* UIColor+Extension.swift */; };
 		3BD071E51AF462EF00433CAF /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD071E41AF462EF00433CAF /* TextFieldTableViewCell.swift */; };
@@ -45,10 +46,11 @@
 		3B4A72B81AEACE610093101C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B4A72B91AEACE610093101C /* SpeakEasyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakEasyTests.swift; sourceTree = "<group>"; };
 		3B4A72C31AEACEB20093101C /* SpeakEasy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakEasy-Bridging-Header.h"; sourceTree = "<group>"; };
+		3B945F4F1AF72A90004520C8 /* ChargingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargingViewController.swift; sourceTree = "<group>"; };
+		3B945F511AF72B9C004520C8 /* DealsToChargeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsToChargeTableViewController.swift; sourceTree = "<group>"; };
 		3BCAD0D01AEACF6B00020FA7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3BCAD0D21AEACF7100020FA7 /* MealCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCreationViewController.swift; sourceTree = "<group>"; };
 		3BCAD0D41AEACF7700020FA7 /* PFUser+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Extension.swift"; sourceTree = "<group>"; };
-		3BCAD0D61AEACF7D00020FA7 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		3BCAD0D81AEACF8100020FA7 /* ServersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServersTableViewController.swift; sourceTree = "<group>"; };
 		3BCAD0DA1AEACF8900020FA7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3BD071E41AF462EF00433CAF /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,12 +105,9 @@
 			children = (
 				3B4A72A11AEACE610093101C /* AppDelegate.swift */,
 				3BCAD0D01AEACF6B00020FA7 /* LoginViewController.swift */,
-				3BCAD0D21AEACF7100020FA7 /* MealCreationViewController.swift */,
-				3BCAD0D61AEACF7D00020FA7 /* QRCodeViewController.swift */,
-				3BCAD0D81AEACF8100020FA7 /* ServersTableViewController.swift */,
-				3BD071E81AF4639B00433CAF /* AddOrEditServerTableViewController.swift */,
-				3BD071EA1AF4684F00433CAF /* AddOrEditDealTableViewController.swift */,
-				3BD071E41AF462EF00433CAF /* TextFieldTableViewCell.swift */,
+				3B945F4D1AF72A48004520C8 /* Meal Creation */,
+				3B945F4C1AF72A1E004520C8 /* Settings */,
+				3B945F4E1AF72A77004520C8 /* Charging */,
 				3B4A72A71AEACE610093101C /* Main.storyboard */,
 				3B4A72AA1AEACE610093101C /* Images.xcassets */,
 				3B4A72AC1AEACE610093101C /* LaunchScreen.xib */,
@@ -142,6 +141,34 @@
 				3B4A72B81AEACE610093101C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B945F4C1AF72A1E004520C8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3BD071E41AF462EF00433CAF /* TextFieldTableViewCell.swift */,
+				3BCAD0D81AEACF8100020FA7 /* ServersTableViewController.swift */,
+				3BD071E81AF4639B00433CAF /* AddOrEditServerTableViewController.swift */,
+				3BD071EA1AF4684F00433CAF /* AddOrEditDealTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		3B945F4D1AF72A48004520C8 /* Meal Creation */ = {
+			isa = PBXGroup;
+			children = (
+				3BCAD0D21AEACF7100020FA7 /* MealCreationViewController.swift */,
+			);
+			name = "Meal Creation";
+			sourceTree = "<group>";
+		};
+		3B945F4E1AF72A77004520C8 /* Charging */ = {
+			isa = PBXGroup;
+			children = (
+				3B945F4F1AF72A90004520C8 /* ChargingViewController.swift */,
+				3B945F511AF72B9C004520C8 /* DealsToChargeTableViewController.swift */,
+			);
+			name = Charging;
 			sourceTree = "<group>";
 		};
 		3B9E35DA1AF5BA2400753A92 /* Extensions */ = {
@@ -308,13 +335,14 @@
 				3BCAD0DB1AEACF8900020FA7 /* UIColor+Extension.swift in Sources */,
 				3BCAD0D31AEACF7100020FA7 /* MealCreationViewController.swift in Sources */,
 				3BD071EB1AF4684F00433CAF /* AddOrEditDealTableViewController.swift in Sources */,
+				3B945F501AF72A90004520C8 /* ChargingViewController.swift in Sources */,
 				3BCAD0D11AEACF6B00020FA7 /* LoginViewController.swift in Sources */,
 				3BD071E51AF462EF00433CAF /* TextFieldTableViewCell.swift in Sources */,
 				3BD071E91AF4639B00433CAF /* AddOrEditServerTableViewController.swift in Sources */,
 				3BCAD0D91AEACF8100020FA7 /* ServersTableViewController.swift in Sources */,
+				3B945F521AF72B9C004520C8 /* DealsToChargeTableViewController.swift in Sources */,
 				3BCAD0D51AEACF7700020FA7 /* PFUser+Extension.swift in Sources */,
 				3B4A72A21AEACE610093101C /* AppDelegate.swift in Sources */,
-				3BCAD0D71AEACF7D00020FA7 /* QRCodeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

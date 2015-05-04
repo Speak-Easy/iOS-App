@@ -32,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    class func appDelegate() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
+    
     class func showErrorWithMessage(message:String!, duration:CGFloat!) {
         var notification = CWStatusBarNotification()
         notification.notificationLabelFont = UIFont.systemFontOfSize(20.0)

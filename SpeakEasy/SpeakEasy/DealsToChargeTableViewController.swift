@@ -1,19 +1,18 @@
 //
-//  ShowRestaurantDetailsTableViewController.swift
-//  Reviewify MVP
+//  DeaslToChargeTableViewController.swift
+//  SpeakEasy
 //
-//  Created by Bryce Langlotz on 4/16/15.
+//  Created by Bryce Langlotz on 5/4/15.
 //  Copyright (c) 2015 Bryce Langlotz. All rights reserved.
 //
 
 import UIKit
 
-class RestaurantDetailsTableViewController: UITableViewController {
+class DealsToChargeTableViewController: UITableViewController {
 
-    var restaurantName:String!
-    var restaurantObjectId:String!
-    var dealsQuery = PFQuery(className: Constants.Deals.ClassName)
+    var dealsQuery = PFQuery(className: "Deals")
     var deals = [PFObject]()
+    var selectedDeal:PFObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +20,14 @@ class RestaurantDetailsTableViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.tintColor = UIColor.algorithmsGreen()
         self.refreshControl?.addTarget(self, action: "getLatestDeals:", forControlEvents: UIControlEvents.ValueChanged)
-        self.refreshControl?.beginRefreshing()
-        getLatestDeals(nil)
         
-        self.title = restaurantName
+        self.refreshControl?.beginRefreshing()
+        
+        getLatestDeals(nil)
     }
     
     func getLatestDeals(sender:AnyObject!) {
-        dealsQuery.whereKey(Constants.Deals.Restaurant, equalTo: restaurantObjectId)
+        dealsQuery.whereKey("restaurant_objectId", equalTo: PFUser.currentUser()!.objectId!)
         dealsQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if let error = error {
                 println(error.localizedDescription)
@@ -59,20 +58,23 @@ class RestaurantDetailsTableViewController: UITableViewController {
         // Return the number of rows in the section.
         return deals.count
     }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Cost | Information"
-    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-        
-        var information = deals[indexPath.row][Constants.Deals.Information] as! String
-        var cost = deals[indexPath.row][Constants.Deals.Cost] as! Int
+        let cell = tableView.dequeueReusableCellWithIdentifier("DealToChargeCellReuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+
+        var deal = deals[indexPath.row]
+        var cost = deal["cost"] as! Int
         cell.textLabel?.text = "\(cost)"
-        cell.detailTextLabel?.text = information
+        cell.textLabel?.textColor = UIColor.algorithmsGreen()
+        
+        cell.detailTextLabel?.text = deal["information"] as? String
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedDeal = deals[indexPath.row]
+        performSegueWithIdentifier("ChargeItemViewControllerSegueIdentifier", sender: self)
     }
 
     /*
@@ -110,14 +112,13 @@ class RestaurantDetailsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ChargeItemViewControllerSegueIdentifier" {
+            var destinationViewController = segue.destinationViewController as! ChargingViewController
+            destinationViewController.deal = selectedDeal
+        }
     }
-    */
-
 }
