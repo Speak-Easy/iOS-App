@@ -34,6 +34,7 @@ class DealsToChargeTableViewController: UITableViewController {
             }
             if let dealsResults = results as? [PFObject] {
                 self.deals = dealsResults
+                self.deals.sort{($0["cost"] as! Int) < ($1["cost"] as! Int)}
                 self.tableView.reloadData()
             }
             self.refreshControl?.endRefreshing()
