@@ -63,6 +63,8 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
         
         serverTextField.inputView = pickerView
         
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "removeKeyboard:"))
+        
         PFUser.logOut()
     }
 
@@ -73,8 +75,8 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        pointsTextField.text = ""
-        serverTextField.text = ""
+        
+        reset()
         
         if let user = PFUser.currentUser() {
             PFUser.currentUser()?.isRestaurant({ (success, error) -> Void in
@@ -101,6 +103,18 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
         }
     }
     
+    func reset() {
+        pointsTextField.text = ""
+        serverTextField.text = ""
+        
+        mealObjectId = ""
+        selectedServerObjectId = ""
+        generateQRCode()
+        UIView.animateWithDuration(0.2, animations: {
+            self.QRCodeImageView.alpha = 0.05
+        })
+    }
+    
     func sizeQRCodeView() {
         var frame = QRCodeImageView.frame
         var originDistanceFromBottom = self.view.bounds.size.height - frame.origin.y - (frame.origin.x)
@@ -115,11 +129,16 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
     
     @IBAction func generate(sender: AnyObject) {
+        UIView.animateWithDuration(0.2, animations: {
+            self.QRCodeImageView.alpha = 1.0
+        })
+        
         var points = pointsTextField.text
         var server = serverTextField.text
         
         if points == "" || server == "" {
             showAlert("All fields are required.")
+            reset()
         }
         else {
             var newMeal = PFObject(className: "Meals")
@@ -158,7 +177,10 @@ class MealCreationViewController: UIViewController, UITextFieldDelegate, UIPicke
         sizeQRCodeView()
         
         var writer:ZXMultiFormatWriter = ZXMultiFormatWriter()
-        var restaurantCode = PFUser.currentUser()!.objectId!
+        var restaurantCode = ""
+        if let userObjectId = PFUser.currentUser()?.objectId {
+            restaurantCode = userObjectId
+        }
         QRCodeString = restaurantCode + " " + mealObjectId + " " + selectedServerObjectId + " " + pointsTextField.text
         var width:Int32 = Int32(QRCodeImageView.frame.size.width)
         var height:Int32 = Int32(QRCodeImageView.frame.size.height)

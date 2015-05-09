@@ -114,21 +114,38 @@ class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
                     
                     if points.toInt() == cost {
                         // Charge User
-                        
-                        AppDelegate.showInformationWithMessage("Transaction Complete!", duration: 5.0)
+                        self.view.userInteractionEnabled = false
+                        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                        hud.labelText = "Charging"
+                        PFCloud.chargeUser(username, numberOfPoints: points.toInt(), block: { (results, error) -> Void in
+                            if let error = error {
+                                println(error.description)
+                                if let alertMessage = error.userInfo?["error"] as? String {
+                                    self.showAlert(alertMessage)
+                                }
+                            }
+                            if let chargedAmount = results as? Int {
+                                self.showAlert("User Charged \(chargedAmount)")
+                                self.navigationController?.popToRootViewControllerAnimated(true)
+                            }
+                            hud.hide(true)
+                        })
                     }
                     else {
-                        AppDelegate.showErrorWithMessage("The cost entered by the user does not match the deal cost!", duration: 5.0)
+                        showAlert("The cost entered by the user does not match the deal cost!")
                     }
                 }
                 else {
-                    AppDelegate.showErrorWithMessage("The customer must enter the deal's cost!", duration: 5.0)
+                    showAlert("The customer must enter the deal's cost!")
                 }
-                self.navigationController?.popToRootViewControllerAnimated(true)
             }
         }
     }
-
+    
+    func showAlert(message:String!) {
+        var alertView = UIAlertView(title: message, message: nil, delegate: nil, cancelButtonTitle: "OK")
+        alertView.show()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
