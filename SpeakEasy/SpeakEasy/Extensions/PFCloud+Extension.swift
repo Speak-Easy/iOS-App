@@ -13,8 +13,9 @@ extension PFCloud {
     class func chargeUser(username:String!, numberOfPoints points:Int!, block:PFIdResultBlock) {
         var parameters = [NSObject:AnyObject]()
         
-        parameters["username"] = username
-        parameters["restaurantCode"] = points
+        parameters["username"] = PFUser.currentUser()!.username
+        parameters["userToCharge"] = username
+        parameters["cost"] = points
         
         PFCloud.callFunctionInBackground("ChargeUser", withParameters: parameters, block: block)
     }

@@ -124,8 +124,8 @@ class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
                                     self.showAlert(alertMessage)
                                 }
                             }
-                            if let chargedAmount = results as? Int {
-                                self.showAlert("User Charged \(chargedAmount)")
+                            if let remainingPoints = results as? Int {
+                                self.showAlert("This user now has \(remainingPoints) points remaining.")
                                 self.navigationController?.popToRootViewControllerAnimated(true)
                             }
                             hud.hide(true)
