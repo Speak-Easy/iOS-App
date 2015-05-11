@@ -39,7 +39,7 @@ class RewardsDetailsTableViewController: UITableViewController {
                     println(error.localizedDescription)
                 }
                 if let server = object {
-                    self.serverName = server[Constants.Servers.FirstName] as! String
+                    self.serverName = server[Constants.Servers.FirstName] as! String?
                     self.tableView.reloadRowsAtIndexPaths([self.serverRowIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
                 }
                 else {
