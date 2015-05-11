@@ -6,23 +6,81 @@
 //  Copyright (c) 2015 Bryce Langlotz. All rights reserved.
 //
 
-class Review {
+class Review : PFObject, PFSubclassing {
     
-    var object: PFObject!
+    override class func initialize() {
+        superclass()?.load()
+        self.registerSubclass()
+    }
+    
+    class func parseClassName() -> String {
+        return "Reviews"
+    }
+    
+    var restaurantObjectId:String? {
+        get {
+            return self[Constants.Review.Restaurant] as? String
+        }
+        set {
+            self[Constants.Review.Restaurant] = newValue
+        }
+    }
+    
+    var mealObjectId:String? {
+        get {
+            return self[Constants.Review.Meal] as? String
+        }
+        set {
+            self[Constants.Review.Meal] = newValue
+        }
+    }
+    
+    var text:String? {
+        get {
+            return self[Constants.Review.Review] as? String
+        }
+        set {
+            self[Constants.Review.Review] = newValue
+        }
+    }
+    
+    var starRating:String? {
+        get {
+            return self[Constants.Review.StarRating] as? String
+        }
+        set {
+            self[Constants.Review.StarRating] = newValue
+        }
+    }
+    
+    var potentialReward:Int? {
+        get {
+            return self[Constants.Review.Reward] as? Int
+        }
+        set {
+            self[Constants.Review.Reward] = newValue
+        }
+    }
+    
+    var reviewer:String? {
+        get {
+            return self[Constants.Review.Reviewer] as? String
+        }
+        set {
+            self[Constants.Review.Reviewer] = newValue
+        }
+    }
+
     
     init(restaurant:String!, mealCode:String!, reviewText:String!, rating:Float!, reward:Int!) {
-        object = PFObject(className: Constants.Review.ClassName)
-        object.setValue(restaurant, forKey: Constants.Review.Restaurant)
-        object.setValue(mealCode, forKey: Constants.Review.Meal)
-        object.setValue(reviewText, forKey: Constants.Review.Review)
-        object.setValue("\(rating)", forKey: Constants.Review.StarRating)
-        object.setValue(reward, forKey: Constants.Review.Reward)
-        object.setValue(PFUser.currentUser()!.username, forKey: Constants.Review.Reviewer)
+        super.init()
+        restaurantObjectId = restaurant
+        mealObjectId = mealCode
+        text = reviewText
+        starRating = "\(rating)"
+        potentialReward = reward
+        reviewer = PFUser.currentUser()?.username
         
-        object.saveInBackgroundWithBlock { (success, error) -> Void in
-            if let error = error {
-                println(error.description)
-            }
-        }
+        self.saveEventually(nil)
     }
 }

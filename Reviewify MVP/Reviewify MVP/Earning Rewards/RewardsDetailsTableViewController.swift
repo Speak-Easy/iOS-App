@@ -16,6 +16,9 @@ class RewardsDetailsTableViewController: UITableViewController {
     var server:String!
     var serverName:String!
     var potentialReward:Int!
+    
+    let serverRowIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+    let missingServerString = "Server Not Found"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class RewardsDetailsTableViewController: UITableViewController {
         self.navigationController?.navigationBarHidden = false
         
         var splitQRCode = QRCode.componentsSeparatedByString(" ")
-        if splitQRCode.count >= 4 {
+        if splitQRCode.count == 4 {
             restaurantCode = splitQRCode[0]
             mealCode = splitQRCode[1]
             server = splitQRCode[2]
@@ -37,17 +40,21 @@ class RewardsDetailsTableViewController: UITableViewController {
                 }
                 if let server = object {
                     self.serverName = server[Constants.Servers.FirstName] as! String
-                    self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                    self.tableView.reloadRowsAtIndexPaths([self.serverRowIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
                 }
                 else {
-                    println("Server Doesn't Exist")
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    self.serverName = self.missingServerString
                 }
             })
         }
         else {
-            println("Invalid QR Code")
+            showAlert("Invalid QR Code", message: "If this problem persists, try updating the app.")
         }
+    }
+    
+    func showAlert(title:String!, message:String?) {
+        var alertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK")
+        alertView.show()
     }
 
     override func didReceiveMemoryWarning() {
