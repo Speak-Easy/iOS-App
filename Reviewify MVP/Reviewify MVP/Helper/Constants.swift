@@ -30,8 +30,8 @@ class Constants {
     }
     
     struct Review {
-        static let Review = "review"
-        static let StarRating = "star_rating"
+        static let Review = "text_reviews"
+        static let StarRating = "star_ratings"
         static let Reward = "reward"
         static let Meal = "meal_objectId"
         static let Restaurant = "restaurant_objectId"

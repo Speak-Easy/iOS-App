@@ -15,6 +15,8 @@
 #define kDefaultMaxAllowedRating kDefaultMaxRating
 #define kDefaultMinStarSize CGSizeMake(5, 5)
 
+@protocol ASStarRatingViewDelegate;
+
 @interface ASStarRatingView : UIView {
     UIImage *_notSelectedStar;
     UIImage *_selectedStar;
@@ -43,4 +45,12 @@
 @property (assign, nonatomic) float rating;
 @property (assign, nonatomic) float minAllowedRating;
 @property (assign, nonatomic) float maxAllowedRating;
+@property (nonatomic, weak) id<ASStarRatingViewDelegate> delegate;
 @end
+
+@protocol ASStarRatingViewDelegate <NSObject>
+
+@optional
+-(void)starRatingDidChange:(float)rating;
+
+@end // end of delegate protocol

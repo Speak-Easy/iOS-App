@@ -35,18 +35,18 @@ class Review : PFObject, PFSubclassing {
         }
     }
     
-    var text:String? {
+    var textReviews:[String]? {
         get {
-            return self[Constants.Review.Review] as? String
+            return self[Constants.Review.Review] as? [String]
         }
         set {
             self[Constants.Review.Review] = newValue
         }
     }
     
-    var starRating:String? {
+    var starRatings:[Float]? {
         get {
-            return self[Constants.Review.StarRating] as? String
+            return self[Constants.Review.StarRating] as? [Float]
         }
         set {
             self[Constants.Review.StarRating] = newValue
@@ -72,12 +72,12 @@ class Review : PFObject, PFSubclassing {
     }
 
     
-    init(restaurant:String!, mealCode:String!, reviewText:String!, rating:Float!, reward:Int!) {
+    init(restaurant:String!, mealCode:String!, reviews:[String]!, stars:[Float]!, reward:Int!) {
         super.init()
         restaurantObjectId = restaurant
         mealObjectId = mealCode
-        text = reviewText
-        starRating = "\(rating)"
+        textReviews = reviews
+        starRatings = stars
         potentialReward = reward
         reviewer = PFUser.currentUser()?.username
         

@@ -24,6 +24,9 @@ class LoginViewController: UIViewController {
         if let user = PFUser.currentUser() {
            logInButton.setTitle(LogoutText, forState: UIControlState.Normal)
         }
+        else {
+            closeButton.enabled = false
+        }
     }
 
     override func didReceiveMemoryWarning() {

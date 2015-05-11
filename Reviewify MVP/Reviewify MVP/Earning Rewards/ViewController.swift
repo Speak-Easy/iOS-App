@@ -40,7 +40,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if let user = PFUser.currentUser() {
-            println("Logged In")
+            // Do Nothing
         }
         else {
             performSegueWithIdentifier("ShowLogInSegueIdentifier", sender: self)

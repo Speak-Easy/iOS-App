@@ -14,7 +14,7 @@ class RewardsDetailsTableViewController: UITableViewController {
     var restaurantCode:String!
     var mealCode:String!
     var server:String!
-    var serverName:String!
+    var serverName:String?
     var potentialReward:Int!
     
     let serverRowIndexPath = NSIndexPath(forItem: 0, inSection: 0)
@@ -97,7 +97,12 @@ class RewardsDetailsTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = "Server Name:"
-            cell.detailTextLabel?.text = serverName
+            if let validServerName = serverName {
+                cell.detailTextLabel?.text = serverName
+            }
+            else {
+                cell.detailTextLabel?.text = ""
+            }
         case 1:
             cell.textLabel?.text = "Potential Points:"
             cell.detailTextLabel?.text = "\(potentialReward)"
@@ -150,7 +155,7 @@ class RewardsDetailsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "BeginReviewSegueIdentifier" {
-            var destinationViewController = segue.destinationViewController as! ReviewViewController
+            var destinationViewController = segue.destinationViewController as! ReviewTableViewController
             destinationViewController.restaurantCode = restaurantCode
             destinationViewController.mealCode = mealCode
             destinationViewController.server = server
