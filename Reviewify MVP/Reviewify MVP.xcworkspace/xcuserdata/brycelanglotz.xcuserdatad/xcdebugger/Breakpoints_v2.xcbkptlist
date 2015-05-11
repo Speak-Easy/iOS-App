@@ -10,59 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Reviewify MVP/ReviewViewController.swift"
-            timestampString = "450911787.128407"
+            timestampString = "452218301.370387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "donePressed(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Reviewify_MVP.ReviewViewController.donePressed (Reviewify_MVP.ReviewViewController)(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Reviewify MVP"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brycelanglotz/Documents/iOS-App/Reviewify%20MVP/Reviewify%20MVP/ReviewViewController.swift"
-                  timestampString = "450914835.506339"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "1880">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Reviewify_MVP.ReviewViewController.(donePressed (Reviewify_MVP.ReviewViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1)"
-                  moduleName = "Reviewify MVP"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brycelanglotz/Documents/iOS-App/Reviewify%20MVP/Reviewify%20MVP/ReviewViewController.swift"
-                  timestampString = "450914835.506614"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Reviewify MVP/ReviewViewController.swift"
-            timestampString = "450911788.009736"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "donePressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -73,12 +25,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Reviewify MVP/ReviewViewController.swift"
-            timestampString = "450913805.729407"
+            filePath = "Reviewify MVP/Earning Rewards/ReviewTableViewController.swift"
+            timestampString = "453063840.759351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "donePressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -89,78 +41,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Reviewify MVP/ReviewViewController.swift"
-            timestampString = "450911857.13636"
+            filePath = "Reviewify MVP/Earning Rewards/ReviewTableViewController.swift"
+            timestampString = "453063840.759351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "donePressed(_:)"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Reviewify MVP/ReviewViewController.swift"
-            timestampString = "450913805.729407"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "donePressed(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Reviewify MVP/ReviewViewController.swift"
-            timestampString = "450913805.729407"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "donePressed(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Reviewify_MVP.ReviewViewController.(donePressed (Reviewify_MVP.ReviewViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1)"
-                  moduleName = "Reviewify MVP"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brycelanglotz/Documents/iOS-App/Reviewify%20MVP/Reviewify%20MVP/ReviewViewController.swift"
-                  timestampString = "450914835.610264"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "1648">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[2] = Dead, Arg[3] = Value Promoted from InOut&gt; of Reviewify_MVP.ReviewViewController.(donePressed (Reviewify_MVP.ReviewViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Reviewify MVP"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brycelanglotz/Documents/iOS-App/Reviewify%20MVP/Reviewify%20MVP/ReviewViewController.swift"
-                  timestampString = "450914835.610445"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
