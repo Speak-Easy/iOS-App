@@ -13,9 +13,10 @@ class LoginViewController: UIViewController {
     @IBOutlet var logInButton:UIButton!
     @IBOutlet var closeButton: UIBarButtonItem!
     
-    let permissionsArray = ["email", "public_profile", "user_friends", "user_about_me", "user_relationships", "user_birthday", "user_location"]
+    let permissionsArray = ["email", "public_profile", "user_friends", "user_birthday"]
     let LogoutText = "Logout"
     let LoginText = "Login with Facebook"
+    let LoggingInText = "Logging In"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +24,13 @@ class LoginViewController: UIViewController {
         if let user = PFUser.currentUser() {
            logInButton.setTitle(LogoutText, forState: UIControlState.Normal)
         }
-        
-        
-        
-        // Do any additional setup after loading the view.
+        else {
+            closeButton.enabled = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func closeLoginViewController(sender: AnyObject) {
@@ -47,21 +46,13 @@ class LoginViewController: UIViewController {
         else {
             self.view.userInteractionEnabled = false
             var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            hud.labelText = "Logging In"
+            hud.labelText = LoggingInText
             
             PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user: PFUser?, error:NSError?) -> Void in
                 if let existingError = error {
-                    println(existingError.description)
+                    println(existingError.localizedDescription)
                 }
-                else {
-                    if PFUser.currentUser()!.objectForKey(Constants.UserKey.TotalRewards) == nil {
-                        PFUser.currentUser()!.setObject(0, forKey: Constants.UserKey.TotalRewards)
-                        PFUser.currentUser()!.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-                            if let existingError = error {
-                                println(existingError.description)
-                            }
-                        })
-                    }
+                else if user != nil {
                     self.closeButton.enabled = false
                     self.logInButton.setTitle(self.LogoutText, forState: UIControlState.Normal)
                     self.dismissViewControllerAnimated(true, completion: {})
