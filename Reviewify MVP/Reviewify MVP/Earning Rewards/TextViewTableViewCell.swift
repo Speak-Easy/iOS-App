@@ -22,7 +22,7 @@ class TextViewTableViewCell: UITableViewCell, UITextViewDelegate {
         super.init(coder: aDecoder)
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidChange(textView: UITextView) {
         self.delegate?.reviewTextDidChange(textView.text, sender: self)
     }
     
