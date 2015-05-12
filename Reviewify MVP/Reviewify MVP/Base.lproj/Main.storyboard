@@ -200,6 +200,7 @@
                     <connections>
                         <outlet property="closeButton" destination="hZe-Kx-TAc" id="BPm-PN-5g9"/>
                         <outlet property="logInButton" destination="hR7-BV-wJX" id="PLa-q4-IzQ"/>
+                        <outlet property="myMealsButton" destination="Bwk-Aq-hZa" id="SrG-Bg-87I"/>
                         <segue destination="Icc-oC-XF1" kind="show" identifier="ShowMealsSegueIdentifier" id="Pje-5o-T9p"/>
                     </connections>
                 </viewController>

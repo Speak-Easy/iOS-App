@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var logInButton:UIButton!
     @IBOutlet var closeButton: UIBarButtonItem!
+    @IBOutlet var myMealsButton: UIBarButtonItem!
     
     let permissionsArray = ["email", "public_profile", "user_friends", "user_birthday"]
     let LogoutText = "Logout"
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
         }
         else {
             closeButton.enabled = false
+            myMealsButton.enabled = false
         }
     }
 
@@ -40,6 +42,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginWithFacebook() {
         if let user = PFUser.currentUser() {
             closeButton.enabled = false
+            myMealsButton.enabled = false
             PFUser.logOut()
             logInButton.setTitle(LoginText, forState: UIControlState.Normal)
         }
@@ -54,6 +57,7 @@ class LoginViewController: UIViewController {
                 }
                 else if user != nil {
                     self.closeButton.enabled = false
+                    self.myMealsButton.enabled = false
                     self.logInButton.setTitle(self.LogoutText, forState: UIControlState.Normal)
                     self.dismissViewControllerAnimated(true, completion: {})
                 }
