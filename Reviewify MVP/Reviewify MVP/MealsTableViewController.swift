@@ -84,7 +84,9 @@ class MealsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedMeal = meals[indexPath.row]
-        performSegueWithIdentifier("ReviewScannedMealSegueIdentifier", sender: self)
+        if selectedMeal.claimed == false {
+            performSegueWithIdentifier("ReviewScannedMealSegueIdentifier", sender: self)
+        }
     }
 
     /*
