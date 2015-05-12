@@ -41,8 +41,6 @@ class LoginViewController: UIViewController {
         PFUser.logOutInBackgroundWithBlock { (error) -> Void in
             println(error?.localizedDescription)
         }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

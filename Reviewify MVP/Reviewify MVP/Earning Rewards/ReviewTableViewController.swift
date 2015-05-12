@@ -63,7 +63,7 @@ class ReviewTableViewController: UITableViewController, StarRatingTableViewCellD
                     notification.notificationLabelTextColor = UIColor.whiteColor()
                     notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
                     
-                    notification.displayNotificationWithMessage("You've been rewarded \(self.potentialReward)! You have \(totalRewards) total points!", forDuration: 4.0)
+                    notification.displayNotificationWithMessage("You've been rewarded \(self.potentialReward)! You have \(totalRewards) total points!", forDuration: 2.5)
                 }
             }
         }

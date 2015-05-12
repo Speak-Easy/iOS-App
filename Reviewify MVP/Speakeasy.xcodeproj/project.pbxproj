@@ -33,6 +33,9 @@
 		3BE38AB01AD762FB00830511 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE38AAF1AD762FB00830511 /* LoginViewController.swift */; };
 		3BE3CD151AD77FAC00DB7EA8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE3CD141AD77FAC00DB7EA8 /* MapKit.framework */; };
 		3BE3CD171ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */; };
+		3BE853EE1B027F570009DE3B /* PFUser+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE853ED1B027F570009DE3B /* PFUser+Extension.swift */; };
+		3BE853F01B02807B0009DE3B /* MealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE853EF1B02807B0009DE3B /* MealsTableViewController.swift */; };
+		3BE853F21B0280DF0009DE3B /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE853F11B0280DF0009DE3B /* Meal.swift */; };
 		3BED175A1AD63158005DEA44 /* RewardsDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED17591AD63158005DEA44 /* RewardsDetailsTableViewController.swift */; };
 		3BED17681AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */; };
 		3BED176B1AD6DEBF005DEA44 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */; };
@@ -80,6 +83,9 @@
 		3BE38AAF1AD762FB00830511 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3BE3CD141AD77FAC00DB7EA8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyRestaurantsMapViewController.swift; sourceTree = "<group>"; };
+		3BE853ED1B027F570009DE3B /* PFUser+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Extension.swift"; sourceTree = "<group>"; };
+		3BE853EF1B02807B0009DE3B /* MealsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealsTableViewController.swift; sourceTree = "<group>"; };
+		3BE853F11B0280DF0009DE3B /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		3BED17591AD63158005DEA44 /* RewardsDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-04-09 at 11.47.50 AM.png"; sourceTree = "<group>"; };
 		3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 				3B6F54DA1A9CE4C9008F6508 /* String+Extension.swift */,
 				3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */,
 				3B573A4A1AE8255400518071 /* PFCloud+Extension.swift */,
+				3BE853ED1B027F570009DE3B /* PFUser+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 			children = (
 				3B6F54901A9CD51E008F6508 /* AppDelegate.swift */,
 				3BE38AAF1AD762FB00830511 /* LoginViewController.swift */,
+				3BE853EF1B02807B0009DE3B /* MealsTableViewController.swift */,
 				3BD905CC1AE861010087186B /* Earning Rewards */,
 				3BD905CD1AE8610F0087186B /* Nearby */,
 				3B8174861AF6C3580029AEDD /* Redeem */,
@@ -198,6 +206,7 @@
 		3B8DC2A01AD70F44002198CA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				3BE853F11B0280DF0009DE3B /* Meal.swift */,
 				3B573A4C1AE84DCC00518071 /* Review.swift */,
 				3B4FE6011AE075C000CB0F6D /* Constants.swift */,
 				3BED17691AD6DDA0005DEA44 /* ASStarRatingView */,
@@ -402,13 +411,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE38AB01AD762FB00830511 /* LoginViewController.swift in Sources */,
+				3BE853F01B02807B0009DE3B /* MealsTableViewController.swift in Sources */,
 				3B6F54B11A9CD64A008F6508 /* UIColor+Extension.swift in Sources */,
 				3B8816091AE0262C00E4B09D /* RestaurantDetailsTableViewController.swift in Sources */,
+				3BE853F21B0280DF0009DE3B /* Meal.swift in Sources */,
 				3B8DC2A41AD70F87002198CA /* CameraFocusBox.swift in Sources */,
 				3B8DC2A21AD70F68002198CA /* Regex.swift in Sources */,
 				3B6F54931A9CD51E008F6508 /* ViewController.swift in Sources */,
 				3BED176B1AD6DEBF005DEA44 /* Double+Extension.swift in Sources */,
 				3B55494A1B0110CC009E7A34 /* ReviewTableViewController.swift in Sources */,
+				3BE853EE1B027F570009DE3B /* PFUser+Extension.swift in Sources */,
 				3B8174881AF6C3770029AEDD /* RedeemViewController.swift in Sources */,
 				3B55494E1B011108009E7A34 /* TextViewTableViewCell.swift in Sources */,
 				3B573A4B1AE8255400518071 /* PFCloud+Extension.swift in Sources */,

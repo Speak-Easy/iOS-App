@@ -14,7 +14,7 @@ class Review : PFObject, PFSubclassing {
     }
     
     class func parseClassName() -> String {
-        return "Reviews"
+        return Constants.Review.ClassName
     }
     
     var restaurantObjectId:String? {

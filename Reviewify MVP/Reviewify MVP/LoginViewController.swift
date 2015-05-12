@@ -63,6 +63,10 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func showMeals(sender:AnyObject!) {
+        performSegueWithIdentifier("ShowMealsSegueIdentifier", sender: self)
+    }
+    
     @IBAction func removeKeyboard(sender:AnyObject!) {
         self.resignFirstResponder()
     }
