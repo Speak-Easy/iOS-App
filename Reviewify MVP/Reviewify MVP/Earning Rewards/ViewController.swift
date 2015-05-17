@@ -129,7 +129,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                 
                 PFCloud.verifyMeal(restaurantCode, mealCode: mealCode, block:  { (results, error) -> Void in
                     if let error = error {
-                        println(error.localizedDescription)
                         if let alertMessage = error.userInfo?["error"] as? String {
                             self.showAlert(alertMessage)
                         }
@@ -156,6 +155,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
         self.captureSession?.startRunning()
     }
     
+    /*
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         var touch: UITouch = event.allTouches()!.first as! UITouch
         var touchPoint:CGPoint = touch.locationInView(touch.view)
@@ -176,6 +176,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
             UIView.commitAnimations()
         }
     }
+*/
     
     // MARK: Button Methods
     

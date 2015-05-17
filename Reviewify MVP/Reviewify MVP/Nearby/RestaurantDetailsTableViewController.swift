@@ -27,16 +27,24 @@ class RestaurantDetailsTableViewController: UITableViewController {
         self.title = restaurantName
     }
     
+    func showAlert(title:String!, message:String!) {
+        var alertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK")
+        alertView.show()
+    }
+    
     func getLatestDeals(sender:AnyObject!) {
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Downloading Deals"
         dealsQuery.whereKey(Constants.Deals.Restaurant, equalTo: restaurantObjectId)
         dealsQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if let error = error {
-                println(error.localizedDescription)
+                self.showAlert("Error", message: "There was a problem downloading nearby restaurants")
             }
             if let dealsResults = results as? [PFObject] {
                 self.deals = dealsResults
                 self.tableView.reloadData()
             }
+            hud.hide(true)
             self.refreshControl?.endRefreshing()
         }
     }
@@ -57,20 +65,31 @@ class RestaurantDetailsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return deals.count
+        if deals.count == 0 {
+            return 1
+        }
+        else {
+           return deals.count
+        }
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Cost | Information"
+        return "Cost | Details"
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-        
-        var information = deals[indexPath.row][Constants.Deals.Information] as! String
-        var cost = deals[indexPath.row][Constants.Deals.Cost] as! Int
-        cell.textLabel?.text = "\(cost)"
-        cell.detailTextLabel?.text = information
+        cell.detailTextLabel?.numberOfLines = 2
+        if deals.count == 0 {
+            cell.textLabel?.text = ""
+            cell.detailTextLabel?.text = "There are no deals available at this time"
+        }
+        else {
+            var information = deals[indexPath.row][Constants.Deals.Information] as! String
+            var cost = deals[indexPath.row][Constants.Deals.Cost] as! Int
+            cell.textLabel?.text = "\(cost)"
+            cell.detailTextLabel?.text = information
+        }
 
         return cell
     }

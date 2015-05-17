@@ -37,7 +37,7 @@ class ReviewTableViewController: UITableViewController, StarRatingTableViewCellD
     
     @IBAction func donePressed(sender: AnyObject) {
         if contains(starRatings, 0.00) {
-            showAlert("All Star Ratings are required")
+            showAlert("All Star Ratings are required", message:nil)
         }
         else {
             var hud = MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
@@ -46,9 +46,8 @@ class ReviewTableViewController: UITableViewController, StarRatingTableViewCellD
             PFCloud.reviewRestaurantInBackground(restaurantCode, mealCode: mealCode, potentialReward: potentialReward, currentUsername: PFUser.currentUser()!.username) { (results, error) -> Void in
                 hud.hide(true)
                 if let error = error {
-                    println(error.description)
                     if let alertMessage = error.userInfo?["error"] as? String {
-                        self.showAlert(alertMessage)
+                        self.showAlert("Error", message:alertMessage)
                     }
                 }
                 if let totalRewards = results as? Int {
@@ -69,8 +68,8 @@ class ReviewTableViewController: UITableViewController, StarRatingTableViewCellD
         }
     }
     
-    func showAlert(message:String!) {
-        var alertView = UIAlertView(title: message, message: nil, delegate: nil, cancelButtonTitle: "OK")
+    func showAlert(title:String!, message:String!) {
+        var alertView = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
         alertView.show()
     }
     
@@ -81,7 +80,8 @@ class ReviewTableViewController: UITableViewController, StarRatingTableViewCellD
         var query = PFQuery(className: "Form")
         query.getFirstObjectInBackgroundWithBlock { (form, error) -> Void in
             if let error = error {
-                println("There was a problem loading the form. Try again?")
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                self.showAlert("Error", message: "There was a problem loading the review form.")
             }
             if let formDetails = form?["sections"] as? [String] {
                 self.sectionHeaders = formDetails

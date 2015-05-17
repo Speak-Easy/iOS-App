@@ -29,11 +29,17 @@ class MealsTableViewController: UITableViewController {
         refreshMeals()
     }
     
+    func showAlert(titles:String!, message:String!) {
+        var alertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK")
+        alertView.show()
+    }
+    
     func refreshMeals() {
         var hud = MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
+        hud.labelText = "Fetching Scanned Meals"
         PFUser.currentUser()!.getScannedMealsInBackgroundWithBlock { (results, error) -> Void in
             if let error = error {
-                println(error.localizedDescription)
+                self.showAlert("Error", message: "There was a problem downloading your meals")
             }
             if let mealsResults = results as? [Meal] {
                 self.meals = mealsResults

@@ -36,6 +36,8 @@ class AddOrEditServerTableViewController: UITableViewController {
             server!["last_name"] = lastName
             server!["email"] = email
             server!["restaurant_objectId"] = PFUser.currentUser()!.objectId
+            var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.labelText = "Loading Servers"
             server?.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if let error = error {
                     self.showAlert(error.localizedDescription)

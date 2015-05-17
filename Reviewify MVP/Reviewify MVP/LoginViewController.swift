@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var logInButton:UIButton!
     @IBOutlet var closeButton: UIBarButtonItem!
     @IBOutlet var myMealsButton: UIBarButtonItem!
+    @IBOutlet var pointsLabel: UILabel!
     
     let permissionsArray = ["email", "public_profile", "user_friends", "user_birthday"]
     let LogoutText = "Logout"
@@ -28,6 +29,38 @@ class LoginViewController: UIViewController {
         else {
             closeButton.enabled = false
             myMealsButton.enabled = false
+            pointsLabel.hidden = true
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        downloadPoints()
+    }
+    
+    func downloadPoints() {
+        if let user = PFUser.currentUser() {
+            var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.labelText = "Downloading Total Rewards"
+            var pointsQuery = PFQuery(className: Constants.Points.ClassName)
+            pointsQuery.whereKey(Constants.Points.Username, equalTo: user.username!)
+            pointsQuery.getFirstObjectInBackgroundWithBlock({ (pointsObject, error) -> Void in
+                if let error = error {
+                    if error.code == 101 {
+                        
+                    }
+                    else {
+                        self.showAlert("Error", message: "There was a problem downloading your rewards.")
+                    }
+                }
+                else {
+                    if let points = pointsObject?[Constants.Points.Total] as? Int {
+                        self.pointsLabel.text = "Total Rewards: \(points)"
+                        self.pointsLabel.hidden = false
+                    }
+                }
+                hud.hide(true)
+            })
         }
     }
 
@@ -45,6 +78,7 @@ class LoginViewController: UIViewController {
             myMealsButton.enabled = false
             PFUser.logOut()
             logInButton.setTitle(LoginText, forState: UIControlState.Normal)
+            pointsLabel.hidden = true
         }
         else {
             self.view.userInteractionEnabled = false
@@ -53,7 +87,7 @@ class LoginViewController: UIViewController {
             
             PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user: PFUser?, error:NSError?) -> Void in
                 if let existingError = error {
-                    println(existingError.localizedDescription)
+                    self.showAlert("Error", message: "There was a problem when attempting to log in with Facebook.")
                 }
                 else if user != nil {
                     self.closeButton.enabled = false
@@ -65,6 +99,11 @@ class LoginViewController: UIViewController {
                 self.view.userInteractionEnabled = true
             })
         }
+    }
+    
+    func showAlert(titles:String!, message:String!) {
+        var alertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK")
+        alertView.show()
     }
     
     @IBAction func showMeals(sender:AnyObject!) {

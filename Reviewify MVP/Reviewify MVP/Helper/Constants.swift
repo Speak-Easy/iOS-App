@@ -45,4 +45,10 @@ class Constants {
         static let Information = "information"
         static let Cost = "cost"
     }
+    
+    struct Points {
+        static let ClassName = "Points"
+        static let Username = "username"
+        static let Total = "points"
+    }
 }

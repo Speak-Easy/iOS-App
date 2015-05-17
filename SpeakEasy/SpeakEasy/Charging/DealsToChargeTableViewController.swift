@@ -12,7 +12,7 @@ class DealsToChargeTableViewController: UITableViewController {
 
     var dealsQuery = PFQuery(className: "Deals")
     var deals = [PFObject]()
-    var selectedDeal:PFObject!
+    var selectedDeal:PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,8 @@ class DealsToChargeTableViewController: UITableViewController {
     }
     
     func getLatestDeals(sender:AnyObject!) {
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Downloading Deals"
         dealsQuery.whereKey("restaurant_objectId", equalTo: PFUser.currentUser()!.objectId!)
         dealsQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             if let error = error {
@@ -37,6 +39,7 @@ class DealsToChargeTableViewController: UITableViewController {
                 self.deals.sort{($0["cost"] as! Int) < ($1["cost"] as! Int)}
                 self.tableView.reloadData()
             }
+            hud.hide(true)
             self.refreshControl?.endRefreshing()
         }
     }
@@ -57,24 +60,36 @@ class DealsToChargeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return deals.count
+        return deals.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DealToChargeCellReuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        var deal = deals[indexPath.row]
-        var cost = deal["cost"] as! Int
-        cell.textLabel?.text = "\(cost)"
-        cell.textLabel?.textColor = UIColor.algorithmsGreen()
         
-        cell.detailTextLabel?.text = deal["information"] as? String
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        
+        if indexPath.row == deals.count {
+            cell.textLabel?.text = "..."
+            cell.textLabel?.textColor = UIColor.algorithmsGreen()
+            
+            cell.detailTextLabel?.text = "Manually Enter Point Value"
+        }
+        else {
+            var deal = deals[indexPath.row]
+            var cost = deal["cost"] as! Int
+            cell.textLabel?.text = "\(cost)"
+            cell.textLabel?.textColor = UIColor.algorithmsGreen()
+            
+            cell.detailTextLabel?.text = deal["information"] as? String
+        }
 
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedDeal = deals[indexPath.row]
+        if indexPath.row < deals.count {
+            selectedDeal = deals[indexPath.row]
+        }
         performSegueWithIdentifier("ChargeItemViewControllerSegueIdentifier", sender: self)
     }
 

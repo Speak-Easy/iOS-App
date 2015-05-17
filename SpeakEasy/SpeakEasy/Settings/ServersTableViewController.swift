@@ -181,10 +181,13 @@ class ServersTableViewController: UITableViewController {
             case 0:
                 switch indexPath.row {
                 case 0..<servers.count:
+                    var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.labelText = "Removing Server"
                     servers[indexPath.row].deleteInBackgroundWithBlock({ (success, error) -> Void in
                         if let error = error {
                             println(error.localizedDescription)
                         }
+                        hud.hide(true)
                     })
                     servers.removeAtIndex(indexPath.row)
                 default:
@@ -193,10 +196,13 @@ class ServersTableViewController: UITableViewController {
             case 1:
                 switch indexPath.row {
                 case 0..<deals.count:
+                    var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.labelText = "Removing Deal"
                     deals[indexPath.row].deleteInBackgroundWithBlock({ (success, error) -> Void in
                         if let error = error {
                             println(error.localizedDescription)
                         }
+                        hud.hide(true)
                     })
                     deals.removeAtIndex(indexPath.row)
                 default:

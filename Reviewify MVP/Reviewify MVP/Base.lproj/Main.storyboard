@@ -68,7 +68,13 @@
                             <constraint firstItem="Bgk-ia-02n" firstAttribute="top" secondItem="hx2-9l-j8B" secondAttribute="bottom" id="gNO-ar-9hn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Near You" id="EDS-Mg-MDV"/>
+                    <navigationItem key="navigationItem" title="Near You" id="EDS-Mg-MDV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Kcp-0t-VTt">
+                            <connections>
+                                <action selector="fetch:" destination="yfB-ls-yKp" id="Whh-KG-Msh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="hx2-9l-j8B" id="EyD-7N-7On"/>
                         <segue destination="hfc-54-oq1" kind="show" identifier="ShowRestaurantDetailsSegueIdentifier" id="q5v-ad-D0d"/>
@@ -169,6 +175,15 @@
                                     <action selector="loginWithFacebook" destination="xqY-bd-Ltu" eventType="touchUpInside" id="A2Y-4l-BIJ"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcB-ws-xaY">
+                                <rect key="frame" x="16" y="227" width="568" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="nmj-YT-YoK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -176,7 +191,10 @@
                             <constraint firstAttribute="trailing" secondItem="hR7-BV-wJX" secondAttribute="trailing" constant="16" id="3FO-za-zVT"/>
                             <constraint firstItem="hR7-BV-wJX" firstAttribute="trailing" secondItem="duT-iZ-lXU" secondAttribute="trailingMargin" id="3LF-VG-rMj"/>
                             <constraint firstItem="hR7-BV-wJX" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leading" constant="16" id="8oF-3P-AuM"/>
+                            <constraint firstAttribute="trailing" secondItem="kcB-ws-xaY" secondAttribute="trailing" constant="16" id="ZM6-k0-XGY"/>
+                            <constraint firstItem="kcB-ws-xaY" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leading" constant="16" id="i7S-jl-NiN"/>
                             <constraint firstItem="hR7-BV-wJX" firstAttribute="leading" secondItem="duT-iZ-lXU" secondAttribute="leadingMargin" id="ohE-oO-QzW"/>
+                            <constraint firstItem="hR7-BV-wJX" firstAttribute="top" secondItem="kcB-ws-xaY" secondAttribute="bottom" constant="8" id="quq-8N-Ixc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -201,6 +219,7 @@
                         <outlet property="closeButton" destination="hZe-Kx-TAc" id="BPm-PN-5g9"/>
                         <outlet property="logInButton" destination="hR7-BV-wJX" id="PLa-q4-IzQ"/>
                         <outlet property="myMealsButton" destination="Bwk-Aq-hZa" id="SrG-Bg-87I"/>
+                        <outlet property="pointsLabel" destination="kcB-ws-xaY" id="WVd-E0-Gcm"/>
                         <segue destination="Icc-oC-XF1" kind="show" identifier="ShowMealsSegueIdentifier" id="Pje-5o-T9p"/>
                     </connections>
                 </viewController>
@@ -443,11 +462,11 @@
             </objects>
             <point key="canvasLocation" x="312" y="-1259"/>
         </scene>
-        <!--Earn-->
+        <!--Review-->
         <scene sceneID="Rx5-Rb-4Sz">
             <objects>
                 <navigationController id="PIU-EC-gGo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Earn" image="QR_code-50" id="W04-6a-PnR"/>
+                    <tabBarItem key="tabBarItem" title="Review" image="note-write-7" id="W04-6a-PnR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cyw-ug-G9r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -463,6 +482,7 @@
     </scenes>
     <resources>
         <image name="QR_code-50" width="25" height="25"/>
+        <image name="note-write-7" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="deQ-jj-7QC"/>

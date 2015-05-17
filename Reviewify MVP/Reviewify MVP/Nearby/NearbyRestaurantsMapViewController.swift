@@ -21,14 +21,17 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
     
     let PinImage = "map_pin_green"
     
-    func fetch() {
+    @IBAction func fetch(sender:AnyObject!) {
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Loading Restaurants"
         query = PFRole.query()
         
         query.whereKey("name", equalTo: "Restaurant")
         
         query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
             if let error = error {
-                println(error.localizedDescription)
+                hud.hide(true)
+                self.showAlert("Error", message: "There was a problem downloading nearby restaurants")
             }
             else {
                 var role = object as! PFRole
@@ -36,8 +39,9 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
                 var userRelationQuery = userRelation.query()!
                 
                 userRelationQuery.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
+                    hud.hide(true)
                     if let error = error {
-                        println(error.localizedDescription)
+                        self.showAlert("Error", message: "There was a problem downloading nearby restaurants")
                     }
                     else {
                         var users = results as! [PFUser]!
@@ -51,6 +55,11 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
                 })
             }
         })
+    }
+    
+    func showAlert(titles:String!, message:String!) {
+        var alertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK")
+        alertView.show()
     }
     
     func refreshRestaurants() {
@@ -82,7 +91,7 @@ class NearbyRestaurantsMapViewController: UIViewController, MKMapViewDelegate, C
             mapView.region = MKCoordinateRegionMakeWithDistance(location, 10000, 10000);
         }
         
-        fetch()
+        fetch(self)
     }
     
     override func viewDidAppear(animated: Bool) {

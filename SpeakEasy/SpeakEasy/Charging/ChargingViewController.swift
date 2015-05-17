@@ -9,24 +9,26 @@
 import UIKit
 import AVFoundation
 
-class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UITextFieldDelegate {
 
-    var deal: PFObject!
-    
+    var deal: PFObject?
     var scanResult:String!
     var session: AVCaptureSession!
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var QRCode:String?
-    var cost:Int!
+    var cost:Int?
+    
+    @IBOutlet var costTextField:UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        cost = deal["cost"] as! Int
+        if let selectedDeal = deal {
+            cost = selectedDeal["cost"] as? Int
+        }
         self.configureCamera()
     }
     
@@ -82,7 +84,32 @@ class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
         view.addSubview(qrCodeFrameView!)
         view.bringSubviewToFront(qrCodeFrameView!)
         
+        if cost == nil {
+            self.title = "0"
+            costTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "removeKeyboard:"))
+            view.bringSubviewToFront(costTextField)
+        }
+        else {
+            self.title = "\(cost!)"
+        }
+        
         return true
+    }
+    
+    @IBAction func removeKeyboard(sender:AnyObject!) {
+        costTextField!.resignFirstResponder()
+    }
+    
+    @IBAction func textFieldDidChange(sender:UITextField!) {
+        if let textToInt = sender.text.toInt() {
+            cost = textToInt
+            self.title = "\(textToInt)"
+        }
+        else {
+            cost = 0
+            self.title = "0"
+        }
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
@@ -132,7 +159,7 @@ class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
                         })
                     }
                     else {
-                        showAlert("The cost entered by the user does not match the deal cost!")
+                        showAlert("The cost entered by the user does not match the specified cost!")
                     }
                 }
                 else {

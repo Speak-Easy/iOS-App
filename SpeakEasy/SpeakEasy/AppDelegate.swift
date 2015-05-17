@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     class func showErrorWithMessage(message:String!, duration:CGFloat!) {
         var notification = CWStatusBarNotification()
-        notification.notificationLabelFont = UIFont.systemFontOfSize(20.0)
         notification.notificationLabelBackgroundColor = UIColor.speakeasyRed()
         notification.notificationLabelTextColor = UIColor.whiteColor()
         notification.notificationStyle = CWNotificationStyle.NavigationBarNotification
@@ -47,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     class func showInformationWithMessage(message:String!, duration:CGFloat!) {
         var notification = CWStatusBarNotification()
-        notification.notificationLabelFont = UIFont.systemFontOfSize(20.0)
         notification.notificationLabelBackgroundColor = UIColor.algorithmsGreen()
         notification.notificationLabelTextColor = UIColor.whiteColor()
         notification.notificationStyle = CWNotificationStyle.NavigationBarNotification

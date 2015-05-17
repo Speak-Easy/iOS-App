@@ -101,7 +101,7 @@ class RewardsDetailsTableViewController: UITableViewController {
                 cell.detailTextLabel?.text = serverName
             }
             else {
-                cell.detailTextLabel?.text = ""
+                cell.detailTextLabel?.text = "Downloading..."
             }
         case 1:
             cell.textLabel?.text = "Potential Points:"

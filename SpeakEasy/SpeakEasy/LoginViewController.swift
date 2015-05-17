@@ -17,15 +17,21 @@ class LoginViewController: UIViewController {
         
         var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "Logging In"
-        PFUser.logInWithUsernameInBackground(emailTextField.text, password: passwordTextField.text) { (user, error) -> Void in
-            if let error = error {
-                AppDelegate.showErrorWithMessage("Invalid Login Credentials", duration: 2.0)
+        
+        if Reachability.isConnectedToNetwork() {
+            PFUser.logInWithUsernameInBackground(emailTextField.text, password: passwordTextField.text) { (user, error) -> Void in
+                if let error = error {
+                    AppDelegate.showErrorWithMessage("Invalid Login Credentials", duration: 2.0)
+                }
+                else {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                hud.hide(true)
             }
-            else {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
+        }
+        else {
+            AppDelegate.showErrorWithMessage("An Internet Connection is Required", duration: 2.0)
             hud.hide(true)
-            
         }
     }
     
