@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.tintColor = UIColor.algorithmsGreen()
         
-        PFFacebookUtils.initializeFacebook()
-        
         return true
     }
     

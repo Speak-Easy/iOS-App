@@ -40,6 +40,11 @@ class LoginViewController: UIViewController {
         alertView.show()
     }
     
+    @IBAction func removeKeyboard(sender:AnyObject!) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,15 +52,12 @@ class LoginViewController: UIViewController {
         PFUser.logOutInBackgroundWithBlock { (error) -> Void in
             println(error?.localizedDescription)
         }
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "removeKeyboard:"))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func removeKeyboard(sender:AnyObject!) {
-        self.resignFirstResponder()
     }
     
 

@@ -8,14 +8,14 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var logInButton:UIButton!
-    @IBOutlet var closeButton: UIBarButtonItem!
-    @IBOutlet var myMealsButton: UIBarButtonItem!
-    @IBOutlet var pointsLabel: UILabel!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var reenterPasswordTextField: UITextField!
+    @IBOutlet var infoMessageView: ImportantInformationView!
     
-    let permissionsArray = ["email", "public_profile", "user_friends", "user_birthday"]
     let LogoutText = "Logout"
     let LoginText = "Login with Facebook"
     let LoggingInText = "Logging In"
@@ -23,44 +23,17 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let user = PFUser.currentUser() {
-           logInButton.setTitle(LogoutText, forState: UIControlState.Normal)
+        PFUser.logOut()
+        
+        self.reenterPasswordTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+    }
+    
+    @IBAction func textFieldDidChange(sender:AnyObject!) {
+        if reenterPasswordTextField.text == "" {
+            logInButton.setTitle("Login", forState: UIControlState.Normal)
         }
         else {
-            closeButton.enabled = false
-            myMealsButton.enabled = false
-            pointsLabel.hidden = true
-        }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        downloadPoints()
-    }
-    
-    func downloadPoints() {
-        if let user = PFUser.currentUser() {
-            var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            hud.labelText = "Downloading Total Rewards"
-            var pointsQuery = PFQuery(className: Constants.Points.ClassName)
-            pointsQuery.whereKey(Constants.Points.Username, equalTo: user.username!)
-            pointsQuery.getFirstObjectInBackgroundWithBlock({ (pointsObject, error) -> Void in
-                if let error = error {
-                    if error.code == 101 {
-                        
-                    }
-                    else {
-                        self.showAlert("Error", message: "There was a problem downloading your rewards.")
-                    }
-                }
-                else {
-                    if let points = pointsObject?[Constants.Points.Total] as? Int {
-                        self.pointsLabel.text = "Total Rewards: \(points)"
-                        self.pointsLabel.hidden = false
-                    }
-                }
-                hud.hide(true)
-            })
+            logInButton.setTitle("Sign Up", forState: UIControlState.Normal)
         }
     }
 
@@ -68,36 +41,64 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func closeLoginViewController(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func loginWithFacebook() {
-        if let user = PFUser.currentUser() {
-            closeButton.enabled = false
-            myMealsButton.enabled = false
-            PFUser.logOut()
-            logInButton.setTitle(LoginText, forState: UIControlState.Normal)
-            pointsLabel.hidden = true
-        }
-        else {
-            self.view.userInteractionEnabled = false
+    @IBAction func login(sender: AnyObject) {
+        self.removeKeyboard(self)
+        var lowercaseEmail = (self.emailTextField.text as NSString).lowercaseString
+        if reenterPasswordTextField.text == "" {
             var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            hud.labelText = LoggingInText
-            
-            PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user: PFUser?, error:NSError?) -> Void in
-                if let existingError = error {
-                    self.showAlert("Error", message: "There was a problem when attempting to log in with Facebook.")
+            hud.mode = MBProgressHUDMode.Indeterminate
+            hud.labelText = "Logging In"
+            PFUser.logInWithUsernameInBackground(lowercaseEmail, password: self.passwordTextField.text, block: { (user, error) -> Void in
+                if let error = error {
+                    if error.code == 101 {
+                        self.infoMessageView.actionLabel.text = "● Invalid login credentials"
+                        self.infoMessageView.show()
+                    }
                 }
-                else if user != nil {
-                    self.closeButton.enabled = false
-                    self.myMealsButton.enabled = false
-                    self.logInButton.setTitle(self.LogoutText, forState: UIControlState.Normal)
-                    self.dismissViewControllerAnimated(true, completion: {})
+                else {
+                    self.removeKeyboard(self)
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
-                hud.hide(true)
-                self.view.userInteractionEnabled = true
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
             })
+        }
+        else if self.reenterPasswordTextField.text == self.passwordTextField.text && self.passwordTextField.text != "" {
+            if count(self.passwordTextField.text) < 5 || count(self.passwordTextField.text) > 16 {
+                self.infoMessageView.actionLabel.text = "● Password must be 5-16 characters"
+                self.infoMessageView.show()
+            }
+            else {
+                var user = PFUser()
+                user.username = lowercaseEmail
+                user.password = self.passwordTextField.text
+                user.email = user.username
+                
+                var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                hud.mode = MBProgressHUDMode.Indeterminate
+                hud.labelText = "Creating User"
+                user.signUpInBackgroundWithBlock {
+                    (succeeded, error) -> Void in
+                    if error == nil {
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    if let error = error {
+                        if error.code == 202 || error.code == 203 {
+                            self.infoMessageView.actionLabel.text = "● E-Mail is already registered"
+                            
+                            self.infoMessageView.show()
+                        }
+                        if error.code == 125 {
+                            self.infoMessageView.actionLabel.text = "● Invalid E-Mail"
+                            self.infoMessageView.show()
+                        }
+                    }
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                }
+            }
+        }
+        if self.reenterPasswordTextField.text != "" && self.passwordTextField.text != self.reenterPasswordTextField.text {
+            self.infoMessageView.actionLabel.text = "● Passwords don't match"
+            self.infoMessageView.show()
         }
     }
     
@@ -106,12 +107,8 @@ class LoginViewController: UIViewController {
         alertView.show()
     }
     
-    @IBAction func showMeals(sender:AnyObject!) {
-        performSegueWithIdentifier("ShowMealsSegueIdentifier", sender: self)
-    }
-    
-    @IBAction func removeKeyboard(sender:AnyObject!) {
-        self.resignFirstResponder()
+    @IBAction func removeKeyboard(sender: AnyObject) {
+        self.view.endEditing(false)
     }
     
 

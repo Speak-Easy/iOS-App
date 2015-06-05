@@ -39,6 +39,7 @@
 		3BED175A1AD63158005DEA44 /* RewardsDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED17591AD63158005DEA44 /* RewardsDetailsTableViewController.swift */; };
 		3BED17681AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */; };
 		3BED176B1AD6DEBF005DEA44 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */; };
+		3BF6754E1B2142DC000C7860 /* ImportantInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF6754D1B2142DC000C7860 /* ImportantInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		3BED17591AD63158005DEA44 /* RewardsDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3BED17671AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-04-09 at 11.47.50 AM.png"; sourceTree = "<group>"; };
 		3BED176A1AD6DEBF005DEA44 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		3BF6754D1B2142DC000C7860 /* ImportantInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportantInformationView.swift; sourceTree = "<group>"; };
 		B29C8D25CF4DBF4FE3B8B94B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C9AF4DA62E1422BC486CCE67 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ECDBFFEF10147C2B908AB1EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +155,7 @@
 				3B6F54901A9CD51E008F6508 /* AppDelegate.swift */,
 				3BE38AAF1AD762FB00830511 /* LoginViewController.swift */,
 				3BE853EF1B02807B0009DE3B /* MealsTableViewController.swift */,
+				3BF6754D1B2142DC000C7860 /* ImportantInformationView.swift */,
 				3BD905CC1AE861010087186B /* Earning Rewards */,
 				3BD905CD1AE8610F0087186B /* Nearby */,
 				3B8174861AF6C3580029AEDD /* Redeem */,
@@ -434,6 +437,7 @@
 				3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */,
 				3BE3CD171ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift in Sources */,
 				3B4FE6021AE075C000CB0F6D /* Constants.swift in Sources */,
+				3BF6754E1B2142DC000C7860 /* ImportantInformationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,7 +34,7 @@ class MealsTableViewController: UITableViewController {
         alertView.show()
     }
     
-    func refreshMeals() {
+    @IBAction func refreshMeals() {
         var hud = MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
         hud.labelText = "Fetching Scanned Meals"
         PFUser.currentUser()!.getScannedMealsInBackgroundWithBlock { (results, error) -> Void in

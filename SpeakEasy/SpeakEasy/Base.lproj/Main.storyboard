@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -24,11 +24,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Item-->
+        <!--Meal Generator-->
         <scene sceneID="13t-K9-rBl">
             <objects>
                 <navigationController id="zCw-MS-TtT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1O2-vW-h4k"/>
+                    <tabBarItem key="tabBarItem" title="Meal Generator" image="upload-7" id="1O2-vW-h4k"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tv8-yi-8Hr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -44,7 +44,7 @@
         <!--Settings-->
         <scene sceneID="9Z2-Ij-e6x">
             <objects>
-                <tableViewController id="cDc-4n-cCd" customClass="ServersTableViewController" customModule="SpeakEasy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cDc-4n-cCd" customClass="ServersTableViewController" customModule="Speakeasy_Business" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="oSc-lE-YVN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,13 +129,13 @@
         <!--Add Or Edit Server Table View Controller-->
         <scene sceneID="6zB-bA-nUV">
             <objects>
-                <tableViewController id="8bu-Qe-rN4" customClass="AddOrEditServerTableViewController" customModule="SpeakEasy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8bu-Qe-rN4" customClass="AddOrEditServerTableViewController" customModule="Speakeasy_Business" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kQU-zy-N4k">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddOrEditServerCellReuseIdentifier" id="bSN-Wn-PAV" customClass="TextFieldTableViewCell" customModule="SpeakEasy" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddOrEditServerCellReuseIdentifier" id="bSN-Wn-PAV" customClass="TextFieldTableViewCell" customModule="Speakeasy_Business" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bSN-Wn-PAV" id="st3-Kf-3e0">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -215,13 +215,13 @@
         <!--Add Or Edit Deal Table View Controller-->
         <scene sceneID="o8d-Ow-h7S">
             <objects>
-                <tableViewController id="2bM-aA-Gpg" customClass="AddOrEditDealTableViewController" customModule="SpeakEasy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="2bM-aA-Gpg" customClass="AddOrEditDealTableViewController" customModule="Speakeasy_Business" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="abL-EC-p7Y">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddOrEditDealCellReuseIdentifier" id="Kwf-PS-UKz" customClass="TextFieldTableViewCell" customModule="SpeakEasy" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddOrEditDealCellReuseIdentifier" id="Kwf-PS-UKz" customClass="TextFieldTableViewCell" customModule="Speakeasy_Business" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kwf-PS-UKz" id="a6h-Wc-4U3">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -285,7 +285,7 @@
         <!--Meal Creation View Controller-->
         <scene sceneID="Ahk-zh-xjD">
             <objects>
-                <viewController id="hnV-T9-FSn" customClass="MealCreationViewController" customModule="SpeakEasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hnV-T9-FSn" customClass="MealCreationViewController" customModule="Speakeasy_Business" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NGF-Db-4eP"/>
                         <viewControllerLayoutGuide type="bottom" id="VIG-qw-k9g"/>
@@ -385,7 +385,7 @@
         <!--Login View Controller-->
         <scene sceneID="0Mo-2Z-G43">
             <objects>
-                <viewController id="p3Q-9X-sGC" customClass="LoginViewController" customModule="SpeakEasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="p3Q-9X-sGC" customClass="LoginViewController" customModule="Speakeasy_Business" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lyU-A0-sBn"/>
                         <viewControllerLayoutGuide type="bottom" id="e25-rU-agB"/>
@@ -460,11 +460,11 @@
             </objects>
             <point key="canvasLocation" x="2352" y="740"/>
         </scene>
-        <!--Item-->
+        <!--Deals List-->
         <scene sceneID="kXF-JZ-A3z">
             <objects>
                 <navigationController id="WA3-3i-oHy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="sgA-ng-bFa"/>
+                    <tabBarItem key="tabBarItem" title="Deals List" image="list-simple-7" id="sgA-ng-bFa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="18T-Wl-PFc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -480,7 +480,7 @@
         <!--Deals To Charge Table View Controller-->
         <scene sceneID="XsP-z1-bjb">
             <objects>
-                <tableViewController id="giK-Tv-5py" customClass="DealsToChargeTableViewController" customModule="SpeakEasy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="giK-Tv-5py" customClass="DealsToChargeTableViewController" customModule="Speakeasy_Business" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="fpF-j7-zUp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -524,7 +524,7 @@
         <!--Charging View Controller-->
         <scene sceneID="ENd-gN-N6K">
             <objects>
-                <viewController id="lHO-JU-vLP" customClass="ChargingViewController" customModule="SpeakEasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lHO-JU-vLP" customClass="ChargingViewController" customModule="Speakeasy_Business" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mN2-E7-yEm"/>
                         <viewControllerLayoutGuide type="bottom" id="eBB-HE-dPy"/>
@@ -575,4 +575,8 @@
             <point key="canvasLocation" x="1524" y="712"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list-simple-7" width="30" height="30"/>
+        <image name="upload-7" width="29" height="30"/>
+    </resources>
 </document>

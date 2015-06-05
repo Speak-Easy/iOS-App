@@ -25,6 +25,10 @@ class RedeemViewController: UIViewController, UITextFieldDelegate {
         pointsTextField.text = ""
         qrCodeImageView.alpha = 0.05
         
+        if let birthday = PFUser.currentUser()?.valueForKey("birthday") as? String {
+            self.title = "\(birthday)"
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -39,6 +43,7 @@ class RedeemViewController: UIViewController, UITextFieldDelegate {
         var sideLength = min(originDistanceFromBottom, originDistanceFromSide)
         frame.size = CGSizeMake(sideLength, sideLength)
         qrCodeImageView.frame = frame
+        self.view.bringSubviewToFront(pointsTextField)
         
         qrCodeImageView.center = self.view.center
     }
