@@ -31,12 +31,6 @@ class ImportantInformationView: UIView {
                 self.actionLabel.textColor = UIColor.algorithmsGreen()
                 self.borderView.layer.borderColor = UIColor.algorithmsGreen().CGColor
                 self.clippingContentView.layer.borderColor = UIColor.algorithmsGreen().CGColor
-            case ImportantInformationType.Warning:
-                self.backgroundColorView.backgroundColor = UIColor.yellowColor()
-                //self.leftBarView.backgroundColor = UIColor.warningYellow()
-                //self.actionLabel.textColor = UIColor.warningYellow()
-                //self.borderView.layer.borderColor = UIColor.warningYellow().CGColor
-                //self.clippingContentView.layer.borderColor = UIColor.warningYellow().CGColor
             case ImportantInformationType.Error:
                 self.backgroundColorView.backgroundColor = UIColor.redColor()
                 self.leftBarView.backgroundColor = UIColor.redColor()

@@ -146,7 +146,6 @@
         <!--Account Information-->
         <scene sceneID="pUW-OV-jWR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-0s-4Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xqY-bd-Ltu" customClass="LoginViewController" customModule="Speakeasy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GMb-Ln-xto"/>
@@ -231,13 +230,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Account Information" id="J4e-Ac-Ige"/>
                     <connections>
+                        <outlet property="actionView" destination="QAd-vj-RtU" id="P3B-Zf-MJL"/>
                         <outlet property="emailTextField" destination="qPW-R2-j25" id="BLi-MU-EcD"/>
-                        <outlet property="infoMessageView" destination="QAd-vj-RtU" id="WuB-oL-7ig"/>
                         <outlet property="logInButton" destination="hR7-BV-wJX" id="PLa-q4-IzQ"/>
                         <outlet property="passwordTextField" destination="zLE-3J-LpU" id="ckN-q4-SRe"/>
                         <outlet property="reenterPasswordTextField" destination="lCZ-B8-UaK" id="YS9-z7-0MO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-0s-4Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="338" y="1075"/>
         </scene>

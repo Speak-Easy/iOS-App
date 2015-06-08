@@ -153,9 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				3B6F54901A9CD51E008F6508 /* AppDelegate.swift */,
-				3BE38AAF1AD762FB00830511 /* LoginViewController.swift */,
-				3BE853EF1B02807B0009DE3B /* MealsTableViewController.swift */,
-				3BF6754D1B2142DC000C7860 /* ImportantInformationView.swift */,
+				3BCFE3771B2518BF000FF584 /* Account Management */,
 				3BD905CC1AE861010087186B /* Earning Rewards */,
 				3BD905CD1AE8610F0087186B /* Nearby */,
 				3B8174861AF6C3580029AEDD /* Redeem */,
@@ -217,6 +215,16 @@
 				3B8DC2A31AD70F87002198CA /* CameraFocusBox.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		3BCFE3771B2518BF000FF584 /* Account Management */ = {
+			isa = PBXGroup;
+			children = (
+				3BE38AAF1AD762FB00830511 /* LoginViewController.swift */,
+				3BE853EF1B02807B0009DE3B /* MealsTableViewController.swift */,
+				3BF6754D1B2142DC000C7860 /* ImportantInformationView.swift */,
+			);
+			name = "Account Management";
 			sourceTree = "<group>";
 		};
 		3BD905CC1AE861010087186B /* Earning Rewards */ = {

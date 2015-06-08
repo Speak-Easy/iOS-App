@@ -14,11 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var reenterPasswordTextField: UITextField!
-    @IBOutlet var infoMessageView: ImportantInformationView!
-    
-    let LogoutText = "Logout"
-    let LoginText = "Login with Facebook"
-    let LoggingInText = "Logging In"
+    @IBOutlet var actionView: ImportantInformationView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,21 +47,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             PFUser.logInWithUsernameInBackground(lowercaseEmail, password: self.passwordTextField.text, block: { (user, error) -> Void in
                 if let error = error {
                     if error.code == 101 {
-                        self.infoMessageView.actionLabel.text = "● Invalid login credentials"
-                        self.infoMessageView.show()
+                        self.actionView.actionLabel.text = "● Invalid login credentials"
+                        self.actionView.show()
                     }
                 }
                 else {
-                    self.removeKeyboard(self)
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    var emailVerified:Bool = user?.valueForKey("emailVerified") as! Bool
+                    if emailVerified {
+                        self.removeKeyboard(self)
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    else {
+                        self.actionView.actionLabel.text = "● Verify E-Mail and try again"
+                        self.actionView.show()
+                        PFUser.logOut()
+                    }
                 }
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
             })
         }
         else if self.reenterPasswordTextField.text == self.passwordTextField.text && self.passwordTextField.text != "" {
             if count(self.passwordTextField.text) < 5 || count(self.passwordTextField.text) > 16 {
-                self.infoMessageView.actionLabel.text = "● Password must be 5-16 characters"
-                self.infoMessageView.show()
+                self.actionView.actionLabel.text = "● Password must be 5-16 characters"
+                self.actionView.show()
             }
             else {
                 var user = PFUser()
@@ -79,17 +83,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 user.signUpInBackgroundWithBlock {
                     (succeeded, error) -> Void in
                     if error == nil {
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.reenterPasswordTextField.text = ""
+                        self.actionView.actionLabel.text = "● Verify E-Mail before logging in"
+                        self.actionView.show()
+                        PFUser.logOut()
+                        self.logInButton.setTitle("Login", forState: UIControlState.Normal)
                     }
                     if let error = error {
                         if error.code == 202 || error.code == 203 {
-                            self.infoMessageView.actionLabel.text = "● E-Mail is already registered"
+                            self.actionView.actionLabel.text = "● E-Mail is already registered"
                             
-                            self.infoMessageView.show()
+                            self.actionView.show()
                         }
                         if error.code == 125 {
-                            self.infoMessageView.actionLabel.text = "● Invalid E-Mail"
-                            self.infoMessageView.show()
+                            self.actionView.actionLabel.text = "● Invalid E-Mail"
+                            self.actionView.show()
                         }
                     }
                     MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -97,8 +105,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
         if self.reenterPasswordTextField.text != "" && self.passwordTextField.text != self.reenterPasswordTextField.text {
-            self.infoMessageView.actionLabel.text = "● Passwords don't match"
-            self.infoMessageView.show()
+            self.actionView.actionLabel.text = "● Passwords don't match"
+            self.actionView.show()
         }
     }
     
