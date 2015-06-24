@@ -87,6 +87,7 @@ class DealsToChargeTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedDeal = nil
         if indexPath.row < deals.count {
             selectedDeal = deals[indexPath.row]
         }
