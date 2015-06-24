@@ -61,6 +61,12 @@
     return self._cwViewControllerSupportedInterfaceOrientation;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    return !(statusBarHeight > 0);
+}
+
 @end
 
 # pragma mark - dispatch after with cancellation
@@ -272,7 +278,7 @@ static void cancel_delayed_block(CWDelayedBlockHandle delayedHandle)
 
 - (CGFloat)getNavigationBarHeight
 {
-    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation) ||
+    if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ||
         UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return 44.0f;
     }

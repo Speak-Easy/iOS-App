@@ -21,6 +21,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         PFUser.logOut()
         
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "removeKeyboard:"))
+        
         self.reenterPasswordTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
     }
     
@@ -116,7 +118,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func removeKeyboard(sender: AnyObject) {
-        self.view.endEditing(false)
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        self.reenterPasswordTextField.resignFirstResponder()
     }
     
 
