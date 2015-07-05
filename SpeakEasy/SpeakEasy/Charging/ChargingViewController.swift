@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UITextFieldDelegate {
+class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UITextFieldDelegate, UIAlertViewDelegate {
 
     var deal: PFObject?
     var scanResult:String!
@@ -169,8 +169,14 @@ class ChargingViewController: UIViewController, AVCaptureMetadataOutputObjectsDe
         }
     }
     
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        self.captureSession?.startRunning()
+        self.qrCodeFrameView?.frame = CGRectZero
+    }
+    
     func showAlert(message:String!) {
         var alertView = UIAlertView(title: message, message: nil, delegate: nil, cancelButtonTitle: "OK")
+        alertView.delegate = self
         alertView.show()
     }
 

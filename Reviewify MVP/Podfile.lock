@@ -1,42 +1,42 @@
 PODS:
-  - Bolts (1.1.5):
-    - Bolts/AppLinks (= 1.1.5)
-    - Bolts/Tasks (= 1.1.5)
-  - Bolts/AppLinks (1.1.5):
+  - Bolts (1.2.0):
+    - Bolts/AppLinks (= 1.2.0)
+    - Bolts/Tasks (= 1.2.0)
+  - Bolts/AppLinks (1.2.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.1.5)
-  - CWStatusBarNotification (2.2.4)
+  - Bolts/Tasks (1.2.0)
+  - CWStatusBarNotification (2.2.6)
+  - DZNEmptyDataSet (1.5.2)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
   - MBProgressHUD (0.9.1)
-  - Parse (1.7.2.1):
+  - Parse (1.7.4):
     - Bolts/Tasks (>= 1.1.5)
-  - ParseFacebookUtils (1.7.2.1):
+  - ParseFacebookUtils (1.7.4):
     - Bolts/Tasks (>= 1.1.5)
     - Facebook-iOS-SDK (~> 3.23)
-    - Parse (~> 1.7.2)
-  - TesseractOCRiOS (3.4.0)
+    - Parse (~> 1.7.4)
   - ZXingObjC (3.1.0):
     - ZXingObjC/All (= 3.1.0)
   - ZXingObjC/All (3.1.0)
 
 DEPENDENCIES:
   - CWStatusBarNotification (~> 2.2.2)
+  - DZNEmptyDataSet
   - Facebook-iOS-SDK
   - MBProgressHUD (~> 0.9.1)
   - Parse
   - ParseFacebookUtils
-  - TesseractOCRiOS (= 3.4.0)
   - ZXingObjC (~> 3.0)
 
 SPEC CHECKSUMS:
-  Bolts: aac24961496d504aa56fc267cde95162a71bac39
-  CWStatusBarNotification: 24ea6215e9b4a0cea66f8377fb0130f313e0b3d4
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  CWStatusBarNotification: b7d08c63bbfcceee08b63cab041560a6f5cdefb6
+  DZNEmptyDataSet: 741da409081a4bf707c949c964623a6ad1799772
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  Parse: 8213b05b52768b34b87e1e41fd9efc88a9933f3f
-  ParseFacebookUtils: 593ab26aea08d3313fccdd2feb3eeb9ebe9f73bd
-  TesseractOCRiOS: cd79d4ce9d4c0f1e2776db8820cf8239e5569592
+  Parse: 6ca512c6e860b66739c95151b2f76ac4712b7842
+  ParseFacebookUtils: 7115990b291ae95b920fde413272828d0eb0d963
   ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
 COCOAPODS: 0.36.4

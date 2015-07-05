@@ -12,8 +12,6 @@
 
 #import "ASStarRatingView.h"
 
-#import <TesseractOCR/TesseractOCR.h>
-
 #import "MBProgressHUD.h"
 
 #import "CWStatusBarNotification.h"
