@@ -112,6 +112,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func resetPassword(sender:AnyObject!) {
+        if emailTextField.text == "" {
+            showAlert("Error", message: "Please enter an e-mail before attempting to reset your password.")
+        }
+        else {
+            PFUser.requestPasswordResetForEmailInBackground(emailTextField.text, block: { (success, error) -> Void in
+                
+            })
+        }
+    }
+    
     func showAlert(titles:String!, message:String!) {
         var alertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "OK")
         alertView.show()

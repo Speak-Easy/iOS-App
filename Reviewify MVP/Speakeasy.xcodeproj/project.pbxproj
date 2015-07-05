@@ -29,7 +29,6 @@
 		3B88D33D1AA0D27D0054388D /* ASStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88D33C1AA0D27D0054388D /* ASStarRatingView.m */; };
 		3B8DC2A21AD70F68002198CA /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DC2A11AD70F68002198CA /* Regex.swift */; };
 		3B8DC2A41AD70F87002198CA /* CameraFocusBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DC2A31AD70F87002198CA /* CameraFocusBox.swift */; };
-		3BDF0F201ABB63F200120564 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 3BDF0F1F1ABB63F200120564 /* tessdata */; };
 		3BE38AB01AD762FB00830511 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE38AAF1AD762FB00830511 /* LoginViewController.swift */; };
 		3BE3CD151AD77FAC00DB7EA8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE3CD141AD77FAC00DB7EA8 /* MapKit.framework */; };
 		3BE3CD171ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE3CD161ADB1C9900DB7EA8 /* NearbyRestaurantsMapViewController.swift */; };
@@ -368,7 +367,6 @@
 			files = (
 				3BED17681AD6D6B5005DEA44 /* Screen Shot 2015-04-09 at 11.47.50 AM.png in Resources */,
 				3B6F54961A9CD51E008F6508 /* Main.storyboard in Resources */,
-				3BDF0F201ABB63F200120564 /* tessdata in Resources */,
 				3B6F549B1A9CD51E008F6508 /* LaunchScreen.xib in Resources */,
 				3B6F54981A9CD51E008F6508 /* Images.xcassets in Resources */,
 			);
